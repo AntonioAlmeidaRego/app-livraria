@@ -5,6 +5,7 @@ import StylesScreen from '../styles/StylesScreen';
 import TabListagemLivros from '../tabs/TabListagemLivros';
 import TabListagemPromocoes from '../tabs/TabListagemPromocoes';
 import HeaderComponent from '../components/HeaderComponent';
+import TabListagemCategorias from '../tabs/TabListagemCategorias';
 
 export default class HomeScreen extends React.Component{
     render() {
@@ -12,7 +13,12 @@ export default class HomeScreen extends React.Component{
             <HeaderComponent
                 children={
                     <Tabs>
-                        <Tab tabStyle={{backgroundColor: '#ffd410'}} activeTextStyle={{color: '#000'}} textStyle={{color: '#000'}} activeTabStyle={{backgroundColor: '#ffd410'}} heading={"Livros"}>
+                        <Tab tabStyle={{backgroundColor: '#ffd410'}} activeTextStyle={{color: '#000'}}
+                             textStyle={{color: '#000'}} activeTabStyle={{backgroundColor: '#ffd410'}} heading={"Categorias"}>
+                            <TabListagemCategorias />
+                        </Tab>
+                        <Tab tabStyle={{backgroundColor: '#ffd410'}} activeTextStyle={{color: '#000'}}
+                             textStyle={{color: '#000'}} activeTabStyle={{backgroundColor: '#ffd410'}} heading={"Livros"}>
                             <TabListagemLivros />
                         </Tab>
                         <Tab tabStyle={{backgroundColor: '#ffd410'}} activeTextStyle={{color: '#000'}} textStyle={{color: '#000'}} activeTabStyle={{backgroundColor: '#ffd410'}} heading={"Promoções"}>

@@ -1,21 +1,18 @@
 import RequestController from './RequestController';
 
-export default class LivroController {
-    constructor() {
+
+export default class CategoriaController {
+
+    constructor(){
         this._request = new RequestController;
     }
 
-    getAll = async (url)=>{
-        return await this._request.$getJSON(url);
-    };
 
     getOne = async (url)=>{
         return await this._request.$getJSON(url);
     };
 
-    getListAllFirstPromotions = async (url)=>{
+    getAll = async (url)=>{
         return await this._request.$getJSON(url);
     };
-
-
 }
