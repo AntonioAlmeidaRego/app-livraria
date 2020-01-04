@@ -1,16 +1,17 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {Header, Body, Content, Container, Tabs, Tab} from 'native-base';
-import StylesScreen from '../styles/StylesScreen';
-import TabListagemLivros from '../tabs/TabListagemLivros';
-import TabListagemPromocoes from '../tabs/TabListagemPromocoes';
-import HeaderComponent from '../components/HeaderComponent';
-import TabListagemCategorias from '../tabs/TabListagemCategorias';
+import StylesScreen from '../../styles/StylesScreen';
+import TabListagemLivros from '../../tabs/TabListagemLivros';
+import TabListagemPromocoes from '../../tabs/TabListagemPromocoes';
+import HeaderComponent from '../../components/HeaderComponent';
+import TabListagemCategorias from '../../tabs/TabListagemCategorias';
 
 export default class HomeScreen extends React.Component{
     render() {
         return (
             <HeaderComponent
+                title={"Livraria PDF"}
                 children={
                     <Tabs>
                         <Tab tabStyle={{backgroundColor: '#ffd410'}} activeTextStyle={{color: '#000'}}

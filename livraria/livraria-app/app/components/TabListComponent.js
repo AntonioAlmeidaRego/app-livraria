@@ -6,6 +6,8 @@ import CategoriaController from '../controllers/CategoriaController';
 
 export default class TabListComponent extends React.Component{
 
+
+
     render() {
         return (
             <Container>
@@ -22,7 +24,7 @@ export default class TabListComponent extends React.Component{
                                         <Text>{item.nome}</Text>
                                     </Body>
                                     <Right>
-                                        <Button transparent>
+                                        <Button onPress={() => this.props.onDetalhe(item)} transparent>
                                             <Text>Detalhe</Text>
                                         </Button>
                                     </Right>

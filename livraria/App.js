@@ -6,15 +6,22 @@
  * @flow
  */
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-import HomeScreen from './livraria-app/app/screens/HomeScreen';
+import {createSwitchNavigator, createAppContainer} from 'react-navigation';
+import HomeScreenStack from './livraria-app/app/screens/HomeScreen/HomeScreenConfigRoute/HomeScreenStack';
+import LivroScreenStack from './livraria-app/app/screens/LivroScreen/LivroScreenConfigRoute/LivroScreenStack';
 
-export default HomeScreen;
+const switchRoute = createSwitchNavigator({
+    HomeScreen: {
+      screen: HomeScreenStack,
+    },
+
+    LivroScreen:{
+      screen: LivroScreenStack,
+    }
+},
+    {
+        initialRouteName: 'HomeScreenStack',
+    }
+);
+
+export default createAppContainer(switchRoute);

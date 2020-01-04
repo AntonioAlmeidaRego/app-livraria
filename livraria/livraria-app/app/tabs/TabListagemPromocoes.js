@@ -14,7 +14,7 @@ export default class TabListagemPromocoes extends React.Component{
         const livroController = new LivroController;
         const livros = await livroController.getListAllFirstPromotions(url+'/api/livro/findAllPromocaoPrimeiros');
         this.setState({
-            livros: await livros.json(),
+            livros: livros,
         });
     }
 

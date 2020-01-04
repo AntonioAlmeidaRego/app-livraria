@@ -10,7 +10,7 @@ export default class HeaderComponent extends React.Component{
                 <Content>
                     <Header style={StylesScreen.createColorBackground('#fff423')}>
                         <Body>
-                            <Text>Livraria PDF</Text>
+                            <Text>{this.props.title}</Text>
                         </Body>
                     </Header>
                     {this.props.children}

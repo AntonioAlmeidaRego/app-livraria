@@ -6,16 +6,22 @@ export default class LivroController {
     }
 
     getAll = async (url)=>{
-        return await this._request.$getJSON(url);
+        const api = await this._request.$getJSON(url);
+        return await api.json() || [];
     };
 
     getOne = async (url)=>{
-        return await this._request.$getJSON(url);
+        const api = await this._request.$getJSON(url);
+        return await api.json() || [];
     };
 
     getListAllFirstPromotions = async (url)=>{
-        return await this._request.$getJSON(url);
+        const api = await this._request.$getJSON(url);
+        return await api.json() || [];
     };
 
-
+    getListAllLinkedCategoria = async (url)=>{
+        const api = await this._request.$getJSON(url);
+        return await api.json() || [];
+    }
 }

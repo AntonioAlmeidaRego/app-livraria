@@ -15,7 +15,7 @@ export default class TabListagemLivros extends React.Component{
         const livroController = new LivroController;
         const livros = await livroController.getAll('https://livraria-pdf.herokuapp.com/api/livro/findAll');
         this.setState({
-            livros: await livros.json(),
+            livros: livros,
         });
     }
 

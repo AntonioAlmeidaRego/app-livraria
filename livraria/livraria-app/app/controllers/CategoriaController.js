@@ -9,10 +9,12 @@ export default class CategoriaController {
 
 
     getOne = async (url)=>{
-        return await this._request.$getJSON(url);
+        const api = await this._request.$getJSON(url);
+        return await api.json() || [];
     };
 
     getAll = async (url)=>{
-        return await this._request.$getJSON(url);
+        const api = await this._request.$getJSON(url);
+        return await api.json() || [];
     };
 }
