@@ -21,7 +21,7 @@ export default class TabListagemLivros extends React.Component{
 
     render() {
         return (
-            <TabComponent livros={this.state.livros} />
+            <TabComponent onDetalheLivro={this.props.onDetalheLivro} array={this.state.livros} />
         );
     }
 }

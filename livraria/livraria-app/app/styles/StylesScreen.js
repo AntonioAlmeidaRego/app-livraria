@@ -159,6 +159,15 @@ export default class StylesScreen{
         return styles.button;
     }
 
+    static createColorText(color: string){
+        const styles = StyleSheet.create({
+            title:{
+                color: color,
+            }
+        });
+
+        return styles.title;
+    }
 
     static createText(color: string, fontSize: number, fontWeight: string, fontFamily: string, textAlign: string){
         const styles = StyleSheet.create({

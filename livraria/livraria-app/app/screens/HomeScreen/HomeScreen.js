@@ -8,6 +8,21 @@ import HeaderComponent from '../../components/HeaderComponent';
 import TabListagemCategorias from '../../tabs/TabListagemCategorias';
 
 export default class HomeScreen extends React.Component{
+
+    detalhe = async (objeto)=>{
+        this.props.navigation.navigate("ListagemLivrosLinkedCategoria", {
+            categoria: objeto,
+            onDetalheLivro: this.detalheLivro
+        });
+    };
+
+    detalheLivro = async (objeto)=>{
+        this.props.navigation.navigate("DetalheLivro", {
+            livro: objeto
+        });
+    };
+
+
     render() {
         return (
             <HeaderComponent
@@ -16,11 +31,11 @@ export default class HomeScreen extends React.Component{
                     <Tabs>
                         <Tab tabStyle={{backgroundColor: '#ffd410'}} activeTextStyle={{color: '#000'}}
                              textStyle={{color: '#000'}} activeTabStyle={{backgroundColor: '#ffd410'}} heading={"Categorias"}>
-                            <TabListagemCategorias />
+                            <TabListagemCategorias onDetalhe={this.detalhe}/>
                         </Tab>
                         <Tab tabStyle={{backgroundColor: '#ffd410'}} activeTextStyle={{color: '#000'}}
                              textStyle={{color: '#000'}} activeTabStyle={{backgroundColor: '#ffd410'}} heading={"Livros"}>
-                            <TabListagemLivros />
+                            <TabListagemLivros onDetalheLivro={this.detalheLivro} />
                         </Tab>
                         <Tab tabStyle={{backgroundColor: '#ffd410'}} activeTextStyle={{color: '#000'}} textStyle={{color: '#000'}} activeTabStyle={{backgroundColor: '#ffd410'}} heading={"Promoções"}>
                             <TabListagemPromocoes />

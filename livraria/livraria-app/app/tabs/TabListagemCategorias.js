@@ -14,22 +14,16 @@ export default class TabListagemCategorias extends React.Component{
     async componentDidMount(): void {
         const categoriaController = new CategoriaController;
         const api = await categoriaController.getAll(url+'/api/categoria/findAll');
-        console.log(api);
         this.setState({
             categorias: api,
         });
     }
 
-    detalhe = async (objeto)=>{
-        this.props.navigation.navigate("ListagemLivrosLinkedCategoria", {
-            categoria: objeto
-        });
-    };
 
     render() {
         return (
             <TabListComponent
-                onDetalhe={this.detalhe}
+                onDetalhe={this.props.onDetalhe}
                 array={this.state.categorias}
             />
         );

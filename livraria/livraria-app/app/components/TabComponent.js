@@ -12,7 +12,7 @@ export default class TabComponent extends React.Component{
                             <Spinner/>
                         }
                         onEndReachedThreshold={100}
-                        data={this.props.livros}
+                        data={this.props.array}
                         renderItem={({ item }) =>
                             [
                                 <ListItem thumbnail>
@@ -24,7 +24,7 @@ export default class TabComponent extends React.Component{
                                         <Text note numberOfLines={1}>{item.sinopsie} . .</Text>
                                     </Body>
                                     <Right>
-                                        <Button transparent>
+                                        <Button onPress={() => this.props.onDetalheLivro(item)} transparent>
                                             <Text>Detalhe</Text>
                                         </Button>
                                     </Right>

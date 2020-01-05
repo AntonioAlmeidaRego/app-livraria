@@ -1,20 +1,24 @@
 import {createStackNavigator} from 'react-navigation';
-import LivroScreenStack from '../../LivroScreen/LivroScreenConfigRoute/LivroScreenStack';
-import HomeScreenRouter from './index';
+import LivroScreen from '../../LivroScreen/LivroScreen';
+import HomeScreen from '../HomeScreen';
+import DetalheLivroScreen from '../../LivroScreen/DetalheLivroScreen';
 
 const HomeScreenStack = createStackNavigator({
     HomeScreen:{
-        screen: HomeScreenRouter,
+        screen: HomeScreen,
         navigationOptions:{
             header: null,
         },
     },
     ListagemLivrosLinkedCategoria:{
-        screen: LivroScreenStack,
+        screen: LivroScreen,
+    },
+    DetalheLivro:{
+        screen: DetalheLivroScreen,
     }
 },
     {
-        initialRouteName: 'HomeScreenRouter',
+        initialRouteName: 'HomeScreen',
     },
 );
 
