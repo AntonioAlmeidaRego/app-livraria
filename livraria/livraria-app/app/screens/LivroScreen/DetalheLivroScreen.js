@@ -5,6 +5,7 @@ import {Header, Body, Content, Container, Tabs, Tab, Card, CardItem, Thumbnail, 
 import IconSecret from 'react-native-vector-icons/Entypo';
 import HeaderStackComponent from '../../components/HeaderStackComponent';
 import StylesScreen from '../../styles/StylesScreen';
+import SoapController from '../../controllers/SoapController';
 const uriImg = "https://livraria-pdf.herokuapp.com/livro/imagem/";
 export default class DetalheLivroScreen extends React.Component{
 
@@ -14,6 +15,9 @@ export default class DetalheLivroScreen extends React.Component{
 
     state = {
         livro: {},
+        cep: '',
+        valor: 0,
+        prazo: 0,
     };
 
     async componentDidMount(): void {
@@ -21,6 +25,20 @@ export default class DetalheLivroScreen extends React.Component{
             livro:this.props.navigation.state.params.livro
         });
     }
+
+    consulCEP = async ()=>{
+        const soap = new SoapController;
+        const api = await soap.getSoap("https://api-correios-soap.herokuapp.com/"+this.state.cep+"/"+this.state.livro.peso
+            +"/"+this.state.livro.comprimento+"/"+this.state.livro.altura+"/"+this.state.livro.largura
+            +"/"+this.state.livro.preco);
+        const objetoXML = await api.text();
+
+        this.setState({
+            valor: soap.$find(objetoXML, 'Valor'),
+            prazo: soap.$find(objetoXML, 'PrazoEntrega'),
+        });
+
+    };
 
     render() {
         return (
@@ -57,22 +75,65 @@ export default class DetalheLivroScreen extends React.Component{
                                 </Body>
                             </CardItem>
                             <CardItem footer bordered>
-                                <Text>R$ {this.state.livro.preco}</Text>
+                                <Text>R$ {parseFloat(parseFloat(this.state.livro.preco) + parseFloat(this.state.valor))}</Text>
+                            </CardItem>
+                        </Card>
+                        <Card>
+                            <CardItem header bordered>
+                                <Text style={StylesScreen.createToLocaleUppercase()}>quantidade</Text>
+                            </CardItem>
+                            <CardItem bordered>
+                                <Body>
+                                    <Text>
+                                        {this.state.livro.sinopsie}
+                                    </Text>
+                                </Body>
+                            </CardItem>
+                            <CardItem footer bordered>
+                                <Text>R$ {parseFloat(parseFloat(this.state.livro.preco) + parseFloat(this.state.valor))}</Text>
+                            </CardItem>
+                        </Card>
+                        <Card>
+                            <CardItem header bordered>
+                                <Text style={StylesScreen.createToLocaleUppercase()}>calculo do frete</Text>
+                            </CardItem>
+                            <CardItem bordered>
+                                <Left>
+                                    <Item stackedLabel>
+                                        <Label>CEP</Label>
+                                        <Input
+                                            value={this.state.cep}
+                                            onChangeText={val => this.setState({cep: val})}
+                                            maxLength={8}
+                                            placeholder={"_____-___"}
+                                            keyboardType={'numeric'}
+                                        />
+                                    </Item>
+                                </Left>
+                                <Right>
+                                    <Button success onPress={() => this.consulCEP()}>
+                                        <Icon/>
+                                        <Text style={[StylesScreen.createToLocaleUppercase(), StylesScreen.createColorText('#fff')]}>ok</Text>
+                                        <Icon/>
+                                    </Button>
+                                </Right>
+                            </CardItem>
+                            <CardItem bordered>
+                                <Body>
+                                    <Text style={StylesScreen.createToLocaleUppercase()}>Valor</Text>
+                                    <Text note style={StylesScreen.createToLocaleUppercase()}>{this.state.valor}</Text>
+                                </Body>
+                            </CardItem>
+                            <CardItem bordered>
+                                <Body>
+                                    <Text style={StylesScreen.createToLocaleUppercase()}>Prazo</Text>
+                                    <Text note style={StylesScreen.createToLocaleUppercase()}>{this.state.prazo} Dias</Text>
+                                </Body>
                             </CardItem>
                         </Card>
                         <Card>
                             <CardItem header bordered>
                                 <Text style={StylesScreen.createToLocaleUppercase()}>compra</Text>
-                            </CardItem>
-                            <CardItem bordered>
-                                <Item stackedLabel>
-                                    <Label>CEP</Label>
-                                    <Input
-                                        maxLength={8}
-                                        placeholder={"_____-___"}
-                                        keyboardType={'numeric'}
-                                    />
-                                </Item>
                             </CardItem>
                             <CardItem footer bordered>
                                 <Left/>
