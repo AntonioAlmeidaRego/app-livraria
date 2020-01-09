@@ -20,7 +20,7 @@ export default class TabListagemPromocoes extends React.Component{
 
     render() {
         return (
-            <TabComponent livros={this.state.livros} />
+            <TabComponent array={this.state.livros} />
         );
     }
 }

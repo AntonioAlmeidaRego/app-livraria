@@ -31,8 +31,6 @@ export default class StylesScreen{
     static createBox(){
         const styles = StyleSheet.create({
             boxTitle:{
-                width: '68.75%',
-                height: '32.894736842%',
                 justifyContent: 'center',
                 alignSelf: 'center',
                 alignItems: 'center',
@@ -169,9 +167,13 @@ export default class StylesScreen{
         return styles.title;
     }
 
-    static createText(color: string, fontSize: number, fontWeight: string, fontFamily: string, textAlign: string){
+    static createText(color: string, fontSize: number, fontWeight: string, fontFamily: string, textAlign: string,
+                      justifyContent: string, alignSelf: string, alignItems: string){
         const styles = StyleSheet.create({
             title:{
+                justifyContent: justifyContent,
+                alignSelf: alignSelf,
+                alignItems: alignItems,
                 color: color,
                 fontSize: fontSize,
                 fontWeight: fontWeight,
