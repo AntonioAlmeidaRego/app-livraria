@@ -2,6 +2,71 @@ import {StyleSheet, Dimensions} from 'react-native';
 
 export default class StylesScreen{
 
+    static createBorder(color: string, value: number, radius: number){
+        const styles = StyleSheet.create({
+            border:{
+                borderColor: color,
+                borderWidth: value,
+                borderRadius: radius
+            }
+        });
+        return styles.border;
+    }
+
+    static createWidth(width: number){
+        const styles = StyleSheet.create({
+            width:{
+                width: width,
+            }
+        });
+        return styles.width;
+    }
+
+    static createHeight(height: number){
+        const styles = StyleSheet.create({
+            height:{
+                height: height,
+            }
+        });
+        return styles.height;
+    }
+
+    static createBorderLeft(color: string){
+        const styles = StyleSheet.create({
+            border:{
+                borderLeftColor: color,
+            }
+        });
+        return styles.border;
+    }
+
+    static createBorderRight(color: string){
+        const styles = StyleSheet.create({
+            border:{
+                borderRightColor: color,
+            }
+        });
+        return styles.border;
+    }
+
+    static createBorderTop(color: string){
+        const styles = StyleSheet.create({
+            border:{
+                borderTopColor: color,
+            }
+        });
+        return styles.border;
+    }
+
+    static createBorderBottom(color: string){
+        const styles = StyleSheet.create({
+            border:{
+                borderBottomColor: color,
+            }
+        });
+        return styles.border;
+    }
+
     static createBackground(color: string){
         const styles = StyleSheet.create({
             background:{
@@ -25,7 +90,14 @@ export default class StylesScreen{
     }
 
     static createContainer(){
-        return StylesScreenBackground.createContainer();
+        const styles = StyleSheet.create({
+            container:{
+                justifyContent: 'center',
+                alignSelf: 'center',
+                alignItems: 'center',
+            }
+        });
+        return styles.container;
     }
 
     static createBox(){
@@ -39,11 +111,53 @@ export default class StylesScreen{
         return styles.boxTitle;
     }
 
+
+    static createButtonColor(color: string){
+        const styles = StyleSheet.create({
+            buttonColor:{
+                backgroundColor: color,
+            }
+        });
+        return styles.buttonColor;
+    }
+
     static createComponentLeft(){
-        console.log(Dimensions.get('window').width);
         const styles = StyleSheet.create({
             component:{
-                marginLeft: Dimensions.get('window').width-205.714285714,
+                flex: 1,
+                marginLeft: 0,
+            }
+        });
+
+        return styles.component;
+    }
+
+    static createMarginLeft(value: number){
+        const styles = StyleSheet.create({
+            component:{
+                flex: 1,
+                marginLeft: value,
+            }
+        });
+
+        return styles.component;
+    }
+
+    static createMarginRight(value: number){
+        const styles = StyleSheet.create({
+            component:{
+                flex: 1,
+                marginRight: value,
+            }
+        });
+
+        return styles.component;
+    }
+
+    static createFlexDirection(value: string){
+        const styles = StyleSheet.create({
+            component:{
+                flexDirection: value
             }
         });
 
@@ -54,7 +168,8 @@ export default class StylesScreen{
         console.log(Dimensions.get('window').width);
         const styles = StyleSheet.create({
             component:{
-                marginRight: Dimensions.get('window').width-205.714285714,
+                flex: 1,
+                marginRight: 0,
             }
         });
 
@@ -76,20 +191,22 @@ export default class StylesScreen{
         return styles.boxButton;
     }
 
-    static createSpaceLeft(){
+    static createSpaceLeft(value?: number){
         const styles = StyleSheet.create({
             space:{
-                marginLeft: 15,
+                flex: 1,
+                marginLeft: value === undefined || null ? 15 : value,
             }
         });
 
         return styles.space;
     }
 
-    static createSpaceTop(){
+    static createSpaceTop(value?: number){
         const styles = StyleSheet.create({
             space:{
-                marginTop: 15,
+                flex: 1,
+                marginTop: value === undefined || null ? 15 : value,
             }
         });
 
@@ -116,10 +233,11 @@ export default class StylesScreen{
         return styles.text;
     }
 
-    static createSpaceRight(){
+    static createSpaceRight(value?: number){
         const styles = StyleSheet.create({
             space:{
-                marginRight: 15,
+                flex: 1,
+                marginRight: value === undefined || null ? 15 : value,
             }
         });
 
@@ -136,10 +254,11 @@ export default class StylesScreen{
         return styles.borderBottom;
     }
 
-    static createSpaceBottom(){
+    static createSpaceBottom(value?: number){
         const styles = StyleSheet.create({
             space:{
-                marginBottom: 15,
+                flex: 1,
+                marginBottom: value === undefined || null ? 15 : value,
             }
         });
 

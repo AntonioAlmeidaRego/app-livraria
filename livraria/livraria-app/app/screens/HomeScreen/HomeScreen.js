@@ -38,7 +38,7 @@ export default class HomeScreen extends React.Component{
                             <TabListagemLivros onDetalheLivro={this.detalheLivro} />
                         </Tab>
                         <Tab tabStyle={{backgroundColor: '#ffd410'}} activeTextStyle={{color: '#000'}} textStyle={{color: '#000'}} activeTabStyle={{backgroundColor: '#ffd410'}} heading={"Promoções"}>
-                            <TabListagemPromocoes />
+                            <TabListagemPromocoes onDetalheLivro={this.detalheLivro}/>
                         </Tab>
                     </Tabs>
                 }

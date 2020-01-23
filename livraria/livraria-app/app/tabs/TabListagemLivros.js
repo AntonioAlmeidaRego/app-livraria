@@ -17,6 +17,7 @@ export default class TabListagemLivros extends React.Component{
         this.setState({
             livros: livros,
         });
+        console.log(livros.length);
     }
 
     render() {
