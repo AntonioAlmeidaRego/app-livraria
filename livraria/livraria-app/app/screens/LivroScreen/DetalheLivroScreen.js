@@ -28,18 +28,23 @@ export default class DetalheLivroScreen extends React.Component{
 
     increment= async ()=>{
         if(this.state.amount > 0){
-            console.log(this.state.amount);
             this.setState({
                 amount: this.state.amount + 1,
+            });
+            this.setState({
+                value: parseFloat(this.state.value).toFixed(2) * parseFloat(this.state.amount + 1),
             });
         }
     };
 
     decrement = async ()=>{
         if(this.state.amount > 1){
-            console.log(this.state.amount);
             this.setState({
                 amount: this.state.amount-1,
+            });
+
+            this.setState({
+                value: parseFloat(this.state.value) / parseFloat(this.state.amount)
             });
         }
     };
@@ -47,6 +52,10 @@ export default class DetalheLivroScreen extends React.Component{
     async componentDidMount(): void {
         this.setState({
             livro:this.props.navigation.state.params.livro
+        });
+
+        this.setState({
+            value: parseFloat(this.props.navigation.state.params.livro.preco),
         });
     }
 
@@ -84,6 +93,12 @@ export default class DetalheLivroScreen extends React.Component{
                         <TitleBannerComponent
                             uri={'https://cdn.pixabay.com/photo/2017/01/13/13/11/book-1977235_960_720.png'}
                             title={"Compra"}
+                        />
+                        <CardAmountComponent
+                            amount={this.state.amount}
+                            onIncrement={this.increment}
+                            onDecrement={this.decrement}
+                            price={this.state.value}
                         />
                         <View style={StylesScreen.createSpaceTop()}></View>
                         <TitleBannerComponent

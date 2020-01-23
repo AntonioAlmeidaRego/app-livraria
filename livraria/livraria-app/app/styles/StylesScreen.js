@@ -100,7 +100,7 @@ export default class StylesScreen{
         return styles.position;
     }
 
-    static createWidth(width: number){
+    static createWidth(width: number | string){
         const styles = StyleSheet.create({
             width:{
                 width: width,
@@ -154,12 +154,21 @@ export default class StylesScreen{
         return styles.border;
     }
 
-    static createBackground(color: string){
+    static createBorderRadius(value: number){
+        const styles = StyleSheet.create({
+            border:{
+               borderRadius: value,
+            }
+        });
+        return styles.border;
+    }
+
+    static createBackground(color: string, width?: number | string, height?: number | string){
         const styles = StyleSheet.create({
             background:{
                 backgroundColor: color,
-                width: Dimensions.get('window').width,
-                height: Dimensions.get('window').height,
+                width: width !== undefined || width != null ? width : Dimensions.get('window').width,
+                height: height !== undefined || height != null ? height :  Dimensions.get('window').height,
                 flex: 1,
                 justifyContent: 'center',
             }
@@ -187,7 +196,7 @@ export default class StylesScreen{
         return styles.container;
     }
 
-    static createBox(justfyContent: string, alignSelf: string, alignItems: string, width: number | string, height: number | string, radius?: number, padding?: number){
+    static createBox(justfyContent: string, alignSelf: string, alignItems: string, width?: number | string, height?: number | string, radius?: number, padding?: number){
         const styles = StyleSheet.create({
             boxTitle:{
                 flex: 1,
@@ -287,7 +296,7 @@ export default class StylesScreen{
         const styles = StyleSheet.create({
             space:{
                 flex: 1,
-                marginLeft: value === undefined || null ? 15 : value,
+                marginLeft: value === undefined || value == null ? 15 : value,
             }
         });
 
