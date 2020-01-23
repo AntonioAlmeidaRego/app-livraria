@@ -10,6 +10,8 @@ import CardDescritionComponent from '../../components/componentsDetalheLivro/Car
 import CardAmountComponent from '../../components/componentsDetalheLivro/CardAmountComponent';
 import CardFreightCalculationComponent from '../../components/componentsDetalheLivro/CardFreightCalculationComponent';
 import CardPurchaseComponent from '../../components/componentsDetalheLivro/CardPurchaseComponent';
+import TitleBannerComponent from "../../components/TitleBannerComponent";
+import StylesScreen from "../../styles/StylesScreen";
 const uriImg = "https://livraria-pdf.herokuapp.com/livro/imagem/";
 export default class DetalheLivroScreen extends React.Component{
 
@@ -72,27 +74,33 @@ export default class DetalheLivroScreen extends React.Component{
                 onBack={() => this.props.navigation.goBack()}
                 children={
                     <Content>
+                        <View style={StylesScreen.createSpaceTop(30)}></View>
                         <CardHeaderComponent
                             uri={uriImg+this.state.livro.id}
                             title={this.state.livro.titulo}
                             year={this.state.livro.ano}
                         />
-                        <CardDescritionComponent
-                            sinopsie={this.state.livro.sinopsie}
-                            preco={this.state.livro.preco}
-                            value={this.state.value}
+                        <View style={StylesScreen.createSpaceTop()}></View>
+                        <TitleBannerComponent
+                            uri={'https://cdn.pixabay.com/photo/2017/01/13/13/11/book-1977235_960_720.png'}
+                            title={"Compra"}
                         />
-                        <CardAmountComponent
-                            amount={this.state.amount}
-                            onIncrement={this.increment}
-                            onDecrement={this.decrement}
+                        <View style={StylesScreen.createSpaceTop()}></View>
+                        <TitleBannerComponent
+                            uri={'https://cdn.pixabay.com/photo/2017/01/13/13/11/book-1977235_960_720.png'}
+                            title={"Sinopse"}
                         />
-                        <CardFreightCalculationComponent
-                            onConsulCEP={this.consulCEP}
-                            value={this.state.value}
-                            deadline={this.state.prazo}
+                        <View style={StylesScreen.createSpaceTop()}></View>
+                        <TitleBannerComponent
+                            uri={'https://cdn.pixabay.com/photo/2017/01/13/13/11/book-1977235_960_720.png'}
+                            title={"Autores"}
                         />
-                        <CardPurchaseComponent />
+                        <View style={StylesScreen.createSpaceTop()}></View>
+                        <TitleBannerComponent
+                            uri={'https://cdn.pixabay.com/photo/2017/01/13/13/11/book-1977235_960_720.png'}
+                            title={"Mais sobre o Livro"}
+                        />
+                        <View style={StylesScreen.createSpaceBottom()}></View>
                     </Content>
                 }
             />

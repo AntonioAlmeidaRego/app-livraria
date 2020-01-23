@@ -13,6 +13,93 @@ export default class StylesScreen{
         return styles.border;
     }
 
+    static createPositionAbsoluteTop(value: number){
+        const styles = StyleSheet.create({
+            position:{
+                position: 'absolute',
+                top: value,
+            }
+        });
+        return styles.position;
+    }
+
+    static createPositionAbsolute(){
+        const styles = StyleSheet.create({
+            position:{
+                position: 'absolute',
+                alignSelf: 'center'
+            }
+        });
+        return styles.position;
+    }
+
+    static createPositionAbsoluteRight(value: number){
+        const styles = StyleSheet.create({
+            position:{
+                position: 'absolute',
+                right: value,
+            }
+        });
+        return styles.position;
+    }
+
+    static createPositionAbsoluteLeft(value: number){
+        const styles = StyleSheet.create({
+            position:{
+                position: 'absolute',
+                left: value,
+            }
+        });
+        return styles.position;
+    }
+
+    static createPositionAbsoluteBottom(value: number){
+        const styles = StyleSheet.create({
+            position:{
+                position: 'absolute',
+                bottom: value,
+            }
+        });
+        return styles.position;
+    }
+
+    static createPositionRelativeTop(value: number){
+        const styles = StyleSheet.create({
+            position:{
+               position: 'relative',
+               top: value
+            }
+        });
+        return styles.position;
+    }
+
+    static createPositionRelativeLeft(){
+        const styles = StyleSheet.create({
+            position:{
+                relative: 'left',
+            }
+        });
+        return styles.position;
+    }
+
+    static createPositionRelativeRight(){
+        const styles = StyleSheet.create({
+            position:{
+                relative: 'right',
+            }
+        });
+        return styles.position;
+    }
+
+    static createPositionRelativeBottom(){
+        const styles = StyleSheet.create({
+            position:{
+                relative: 'bottom',
+            }
+        });
+        return styles.position;
+    }
+
     static createWidth(width: number){
         const styles = StyleSheet.create({
             width:{
@@ -100,12 +187,17 @@ export default class StylesScreen{
         return styles.container;
     }
 
-    static createBox(){
+    static createBox(justfyContent: string, alignSelf: string, alignItems: string, width: number | string, height: number | string, radius?: number, padding?: number){
         const styles = StyleSheet.create({
             boxTitle:{
-                justifyContent: 'center',
-                alignSelf: 'center',
-                alignItems: 'center',
+                flex: 1,
+                borderRadius: radius,
+                width: width,
+                padding: padding,
+                height: height,
+                justifyContent: justfyContent,
+                alignSelf: alignSelf,
+                alignItems: alignItems,
             }
         });
         return styles.boxTitle;

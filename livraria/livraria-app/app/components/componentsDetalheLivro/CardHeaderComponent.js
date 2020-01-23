@@ -1,24 +1,41 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
-import {Header, Body, Content, Container, Tabs, Tab, Title, Left, CardItem, Thumbnail, Card} from 'native-base';
+import {
+    Header,
+    Body,
+    Content,
+    Container,
+    Tabs,
+    Tab,
+    Title,
+    Left,
+    CardItem,
+    Thumbnail,
+    Card,
+    Right,
+    Button, Icon
+} from 'native-base';
+import StylesScreen from "../../styles/StylesScreen";
+import IconInfo from "react-native-vector-icons/Octicons";
 
 export default class CardHeaderComponent extends React.Component{
     render() {
         return (
-            <Card>
-                <CardItem>
-                    <Left>
-                        <Thumbnail source={{uri: this.props.uri}} />
-                        <Body>
-                            <Text>{this.props.title}</Text>
-                            <Text note>{this.props.year}</Text>
-                        </Body>
-                    </Left>
-                </CardItem>
-                <CardItem cardBody>
-                    <Image source={{uri: this.props.uri}} style={{height: 200, width: null, flex: 1}}/>
-                </CardItem>
-            </Card>
+            <View style={[StylesScreen.createSpaceTop(), StylesScreen.createSpaceRight(), StylesScreen.createSpaceLeft(), StylesScreen.createContainer()]}>
+                <View style={[StylesScreen.createContainer()]}>
+                    <Body>
+                        <Thumbnail square style={[StylesScreen.createWidth(300), StylesScreen.createHeight(350)]}
+                                   source={{uri: this.props.uri}} />
+                        <View style={StylesScreen.createSpaceTop()}>
+                            <Text style={[StylesScreen.createText('#000', 24, 'bold',
+                                null, 'center', 'center', 'center', 'center')
+                            ,
+                                StylesScreen.createToLocaleUppercase()
+                            ]}>{this.props.title}</Text>
+                        </View>
+                    </Body>
+                </View>
+            </View>
         );
     }
 }
