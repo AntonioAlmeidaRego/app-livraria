@@ -13,6 +13,26 @@ export default class StylesScreen{
         return styles.border;
     }
 
+    static createMargin(value: number){
+        const styles = StyleSheet.create({
+            margin: {
+                margin: value
+            }
+        });
+
+        return styles.margin;
+    }
+
+    static createAlignSelf(value: string){
+        const styles = StyleSheet.create({
+            alignSelf: {
+               alignSelf: value
+            }
+        });
+
+        return styles.alignSelf;
+    }
+
     static createPositionAbsoluteTop(value: number){
         const styles = StyleSheet.create({
             position:{
@@ -163,14 +183,62 @@ export default class StylesScreen{
         return styles.border;
     }
 
+    static createPadding(value: number){
+        const styles = StyleSheet.create({
+            padding:{
+                padding: value,
+            }
+        });
+        return styles.padding;
+    }
+
+    static createPaddingLeft(value: number){
+        const styles = StyleSheet.create({
+            paddingLeft:{
+                paddingLeft: value,
+            }
+        });
+        return styles.paddingLeft;
+    }
+
+    static createPaddingRight(value: number){
+        const styles = StyleSheet.create({
+            paddingRight:{
+                paddingRight: value,
+            }
+        });
+        return styles.paddingRight;
+    }
+
+    static createPaddingTop(value: number){
+        const styles = StyleSheet.create({
+            paddingTop:{
+                paddingTop: value,
+            }
+        });
+        return styles.paddingTop;
+    }
+
+    static createPaddingBottom(value: number){
+        const styles = StyleSheet.create({
+            paddingBottom:{
+                paddingBottom: value,
+            }
+        });
+        return styles.paddingBottom;
+    }
+
     static createBackground(color: string, width?: number | string, height?: number | string){
+
         const styles = StyleSheet.create({
             background:{
                 backgroundColor: color,
-                width: width !== undefined || width != null ? width : Dimensions.get('window').width,
-                height: height !== undefined || height != null ? height :  Dimensions.get('window').height,
+                width: width !== undefined && width != null ? width : Dimensions.get('window').width,
+                height: height !== undefined && height != null ? height : Dimensions.get('window').height,
                 flex: 1,
                 justifyContent: 'center',
+                alignSelf: 'center',
+                alignItems: 'center'
             }
         });
         return styles.background;
@@ -185,12 +253,33 @@ export default class StylesScreen{
         return styles.background;
     }
 
-    static createContainer(){
+    static createContainerText(){
         const styles = StyleSheet.create({
             container:{
                 justifyContent: 'center',
                 alignSelf: 'center',
-                alignItems: 'center',
+                alignItems: 'center'
+            }
+        });
+        return styles.container;
+    }
+
+    static createContainerButton(){
+        const styles = StyleSheet.create({
+            container:{
+                justifyContent: 'center',
+                alignSelf: 'center',
+                alignItems: 'center'
+            }
+        });
+        return styles.container;
+    }
+
+    static createContainer(){
+        const styles = StyleSheet.create({
+            container:{
+                flex: 1,
+                justifyContent: 'center',
             }
         });
         return styles.container;
@@ -198,18 +287,17 @@ export default class StylesScreen{
 
     static createBox(justfyContent: string, alignSelf: string, alignItems: string, width?: number | string, height?: number | string, radius?: number, padding?: number){
         const styles = StyleSheet.create({
-            boxTitle:{
-                flex: 1,
+            box:{
                 borderRadius: radius,
-                width: width,
+                width: width !== undefined && width != null ? width : 0,
                 padding: padding,
-                height: height,
+                height: height !== undefined && height != null ? height : 0,
                 justifyContent: justfyContent,
                 alignSelf: alignSelf,
                 alignItems: alignItems,
             }
         });
-        return styles.boxTitle;
+        return styles.box;
     }
 
 
@@ -307,7 +395,7 @@ export default class StylesScreen{
         const styles = StyleSheet.create({
             space:{
                 flex: 1,
-                marginTop: value === undefined || null ? 15 : value,
+                marginTop: value === undefined && value == null ? 15 : value,
             }
         });
 
@@ -388,7 +476,7 @@ export default class StylesScreen{
     }
 
     static createText(color: string, fontSize: number, fontWeight: string, fontFamily: string, textAlign: string,
-                      justifyContent: string, alignSelf: string, alignItems: string){
+                      justifyContent: string, alignSelf: string, alignItems: string, padding?: number){
         const styles = StyleSheet.create({
             title:{
                 justifyContent: justifyContent,
@@ -398,6 +486,7 @@ export default class StylesScreen{
                 fontSize: fontSize,
                 fontWeight: fontWeight,
                 textAlign: textAlign,
+                padding: padding,
             }
         });
 

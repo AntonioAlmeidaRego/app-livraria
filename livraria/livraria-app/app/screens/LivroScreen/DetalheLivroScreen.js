@@ -12,6 +12,7 @@ import CardFreightCalculationComponent from '../../components/componentsDetalheL
 import CardPurchaseComponent from '../../components/componentsDetalheLivro/CardPurchaseComponent';
 import TitleBannerComponent from "../../components/TitleBannerComponent";
 import StylesScreen from "../../styles/StylesScreen";
+import LoadingCepModal from "../../componentsModals/LoadingCepModal";
 const uriImg = "https://livraria-pdf.herokuapp.com/livro/imagem/";
 export default class DetalheLivroScreen extends React.Component{
 
@@ -24,6 +25,7 @@ export default class DetalheLivroScreen extends React.Component{
         value: 0,
         prazo: 0,
         amount: 1,
+        visible: false,
     };
 
     increment= async ()=>{
@@ -31,9 +33,13 @@ export default class DetalheLivroScreen extends React.Component{
             this.setState({
                 amount: this.state.amount + 1,
             });
+
+
             this.setState({
                 value: parseFloat(this.state.value).toFixed(2) * parseFloat(this.state.amount + 1),
             });
+
+
         }
     };
 
@@ -59,8 +65,34 @@ export default class DetalheLivroScreen extends React.Component{
         });
     }
 
-    consulCEP = async (cep: string)=>{
-        const preco = parseFloat((parseFloat(this.state.livro.preco)) * (parseFloat(this.state.amount)));
+    onVisible = async ()=>{
+        this.setState({
+            visible: true,
+        });
+    };
+
+    offVisible = async ()=>{
+        this.setState({
+            visible: false,
+        });
+    };
+
+    onIncrementAndCep = async (cep: string)=>{
+        this.increment();
+        if(cep != ""){
+            this.consulCEP(cep, this.state.value);
+        }
+    };
+
+    onDecrementAndCep = async (cep: string)=>{
+        this.decrement();
+        if(cep != ""){
+            this.consulCEP(cep, this.state.value);
+        }
+    };
+
+    consulCEP = async (cep: string, preco: string)=>{
+        this.onVisible();
         const soap = new SoapController;
         const api = await soap.getSoap("https://api-correios-soap.herokuapp.com/"+cep+"/"+this.state.livro.peso
             +"/"+this.state.livro.comprimento+"/"+this.state.livro.altura+"/"+this.state.livro.largura
@@ -68,9 +100,11 @@ export default class DetalheLivroScreen extends React.Component{
         const objetoXML = await api.text();
 
         this.setState({
-            value: soap.$find(objetoXML, 'Valor'),
+            value:  parseFloat(parseFloat(this.state.value).toFixed(2) + parseFloat(soap.$find(objetoXML, 'Valor')).toFixed(2)),
             prazo: soap.$find(objetoXML, 'PrazoEntrega'),
         });
+
+        this.offVisible();
 
     };
 
@@ -95,9 +129,11 @@ export default class DetalheLivroScreen extends React.Component{
                             title={"Compra"}
                         />
                         <CardAmountComponent
+                            prazo={this.state.prazo}
+                            onSearchCep={this.consulCEP}
                             amount={this.state.amount}
-                            onIncrement={this.increment}
-                            onDecrement={this.decrement}
+                            onIncrement={this.onIncrementAndCep}
+                            onDecrement={this.onDecrementAndCep}
                             price={this.state.value}
                         />
                         <View style={StylesScreen.createSpaceTop()}></View>
@@ -116,6 +152,7 @@ export default class DetalheLivroScreen extends React.Component{
                             title={"Mais sobre o Livro"}
                         />
                         <View style={StylesScreen.createSpaceBottom()}></View>
+                        <LoadingCepModal visible={this.state.visible}/>
                     </Content>
                 }
             />

@@ -26,7 +26,7 @@ export default class TitleBannerComponent extends React.Component{
                         '80%', '30%', 0)]}>
                         <View style={[StylesScreen.createBackground('#ffd410'), StylesScreen.createBorder('#000', 1, 0),
                             StylesScreen.createBox(
-                                'center','center', 'center','150%', 85, 0),
+                                'center','center', 'center','150%', 85, 20),
                             StylesScreen.createSpaceLeft(270),
                             StylesScreen.createSpaceTop(5),
                             StylesScreen.createSpaceBottom(10)
