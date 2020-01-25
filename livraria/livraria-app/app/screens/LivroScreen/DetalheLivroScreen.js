@@ -16,6 +16,8 @@ import CardHeaderComponent from "../../components/componentsDetalheLivro/CardHea
 import CardLivroDescrition from "../../components/CardLivroDescrition";
 import CardSinopsieComponent from "../../components/componentsDetalheLivro/CardSinopsieComponent";
 import CardMoreLivroComponent from "../../components/componentsDetalheLivro/CardMoreLivroComponent";
+import SpaceTopComponent from "../../components/componentsSpace/SpaceTopComponent";
+import SpaceBottomComponent from "../../components/componentsSpace/SpaceBottomComponent";
 const uriImg = "https://livraria-pdf.herokuapp.com/livro/imagem/";
 export default class DetalheLivroScreen extends React.Component{
 
@@ -153,13 +155,13 @@ export default class DetalheLivroScreen extends React.Component{
                 onBack={() => this.props.navigation.goBack()}
                 children={
                     <Content>
-                        <View style={StylesScreen.createSpaceTop(30)}></View>
+                        <SpaceTopComponent />
                         <CardHeaderComponent
                             uri={uriImg+this.state.livro.id}
                             title={this.state.livro.titulo}
                             year={this.state.livro.ano}
                         />
-                        <View style={StylesScreen.createSpaceTop()}></View>
+                        <SpaceTopComponent />
                         <TitleBannerComponent
                             uri={'https://cdn.pixabay.com/photo/2017/01/13/13/11/book-1977235_960_720.png'}
                             title={"Compra"}
@@ -173,7 +175,7 @@ export default class DetalheLivroScreen extends React.Component{
                             onDecrement={this.onDecrementAndCep}
                             price={this.state.value}
                         />
-                        <View style={StylesScreen.createSpaceTop()}></View>
+                        <SpaceTopComponent />
                         <TitleBannerComponent
                             uri={'https://cdn.pixabay.com/photo/2017/01/13/13/11/book-1977235_960_720.png'}
                             title={"Sinopse"}
@@ -181,13 +183,13 @@ export default class DetalheLivroScreen extends React.Component{
                         <CardSinopsieComponent
                             sinopsie={this.state.livro.sinopsie}
                         />
-                        <View style={StylesScreen.createSpaceTop()}></View>
+                        <SpaceTopComponent />
                         <TitleBannerComponent
                             uri={'https://cdn.pixabay.com/photo/2017/01/13/13/11/book-1977235_960_720.png'}
                             title={"Autores"}
                         />
                         <CardAutorDescritionComponent autors={this.state.autors} />
-                        <View style={StylesScreen.createSpaceTop()}></View>
+                        <SpaceTopComponent />
                         <TitleBannerComponent
                             uri={'https://cdn.pixabay.com/photo/2017/01/13/13/11/book-1977235_960_720.png'}
                             title={"Mais sobre o Livro"}
@@ -198,7 +200,7 @@ export default class DetalheLivroScreen extends React.Component{
                             largura={this.state.livro.largura}
                             altura={this.state.livro.altura}
                         />
-                        <View style={StylesScreen.createSpaceBottom()}></View>
+                        <SpaceBottomComponent />
                         <LoadingCepModal visible={this.state.visible}/>
                     </Content>
                 }

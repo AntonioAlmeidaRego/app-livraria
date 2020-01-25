@@ -16,26 +16,32 @@ import {
     Button, Icon
 } from 'native-base';
 import StylesScreen from "../../styles/StylesScreen";
-import IconInfo from "react-native-vector-icons/Octicons";
+import BoxContainerComponent from "../BoxContainerComponent";
+import ContainerCenterComponent from "../ContainerCenterComponent";
+import SpaceTopComponent from "../componentsSpace/SpaceTopComponent";
+import TextComponent from "../TextComponent";
 
 export default class CardHeaderComponent extends React.Component{
     render() {
         return (
-            <View style={[StylesScreen.createSpaceTop(), StylesScreen.createSpaceRight(), StylesScreen.createSpaceLeft(), StylesScreen.createContainer()]}>
-                <View style={[StylesScreen.createContainer()]}>
-                    <Body>
-                        <Thumbnail square style={[StylesScreen.createWidth(300), StylesScreen.createHeight(350)]}
-                                   source={{uri: this.props.uri}} />
-                        <View style={StylesScreen.createSpaceTop()}>
-                            <Text style={[StylesScreen.createText('#000', 24, 'bold',
-                                null, 'center', 'center', 'center', 'center')
-                                ,
-                                StylesScreen.createToLocaleUppercase()
-                            ]}>{this.props.title}</Text>
-                        </View>
-                    </Body>
-                </View>
-            </View>
+            <BoxContainerComponent justifyContent={'center'} alignSelf={'center'} alignItems={'center'}
+                                   width={'100%'} height={'100%'} radius={15} padding={10}>
+                <ContainerCenterComponent>
+                    <Thumbnail square style={[StylesScreen.createWidth(300), StylesScreen.createHeight(500)]}
+                               source={{uri: this.props.uri}} />
+                    <SpaceTopComponent />
+                    <TextComponent
+                        text={this.props.title}
+                        color={'#000'}
+                        size={24}
+                        weight={'bold'}
+                        justifyContent={'center'}
+                        alignSelf={'center'}
+                        alignItems={'center'}
+                        upper
+                          />
+                </ContainerCenterComponent>
+            </BoxContainerComponent>
         );
     }
 }

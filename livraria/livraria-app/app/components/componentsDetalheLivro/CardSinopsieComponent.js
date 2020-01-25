@@ -16,25 +16,29 @@ import {
     ListItem, Right
 } from 'native-base';
 import StylesScreen from '../../styles/StylesScreen';
+import BoxContainerComponent from "../BoxContainerComponent";
+import BorderComponent from "../BorderComponent";
+import TextComponent from "../TextComponent";
 
 export default class CardSinopsieComponent extends React.Component{
     render() {
         return (
-            <View style={[StylesScreen.createSpaceTop(), StylesScreen.createSpaceRight(), StylesScreen.createSpaceLeft(), StylesScreen.createContainer()]}>
-                <View style={[StylesScreen.createBorder('#000', 1, 15), StylesScreen.createContainerText(),
-                    StylesScreen.createBox(null, null, null, '100%', '100%', 10,
-                        20)
-                ]}>
-                    <View>
-                         <Text style={[StylesScreen.createToLocaleUppercase(),
-                            StylesScreen.createText('#000', 18, 'bold', null,
-                                'justify', 'center', 'center', 'center'),
-                            StylesScreen.createLineHeight(25)
-                         ]}>{this.props.sinopsie}</Text>
-                    </View>
-
-                </View>
-            </View>
+            <BoxContainerComponent justifyContent={'center'} alignSelf={'center'} alignItems={'center'}
+                                   width={'100%'} height={'100%'} radius={15} padding={10}>
+                <BorderComponent color={"#000"} value={1} radius={15} padding={15.4}>
+                    <TextComponent
+                        color={"#000"}
+                        size={18}
+                        textAlign={'justify'}
+                        justifyContent={'center'}
+                        alignSelf={'center'}
+                        alignItems={'center'}
+                        upper
+                        lineHeight={25}
+                        text={this.props.sinopsie}
+                    />
+                </BorderComponent>
+            </BoxContainerComponent>
         );
     }
 }

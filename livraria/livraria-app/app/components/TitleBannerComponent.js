@@ -16,12 +16,14 @@ import {
     Button, Icon
 } from 'native-base';
 import StylesScreen from "../styles/StylesScreen";
+import ContainerComponent from "./ContainerComponent";
+import RowComponent from "./RowComponent";
 
 export default class TitleBannerComponent extends React.Component{
     render(){
         return (
-            <View style={StylesScreen.createContainer()}>
-                <View style={[StylesScreen.createFlexDirection('row')]}>
+            <ContainerComponent>
+                <RowComponent style={[StylesScreen.createFlexDirection('row')]}>
                     <View style={[StylesScreen.createContainer(), StylesScreen.createBox(null, null, null,
                         '80%', '30%', 0)]}>
                         <View style={[StylesScreen.createBackground('#ffd410'), StylesScreen.createBorder('#000', 1, 0),
@@ -49,8 +51,8 @@ export default class TitleBannerComponent extends React.Component{
                                        source={{uri: this.props.uri}} />
                         </View>
                     </View>
-                </View>
-            </View>
+                </RowComponent>
+            </ContainerComponent>
         );
     }
 }

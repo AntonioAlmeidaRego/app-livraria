@@ -16,44 +16,66 @@ import {
     Icon, Right, Item, Input, ListItem
 } from 'native-base';
 import StylesScreen from '../../styles/StylesScreen';
+import BoxContainerComponent from "../BoxContainerComponent";
+import BorderComponent from "../BorderComponent";
+import LeftComponent from "../LeftComponent";
+import RightComponent from "../RightComponent";
+import RowComponent from "../RowComponent";
+import TextComponent from "../TextComponent";
+import ContainerComponent from "../ContainerComponent";
 
 export default class CardAutorDescritionComponent extends React.Component{
     render() {
-        console.log(this.props.autors);
         return (
-            <View style={[StylesScreen.createSpaceTop(), StylesScreen.createSpaceRight(), StylesScreen.createSpaceLeft(), StylesScreen.createContainer()]}>
-                <View style={[StylesScreen.createBorder('#000', 1, 15), StylesScreen.createContainerText(),
-                    StylesScreen.createBox('center', 'center', 'center', '100%', '100%', 10,
-                        20)
-                ]}>
+            <BoxContainerComponent justifyContent={'center'} alignSelf={'center'} alignItems={'center'}
+                                   width={'100%'} height={'100%'} radius={15} padding={10}>
+                <BorderComponent color={"#000"} value={1} width={'100%'} height={'100%'} radius={15} padding={10}>
                     <FlatList
                         data={this.props.autors}
                         renderItem={({ item })=>
-                            [<View style={StylesScreen.createFlexDirection('row')}>
-                                <Thumbnail large source={{uri: 'https://livraria-pdf.herokuapp.com/autor/imagem/'+item.id}} />
-                                <Text style={StylesScreen.createText('#000',
-                                    22, 'bold', null, 'center',
-                                    'center', 'center', 'center', 15)}> {item.nome}</Text>
-                            </View>,
-                            <View>
-                                <Text style={StylesScreen.createText('#000',
-                                    18, 'bold', null, null,
-                                    null, null, null, 15)}>
-                                    Descrição....
-                                </Text>
-                            </View>,
-                            <View>
-                                <ListItem itemDivider>
-                                    <Text style={StylesScreen.createFontSize(16)}>
-                                        {item.email}
-                                    </Text>
-                                </ListItem>
-                            </View>
+                            [
+                                <ContainerComponent>
+                                    <RowComponent>
+                                        <LeftComponent>
+                                            <Thumbnail large source={{uri: 'https://livraria-pdf.herokuapp.com/autor/imagem/'+item.id}} />
+                                        </LeftComponent>
+                                        <RightComponent>
+                                            <TextComponent
+                                                text={item.nome}
+                                                color={"#000"}
+                                                size={22}
+                                                textAlign={'center'}
+                                                justifyContent={'center'}
+                                                alignSelf={'center'}
+                                                alignItems={'center'}
+                                                weight={'bold'}
+                                            />
+                                        </RightComponent>
+                                    </RowComponent>
+                                    <LeftComponent>
+                                        <TextComponent
+                                            text={'Descrição...'}
+                                            color={"#000"}
+                                            size={18}
+                                            weight={'bold'}
+                                            padding={15}
+                                        />
+                                    </LeftComponent>
+                                    <LeftComponent>
+                                        <ListItem itemDivider>
+                                            <TextComponent
+                                                text={item.email}
+                                                color={"#000"}
+                                                size={16}
+                                            />
+                                        </ListItem>
+                                    </LeftComponent>
+                                </ContainerComponent>
                             ]
                         }
                     />
-                </View>
-            </View>
+                </BorderComponent>
+            </BoxContainerComponent>
         );
     }
 }

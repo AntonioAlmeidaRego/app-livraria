@@ -33,6 +33,26 @@ export default class StylesScreen{
         return styles.alignSelf;
     }
 
+    static createJustifyContent(value: string){
+        const styles = StyleSheet.create({
+            justifyContent: {
+                justifyContent: value,
+            }
+        });
+
+        return styles.justifyContent;
+    }
+
+    static createAlignItems(value: string){
+        const styles = StyleSheet.create({
+            alignItems: {
+                alignItems: value,
+            }
+        });
+
+        return styles.alignItems;
+    }
+
     static createPositionAbsoluteTop(value: number){
         const styles = StyleSheet.create({
             position:{
@@ -147,36 +167,40 @@ export default class StylesScreen{
         return styles.height;
     }
 
-    static createBorderLeft(color: string){
+    static createBorderLeft(color: string, value: number){
         const styles = StyleSheet.create({
             border:{
+                borderLeftWidth: value,
                 borderLeftColor: color,
             }
         });
         return styles.border;
     }
 
-    static createBorderRight(color: string){
+    static createBorderRight(color: string, value: number){
         const styles = StyleSheet.create({
             border:{
+                borderRightWidth: value,
                 borderRightColor: color,
             }
         });
         return styles.border;
     }
 
-    static createBorderTop(color: string){
+    static createBorderTop(color: string, value: number){
         const styles = StyleSheet.create({
             border:{
+                borderTopWidth: value,
                 borderTopColor: color,
             }
         });
         return styles.border;
     }
 
-    static createBorderBottom(color: string){
+    static createBorderBottom(color: string, value: number){
         const styles = StyleSheet.create({
             border:{
+                borderBottomWidth: value,
                 borderBottomColor: color,
             }
         });
@@ -294,16 +318,16 @@ export default class StylesScreen{
         return styles.container;
     }
 
-    static createBox(justfyContent: string, alignSelf: string, alignItems: string, width?: number | string, height?: number | string, radius?: number, padding?: number){
+    static createBox(justfyContent?: string, alignSelf?: string, alignItems?: string, width?: number | string, height?: number | string, radius?: number, padding?: number){
         const styles = StyleSheet.create({
             box:{
-                borderRadius: radius,
+                borderRadius: radius !== undefined && radius != null ? radius : null,
                 width: width !== undefined && width != null ? width : 0,
-                padding: padding,
+                padding: padding !== undefined && padding != null ? padding : null,
                 height: height !== undefined && height != null ? height : 0,
-                justifyContent: justfyContent,
-                alignSelf: alignSelf,
-                alignItems: alignItems,
+                justifyContent: justfyContent !== undefined && justfyContent != null ? justfyContent : null,
+                alignSelf: alignSelf !== undefined && alignSelf != null ? alignSelf : null,
+                alignItems: alignItems !== undefined && alignItems != null ? alignItems : null,
             }
         });
         return styles.box;
@@ -393,7 +417,7 @@ export default class StylesScreen{
         const styles = StyleSheet.create({
             space:{
                 flex: 1,
-                marginLeft: value === undefined || value == null ? 15 : value,
+                marginLeft: value === undefined && value == null ? 15 : value,
             }
         });
 
@@ -435,7 +459,7 @@ export default class StylesScreen{
         const styles = StyleSheet.create({
             space:{
                 flex: 1,
-                marginRight: value === undefined || null ? 15 : value,
+                marginRight: value === undefined && value == null ? 15 : value,
             }
         });
 
@@ -504,21 +528,57 @@ export default class StylesScreen{
         return styles.title;
     }
 
-    static createText(color: string, fontSize: number, fontWeight: string, fontFamily: string, textAlign: string,
-                      justifyContent: string, alignSelf: string, alignItems: string, padding?: number){
+    static createText(color: string, fontSize: number, fontWeight?: string, fontFamily?: string, textAlign?: string,
+                      justifyContent?: string, alignSelf?: string, alignItems?: string, padding?: number){
         const styles = StyleSheet.create({
             title:{
-                justifyContent: justifyContent,
-                alignSelf: alignSelf,
-                alignItems: alignItems,
+                justifyContent: justifyContent !== undefined && justifyContent != null ? justifyContent : null,
+                alignSelf: alignSelf !== undefined && alignSelf != null ? alignSelf : null,
+                alignItems: alignItems !== undefined && alignItems != null ? alignItems : null,
                 color: color,
                 fontSize: fontSize,
-                fontWeight: fontWeight,
-                textAlign: textAlign,
-                padding: padding,
+                fontWeight: fontWeight !== undefined && fontWeight != null ? fontWeight : null,
+                textAlign: textAlign !== undefined && textAlign != null ? textAlign : null,
+                padding: padding !== undefined && padding != null ? padding : null,
             }
         });
 
         return styles.title;
+    }
+
+    static createFlex(value: number) {
+        const styles = StyleSheet.create({
+            flex:{
+                flex: value,
+            }
+        });
+
+        return styles.flex;
+    }
+
+    static createRight(value: number) {
+        let width = Dimensions.get('window').width;
+
+        let percentage = width * value;
+
+        const styles = StyleSheet.create({
+            right:{
+                flex: value === undefined && value == null ? 1 : value,
+                right: 0,
+            }
+        });
+
+        return styles.right;
+    }
+
+    static createLeft(value: number) {
+        const styles = StyleSheet.create({
+            left:{
+                flex: value === undefined && value == null ? 1 : value,
+                left: 0,
+            }
+        });
+
+        return styles.left;
     }
 }
