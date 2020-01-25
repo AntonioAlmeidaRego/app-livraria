@@ -129,6 +129,15 @@ export default class StylesScreen{
         return styles.width;
     }
 
+    static createFontSize(fontSize: number | string){
+        const styles = StyleSheet.create({
+            fontSize:{
+                fontSize: fontSize,
+            }
+        });
+        return styles.fontSize;
+    }
+
     static createHeight(height: number){
         const styles = StyleSheet.create({
             height:{
@@ -469,6 +478,26 @@ export default class StylesScreen{
         const styles = StyleSheet.create({
             title:{
                 color: color,
+            }
+        });
+
+        return styles.title;
+    }
+
+    static createFontWeight(value: string | number){
+        const styles = StyleSheet.create({
+            title:{
+                fontWeight: value,
+            }
+        });
+
+        return styles.title;
+    }
+
+    static createLineHeight(value: number){
+        const styles = StyleSheet.create({
+            title:{
+                lineHeight: value,
             }
         });
 

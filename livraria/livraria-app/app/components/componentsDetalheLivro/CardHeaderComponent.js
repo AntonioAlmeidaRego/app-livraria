@@ -29,7 +29,7 @@ export default class CardHeaderComponent extends React.Component{
                         <View style={StylesScreen.createSpaceTop()}>
                             <Text style={[StylesScreen.createText('#000', 24, 'bold',
                                 null, 'center', 'center', 'center', 'center')
-                            ,
+                                ,
                                 StylesScreen.createToLocaleUppercase()
                             ]}>{this.props.title}</Text>
                         </View>

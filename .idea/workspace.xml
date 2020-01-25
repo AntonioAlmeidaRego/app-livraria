@@ -41,6 +41,7 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Users\anton\git\app-livraria\livraria\livraria-app" />
+      <recent name="E:\Users\anton\git\app-livraria\livraria\livraria-app\app" />
       <recent name="E:\Users\anton\git\app-livraria\livraria" />
     </key>
   </component>
@@ -72,6 +73,8 @@
       <workItem from="1579816120439" duration="31000" />
       <workItem from="1579822845916" duration="129000" />
       <workItem from="1579888666099" duration="67000" />
+      <workItem from="1579897852136" duration="102000" />
+      <workItem from="1579900983444" duration="99000" />
     </task>
     <task id="LOCAL-00001" summary="ajustes no card do livro">
       <created>1579746508959</created>
@@ -94,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579822917281</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="criando o componente compra">
+      <created>1579897933306</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1579897933306</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,17 +117,17 @@
     <option name="LAST_COMMIT_MESSAGE" value="criando o componente compra" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="406" y="12" key="CommitChangelistDialog2" timestamp="1579822914441">
+    <state x="406" y="12" key="CommitChangelistDialog2" timestamp="1579897931563">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="406" y="12" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579822914441" />
-    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1579888731175">
+    <state x="406" y="12" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579897931563" />
+    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1579901078763">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579888731175" />
-    <state x="361" y="149" key="Vcs.Push.Dialog.v2" timestamp="1579822925265">
+    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579901078763" />
+    <state x="361" y="149" key="Vcs.Push.Dialog.v2" timestamp="1579897941467">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="149" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1579822925265" />
+    <state x="361" y="149" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1579897941467" />
   </component>
 </project>

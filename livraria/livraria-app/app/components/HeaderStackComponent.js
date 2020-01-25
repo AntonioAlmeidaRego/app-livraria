@@ -20,7 +20,7 @@ export default class HeaderStackComponent extends React.Component{
                         </Button>
                     </Left>
                     <Body>
-                        <Title style={StylesScreen.createColorText('#000')}>{this.props.title}</Title>
+                        <Title style={[StylesScreen.createColorText('#000'), StylesScreen.createToLocaleUppercase(), StylesScreen.createFontSize(16)]}>{this.props.title}</Title>
                     </Body>
                     {
                         this.props.favorite !== undefined &&(

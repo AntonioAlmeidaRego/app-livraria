@@ -90,12 +90,26 @@ export default class CardAmountComponent extends React.Component{
                     </CardItem>
                     <CardItem>
                         <Left>
-                            <Text style={[StylesScreen.createText('#000', 18, 'bold', null,
-                                'center', 'center', 'center', 'center'), StylesScreen.createToLocaleUppercase()]}>
-                                Prazo:
-                            </Text>
-                            <Text style={[StylesScreen.createText('#000', 20, null, null,
-                                'center', 'center', 'center', 'center'), StylesScreen.createToLocaleUppercase()]}> {this.props.prazo} Dias</Text>
+                            {this.props.freight > 0 && (
+                                [<Text style={[StylesScreen.createText('#000', 18, 'bold', null,
+                                    'center', 'center', 'center', 'center'), StylesScreen.createToLocaleUppercase()]}>
+                                    Frete:
+                                </Text>,
+                                <Text style={[StylesScreen.createText('#000', 20, null, null,
+                                    'center', 'center', 'center', 'center'), StylesScreen.createToLocaleUppercase()]}> {this.props.freight}</Text>]
+                            )}
+                        </Left>
+                        <Left>
+                            {
+                                this.props.prazo > 0 && (
+                                   [ <Text style={[StylesScreen.createText('#000', 18, 'bold', null,
+                                        'center', 'center', 'center', 'center'), StylesScreen.createToLocaleUppercase()]}>
+                                        Prazo:
+                                    </Text>,
+                                    <Text style={[StylesScreen.createText('#000', 20, null, null,
+                                'center', 'center', 'center', 'center'), StylesScreen.createToLocaleUppercase()]}> {this.props.prazo} Dias</Text>]
+                                )
+                            }
                         </Left>
                     </CardItem>
                     <Button style={[StylesScreen.createButtonColor('#D8D636')
