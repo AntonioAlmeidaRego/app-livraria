@@ -57,16 +57,16 @@ export default class CardLivroDescrition  extends React.Component{
                             </RowComponent>
                             <SpaceBottomComponent />
                             <Button onPress={() => this.props.onDetalheLivro(this.props.livro)}
-                                    rounded style={[StylesScreen.createButtonColor('#fff330'),
+                                    rounded style={[StylesScreen.createButtonColor('#694fad'),
                                     StylesScreen.createSpaceRight()]}>
                                 <Icon>
-                                    <IconInfo name={"info"} size={30} color={'#000'}/>
+                                    <IconInfo name={"info"} size={30} color={'#fff'}/>
                                 </Icon>
                                 <RightComponent>
                                     <TextComponent
                                         text={'Detalhe'}
                                         upper
-                                        color={'#000'}
+                                        color={'#fff'}
                                         size={15}
                                     />
                                 </RightComponent>

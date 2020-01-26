@@ -34,10 +34,10 @@ export default class TitleBannerComponent extends React.Component{
                     <BorderComponent
                         color={"#000"} value={0.98}
                         radius={200}
-                        style={[StylesScreen.createBackground('#fff330')]}>
+                        style={[StylesScreen.createBackground('#694fad')]}>
                         <RowComponent>
                             <LeftComponent>
-                                <Thumbnail  style={[StylesScreen.createBackground('#fff330'), StylesScreen.createWidth(100),
+                                <Thumbnail  style={[StylesScreen.createBackground('#694fad'), StylesScreen.createWidth(100),
                                     StylesScreen.createHeight(30)]} large source={{uri: this.props.uri}}/>
                             </LeftComponent>
                             <RightComponent>
@@ -49,7 +49,7 @@ export default class TitleBannerComponent extends React.Component{
                                         alignItems={'center'}
                                         size={20}
                                         upper
-                                        color={'#000'}
+                                        color={'#fff'}
                                         text={this.props.title}
                                     />
                                 </ContainerComponent>

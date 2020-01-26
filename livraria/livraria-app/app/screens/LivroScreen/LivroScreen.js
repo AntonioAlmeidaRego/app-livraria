@@ -39,7 +39,7 @@ export default class LivroScreen extends React.Component{
     render() {
         return (
             <HeaderStackComponent
-                background={"#fff423"}
+                background={"#694fad"}
                 onBack={() => this.props.navigation.goBack()}
                 title={this.state.categoria}
                 children={

@@ -15,12 +15,12 @@ export default class HeaderStackComponent extends React.Component{
                     <Left>
                         <Button transparent >
                             <Icon onPress={() => this.props.onBack()}>
-                                <IconBack name="keyboard-backspace" size={25} color="#000"/>
+                                <IconBack name="keyboard-backspace" size={25} color="#fff"/>
                             </Icon>
                         </Button>
                     </Left>
                     <Body>
-                        <Title style={[StylesScreen.createColorText('#000'), StylesScreen.createToLocaleUppercase(), StylesScreen.createFontSize(16)]}>{this.props.title}</Title>
+                        <Title style={[StylesScreen.createColorText('#fff'), StylesScreen.createToLocaleUppercase(), StylesScreen.createFontSize(16)]}>{this.props.title}</Title>
                     </Body>
                     {
                         this.props.favorite !== undefined &&(

@@ -1,28 +1,34 @@
+import * as React from 'react';
+import {View} from 'react-native';
+import {Icon} from 'native-base';
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
-import {createBottomTabNavigator} from 'react-navigation';
 import HomeScreenStack from "../HomeScreenConfigRoute/HomeScreenStack";
-import IconHomeComponent from "../../../Icons/IconHomeComponent";
+import IconHome from 'react-native-vector-icons/Octicons';
+import ContainerComponent from "../../../components/ContainerComponent";
+import ContainerCenterComponent from "../../../components/ContainerCenterComponent";
+import StylesScreen from "../../../styles/StylesScreen";
 
-const homeScreenBottomTab = createBottomTabNavigator(
+const homeScreenBottom = createMaterialBottomTabNavigator(
     {
         HomeScreen: {
             screen: HomeScreenStack,
+            navigationOptions:{
+                title: 'Home',
+                size: 15,
+            }
         },
     },
     {
-        tabBarOptions: {
-            activeTintColor: 'black',
-            inactiveTintColor: 'gray',
-            activeBackgroundColor: '#fff330',
-            pressColor: '#000',
-            inactiveColor: '#3e2465',
-            barStyle: { backgroundColor: '#694fad' },
-            pressOpacity: '#000'
-        },
+        activeColor: '#f0edf6',
+        inactiveColor: '#3e2465',
+        barStyle: { backgroundColor: '#694fad' },
         defaultNavigationOptions:{
-            tabBarIcon: ()=> <IconHomeComponent />
+            tabBarIcon: ()=> (<Icon>
+                <IconHome name={'home'} color={'#fff'} size={25}/>
+                              </Icon>)
+
         }
     }
 );
 
-export default homeScreenBottomTab;
+export default homeScreenBottom;

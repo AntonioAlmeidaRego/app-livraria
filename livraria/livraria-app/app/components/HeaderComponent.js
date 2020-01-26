@@ -8,10 +8,10 @@ export default class HeaderComponent extends React.Component{
         return (
             <Container>
                 <Content>
-                    <Header style={StylesScreen.createColorBackground('#fff423')}>
+                    <Header style={StylesScreen.createColorBackground('#694fad')}>
                         <Left/>
                         <Body>
-                            <Title style={{color: '#000',}}>{this.props.title}</Title>
+                            <Title style={{color: '#fff',}}>{this.props.title}</Title>
                         </Body>
                     </Header>
                     {this.props.children}

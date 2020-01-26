@@ -6,7 +6,6 @@ import TabListagemLivros from '../../tabs/TabListagemLivros';
 import TabListagemPromocoes from '../../tabs/TabListagemPromocoes';
 import HeaderComponent from '../../components/HeaderComponent';
 import TabListagemCategorias from '../../tabs/TabListagemCategorias';
-import HomeScreenBottomTab from '../HomeScreen/HomeScreenConfigRouteBottomTab/HomeScreenBottomTab';
 
 export default class HomeScreen extends React.Component{
 
@@ -26,25 +25,24 @@ export default class HomeScreen extends React.Component{
 
     render() {
         return (
-            [<HeaderComponent
+            <HeaderComponent
                 title={"Livraria PDF"}
                 children={
                     <Tabs>
-                        <Tab tabStyle={{backgroundColor: '#ffd410'}} activeTextStyle={{color: '#000'}}
-                             textStyle={{color: '#000'}} activeTabStyle={{backgroundColor: '#ffd410'}} heading={"Categorias"}>
+                        <Tab tabStyle={{backgroundColor: '#694fad'}} activeTextStyle={{color: '#fff'}}
+                             textStyle={{color: '#fff'}} activeTabStyle={{backgroundColor: '#694fad'}} heading={"Categorias"}>
                             <TabListagemCategorias onDetalhe={this.detalhe}/>
                         </Tab>
-                        <Tab tabStyle={{backgroundColor: '#ffd410'}} activeTextStyle={{color: '#000'}}
-                             textStyle={{color: '#000'}} activeTabStyle={{backgroundColor: '#ffd410'}} heading={"Livros"}>
+                        <Tab active tabStyle={{backgroundColor: '#694fad'}} activeTextStyle={{color: '#fff'}}
+                             textStyle={{color: '#fff'}} activeTabStyle={{backgroundColor: '#694fad'}} heading={"Livros"}>
                             <TabListagemLivros onDetalheLivro={this.detalheLivro} />
                         </Tab>
-                        <Tab tabStyle={{backgroundColor: '#ffd410'}} activeTextStyle={{color: '#000'}} textStyle={{color: '#000'}} activeTabStyle={{backgroundColor: '#ffd410'}} heading={"Promoções"}>
+                        <Tab tabStyle={{backgroundColor: '#694fad'}} activeTextStyle={{color: '#fff'}} textStyle={{color: '#fff'}} activeTabStyle={{backgroundColor: '#694fad'}} heading={"Promoções"}>
                             <TabListagemPromocoes onDetalheLivro={this.detalheLivro}/>
                         </Tab>
                     </Tabs>
                 }
-            />,
-            <HomeScreenBottomTab />]
+            />
         );
     }
 }

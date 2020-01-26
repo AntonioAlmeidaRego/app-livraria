@@ -11,16 +11,17 @@ import HomeScreen from './livraria-app/app/screens/HomeScreen/HomeScreen';
 import LivroScreen from './livraria-app/app/screens/LivroScreen/LivroScreen';
 import HomeScreenStack from './livraria-app/app/screens/HomeScreen/HomeScreenConfigRoute/HomeScreenStack';
 import LivroScreenStack from './livraria-app/app/screens/LivroScreen/LivroScreenConfigRoute/LivroScreenStack';
+import HomeScreenBottomTab from './livraria-app/app/screens/HomeScreen/HomeScreenConfigRouteBottomTab/HomeScreenBottomTab';
 
 const switchRoute = createSwitchNavigator({
-    HomeScreen: {
-      screen: HomeScreenStack,
-    },
+        HomeScreen: {
+            screen: HomeScreenBottomTab,
+        },
 
-    LivroScreen:{
-      screen: LivroScreenStack,
-    }
-},
+        LivroScreen:{
+            screen: LivroScreenStack,
+        }
+    },
     {
         initialRouteName: 'HomeScreen',
     }

@@ -149,7 +149,7 @@ export default class DetalheLivroScreen extends React.Component{
 
         return (
             <HeaderStackComponent
-                background={"#fff423"}
+                background={"#694fad"}
                 favorite={true}
                 title={"Detalhe do Livro"}
                 onBack={() => this.props.navigation.goBack()}

@@ -9,10 +9,10 @@ export default class LoadingCepModal extends React.Component{
             <Modal visible={this.props.visible} onRequestClose={() => {}} transparent>
                 <View style={StylesScreen.createContainer()}>
                     <View style={[StylesScreen.createBox('center',
-                        'center', 'center', '78%', '30%', 10), StylesScreen.createColorBackground('#f7ff41')]}>
+                        'center', 'center', '78%', '30%', 10), StylesScreen.createColorBackground('#694fad')]}>
                         <View style={[StylesScreen.createWidth('90%'), StylesScreen.createMargin(15), StylesScreen.createAlignSelf('center')]}>
                             <Text style={[StylesScreen.createText(
-                                '#000', 30, 'bold',
+                                '#fff', 30, 'bold',
                                 null, 'center', 'center',
                                 null, 'center', 20
                             ), StylesScreen.createToLocaleUppercase()]}>
@@ -20,7 +20,7 @@ export default class LoadingCepModal extends React.Component{
                             </Text>
                         </View>
                         <View style={StylesScreen.createContainer()}>
-                            <ActivityIndicator color={"#000"} size={30} />
+                            <ActivityIndicator color={"#fff"} size={30} />
                         </View>
                     </View>
                 </View>

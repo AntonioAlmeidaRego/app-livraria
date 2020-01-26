@@ -1,4 +1,3 @@
-
 import {createSwitchNavigator, createAppContainer, createStackNavigator, createDrawerNavigator} from 'react-navigation';
 import HomeScreen from '../HomeScreen';
 

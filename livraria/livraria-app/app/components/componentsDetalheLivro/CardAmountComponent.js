@@ -33,7 +33,7 @@ export default class CardAmountComponent extends React.Component{
                                 source={require('../../../images/price.png')}
                             />
                             <TextComponent
-                                text={'R$' + this.props.price}
+                                text={'R$ ' + this.props.price}
                                 size={20}
                                 color={'#000'}
                             >
@@ -83,7 +83,7 @@ export default class CardAmountComponent extends React.Component{
                         <LeftComponent
                             value={1.5}
                         >
-                            <Button style={[StylesScreen.createButtonColor('#D8D636')]}>
+                            <Button style={[StylesScreen.createButtonColor('#694fad')]}>
                                 <Icon>
                                     <Iconlocation name={"location"} size={30}/>
                                 </Icon>
@@ -108,7 +108,7 @@ export default class CardAmountComponent extends React.Component{
                             </BoxInputComponent>
                         </CenterComponent>
                         <RightComponent value={1.5}>
-                            <Button onPress={() => this.props.onSearchCep(this.state.value, this.props.price)} style={[StylesScreen.createButtonColor('#D8D636')]}>
+                            <Button onPress={() => this.props.onSearchCep(this.state.value, this.props.price)} style={[StylesScreen.createButtonColor('#694fad')]}>
                                 <Icon>
                                     <Iconlocation name={"search"} size={30}/>
                                 </Icon>
@@ -141,7 +141,7 @@ export default class CardAmountComponent extends React.Component{
                     </RowComponent>
                     <SpaceBottomComponent />
                     <ContainerCenterComponent>
-                        <Button style={[StylesScreen.createButtonColor('#D8D636')
+                        <Button style={[StylesScreen.createButtonColor('#694fad')
                         ]}>
                             <Icon name={"ios-cart"} size={30}/>
                             <Text style={StylesScreen.createText('#fff', 18, 'bold',
