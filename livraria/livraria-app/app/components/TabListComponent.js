@@ -6,15 +6,13 @@ import CategoriaController from '../controllers/CategoriaController';
 
 export default class TabListComponent extends React.Component{
 
-
-
     render() {
         return (
             <Container>
                 <Content>
                     <FlatList
                         ListEmptyComponent={
-                            <Spinner/>
+                            <Spinner color={'#694fad'}/>
                         }
                         data={this.props.array}
                         renderItem={({ item }) =>

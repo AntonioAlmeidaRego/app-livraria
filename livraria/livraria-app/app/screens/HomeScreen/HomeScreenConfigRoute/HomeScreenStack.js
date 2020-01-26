@@ -3,6 +3,7 @@ import {createStackNavigator} from 'react-navigation';
 import LivroScreen from '../../LivroScreen/LivroScreen';
 import HomeScreen from '../HomeScreen';
 import DetalheLivroScreen from '../../LivroScreen/DetalheLivroScreen';
+import ShoppingCartScreen from "../../ShoppingCartScreen/ShoppingCartScreen";
 
 const HomeScreenStack = createStackNavigator({
         HomeScreen:{
@@ -20,6 +21,14 @@ const HomeScreenStack = createStackNavigator({
         },
         DetalheLivro:{
             screen: DetalheLivroScreen,
+            headerStyle: {
+                backgroundColor: '#694fad',
+            },
+            headerTintColor: '#fff',
+        },
+
+        ShoppingCartScreen:{
+            screen: ShoppingCartScreen,
             headerStyle: {
                 backgroundColor: '#694fad',
             },

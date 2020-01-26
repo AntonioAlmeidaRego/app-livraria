@@ -11,7 +11,7 @@ export default class TabComponent extends React.Component{
             <Content>
                 <FlatList
                     ListEmptyComponent={
-                        <Spinner/>
+                        <Spinner color={'#694fad'}/>
                     }
                     data={this.props.array}
                     renderItem={({ item }) =>
