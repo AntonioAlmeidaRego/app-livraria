@@ -27,7 +27,7 @@ export default class LivroScreen extends React.Component{
             url+'/api/livro/findAllLinkedCategoria/'+objetoCategoria.id).then().then(data=>{
             this.setState({
                 livros: data,
-                categoria: objetoCategoria.nome
+                categoria: 'Livros sobre ' + objetoCategoria.nome
             });
         });
     }
@@ -41,7 +41,7 @@ export default class LivroScreen extends React.Component{
             <HeaderStackComponent
                 background={"#fff423"}
                 onBack={() => this.props.navigation.goBack()}
-                title={"Livros sobre "+ this.state.categoria}
+                title={this.state.categoria}
                 children={
                     <TabComponent
                         onDetalheLivro={this.props.navigation.state.params.onDetalheLivro}

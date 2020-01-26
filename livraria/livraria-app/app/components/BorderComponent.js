@@ -9,7 +9,8 @@ export default class BorderComponent extends React.Component{
                 StylesScreen.createWidth( this.props.width),
                 StylesScreen.createHeight(this.props.height),
                 StylesScreen.createBorderRadius(this.props.radius),
-                StylesScreen.createPadding(this.props.padding)
+                StylesScreen.createPadding(this.props.padding),
+                this.props.style,
                 ]}>
                 {this.props.children}
             </View>

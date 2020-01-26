@@ -6,6 +6,7 @@ import TabListagemLivros from '../../tabs/TabListagemLivros';
 import TabListagemPromocoes from '../../tabs/TabListagemPromocoes';
 import HeaderComponent from '../../components/HeaderComponent';
 import TabListagemCategorias from '../../tabs/TabListagemCategorias';
+import HomeScreenBottomTab from '../HomeScreen/HomeScreenConfigRouteBottomTab/HomeScreenBottomTab';
 
 export default class HomeScreen extends React.Component{
 
@@ -25,7 +26,7 @@ export default class HomeScreen extends React.Component{
 
     render() {
         return (
-            <HeaderComponent
+            [<HeaderComponent
                 title={"Livraria PDF"}
                 children={
                     <Tabs>
@@ -42,7 +43,8 @@ export default class HomeScreen extends React.Component{
                         </Tab>
                     </Tabs>
                 }
-            />
+            />,
+            <HomeScreenBottomTab />]
         );
     }
 }

@@ -18,41 +18,45 @@ import {
 import StylesScreen from "../styles/StylesScreen";
 import ContainerComponent from "./ContainerComponent";
 import RowComponent from "./RowComponent";
+import BorderComponent from "./BorderComponent";
+import BoxContainerComponent from "./BoxContainerComponent";
+import TextComponent from "./TextComponent";
+import LeftComponent from "./LeftComponent";
+import RightComponent from "./RightComponent";
 
 export default class TitleBannerComponent extends React.Component{
     render(){
         return (
-            <ContainerComponent>
-                <RowComponent style={[StylesScreen.createFlexDirection('row')]}>
-                    <View style={[StylesScreen.createContainer(), StylesScreen.createBox(null, null, null,
-                        '80%', '30%', 0)]}>
-                        <View style={[StylesScreen.createBackground('#ffd410'), StylesScreen.createBorder('#000', 1, 0),
-                            StylesScreen.createBox(
-                                'center','center', 'center','150%', 85, 20),
-                            StylesScreen.createSpaceLeft(270),
-                            StylesScreen.createSpaceTop(5),
-                            StylesScreen.createSpaceBottom(10)
-                            ]}>
-                            <Text style={[StylesScreen.createText('#000',
-                                20, null, null, 'center',
-                                'center', 'center', 'center'),
-                                StylesScreen.createToLocaleUppercase()]}>
-                                {this.props.title}
-                            </Text>
-                        </View>
-                    </View>
-                    <View style={[StylesScreen.createContainer(), StylesScreen.createBox(null, null, null,
-                        '40%', '30%', 75)]}>
-                        <View style={[StylesScreen.createBackground('#ffd410'), StylesScreen.createBox(
-                            'center','center', 'center',100, 100, 50),
-                            StylesScreen.createBorder('#000', 1, 75),
-                            StylesScreen.createSpaceRight(500)]}>
-                            <Thumbnail large style={[StylesScreen.createWidth(60), StylesScreen.createHeight(60)]}
-                                       source={{uri: this.props.uri}} />
-                        </View>
-                    </View>
-                </RowComponent>
-            </ContainerComponent>
+                <BoxContainerComponent
+                    justifyContent={'center'} alignSelf={'center'} alignItems={'center'}
+                    width={85} height={85} radius={20}
+                >
+                    <BorderComponent
+                        color={"#000"} value={0.98}
+                        radius={200}
+                        style={[StylesScreen.createBackground('#fff330')]}>
+                        <RowComponent>
+                            <LeftComponent>
+                                <Thumbnail  style={[StylesScreen.createBackground('#fff330'), StylesScreen.createWidth(100),
+                                    StylesScreen.createHeight(30)]} large source={{uri: this.props.uri}}/>
+                            </LeftComponent>
+                            <RightComponent>
+                                <ContainerComponent>
+                                    <TextComponent
+                                        textAlign={'center'}
+                                        justifyContent={'center'}
+                                        alignSelf={'center'}
+                                        alignItems={'center'}
+                                        size={20}
+                                        upper
+                                        color={'#000'}
+                                        text={this.props.title}
+                                    />
+                                </ContainerComponent>
+                            </RightComponent>
+                        </RowComponent>
+                    </BorderComponent>
+                </BoxContainerComponent>
         );
     }
 }

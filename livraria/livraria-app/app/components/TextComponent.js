@@ -13,6 +13,7 @@ export default class TextComponent extends React.Component{
                     this.props.upper == true ? StylesScreen.createToLocaleUppercase() : {},
                     this.props.lower == true ? StylesScreen.createToLocaleLowerCase() : {},
                     this.props.lineHeight !== undefined ? StylesScreen.createLineHeight(this.props.lineHeight) : {},
+                    this.props.style,
                 ]}>
                     {this.props.text}
                 </Text>
