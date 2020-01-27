@@ -8,7 +8,7 @@ export default class HeaderComponent extends React.Component{
         return (
             <Container>
                 <Content>
-                    <Header style={StylesScreen.createColorBackground('#694fad')}>
+                    <Header style={StylesScreen.createColorBackground(this.props.background)}>
                         <Left/>
                         <Body>
                             <Title style={{color: '#fff',}}>{this.props.title}</Title>

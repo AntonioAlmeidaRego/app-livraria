@@ -18,6 +18,7 @@ import CardSinopsieComponent from "../../components/componentsDetalheLivro/CardS
 import CardMoreLivroComponent from "../../components/componentsDetalheLivro/CardMoreLivroComponent";
 import SpaceTopComponent from "../../components/componentsSpace/SpaceTopComponent";
 import SpaceBottomComponent from "../../components/componentsSpace/SpaceBottomComponent";
+import TabComponent from "../../components/TabComponent";
 const uriImg = "https://livraria-pdf.herokuapp.com/livro/imagem/";
 export default class DetalheLivroScreen extends React.Component{
 
@@ -28,6 +29,7 @@ export default class DetalheLivroScreen extends React.Component{
     state = {
         livro: {},
         autors: [],
+        livrosRelateds: [],
         value: 0,
         prazo: 0,
         frete: 0,
@@ -60,15 +62,20 @@ export default class DetalheLivroScreen extends React.Component{
     };
 
     async componentDidMount(): void {
+        const value =  parseFloat(this.props.navigation.state.params.livro.preco);
+        const idLivro = parseInt(this.props.navigation.state.params.livro.id);
+
         this.setState({
             livro: this.props.navigation.state.params.livro
         });
 
-        await this.onListAutorLinkedLivro(parseInt(this.props.navigation.state.params.livro.id));
+        await this.onListLivrosRelatedByValue(value, idLivro);
 
         this.setState({
-            value: parseFloat(this.props.navigation.state.params.livro.preco),
+            value: value,
         });
+
+        await this.onListAutorLinkedLivro(idLivro);
     }
 
     onVisible = async ()=>{
@@ -100,11 +107,19 @@ export default class DetalheLivroScreen extends React.Component{
     onListAutorLinkedLivro = async (idLivro: number)=>{
         this.onVisible();
         const autorController = new ApiController();
-        const autors = await autorController.get('https://livraria-pdf.herokuapp.com/api/autor/findAllLinkedLivro/'+9);
+        const autors = await autorController.get('https://livraria-pdf.herokuapp.com/api/autor/findAllLinkedLivro/'+idLivro);
         this.setState({
             autors: autors,
         });
         this.offVisible();
+    };
+
+    onListLivrosRelatedByValue = async (value: number, idLivro: number)=>{
+        const apiController = new ApiController();
+        const livros = await apiController.get('https://livraria-pdf.herokuapp.com/api/livro/findAllRelatedByValue/'+value+'/'+idLivro);
+        this.setState({
+            livrosRelateds: livros,
+        });
     };
 
     consulCEP = async (cep: string, preco: string)=>{
@@ -142,11 +157,15 @@ export default class DetalheLivroScreen extends React.Component{
         });
 
         await this.offVisible();
+    };
 
+    detalheLivro = async (objeto)=>{
+        this.props.navigation.push("DetalheLivro", {
+            livro: objeto
+        });
     };
 
     render() {
-
         return (
             <HeaderStackComponent
                 background={"#694fad"}
@@ -199,6 +218,15 @@ export default class DetalheLivroScreen extends React.Component{
                             peso={this.state.livro.peso}
                             largura={this.state.livro.largura}
                             altura={this.state.livro.altura}
+                        />
+                        <SpaceBottomComponent />
+                        <TitleBannerComponent
+                            uri={'https://cdn.pixabay.com/photo/2017/01/13/13/11/book-1977235_960_720.png'}
+                            title={"Livros Relacionados pelo Preço"}
+                        />
+                        <TabComponent
+                            onDetalheLivro={this.detalheLivro}
+                            array={this.state.livrosRelateds}
                         />
                         <SpaceBottomComponent />
                         <LoadingCepModal visible={this.state.visible}/>

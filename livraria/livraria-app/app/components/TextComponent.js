@@ -8,7 +8,8 @@ export default class TextComponent extends React.Component{
         return (
             <View style={StylesScreen.createContainerText()}>
                 <Text style={[StylesScreen.createText(this.props.color, this.props.size,
-                    this.props.weight, this.props.fontFamily, this.props.textAlign, this.props.justifyContent, this.props.alignSelf, this.props.alignItems,
+                    this.props.weight, this.props.fontFamily, this.props.textAlign, this.props.justifyContent, this.props.alignSelf,
+                    this.props.alignItems,
                     this.props.padding),
                     this.props.upper == true ? StylesScreen.createToLocaleUppercase() : {},
                     this.props.lower == true ? StylesScreen.createToLocaleLowerCase() : {},

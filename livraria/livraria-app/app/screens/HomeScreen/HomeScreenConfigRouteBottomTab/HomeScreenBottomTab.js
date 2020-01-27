@@ -10,7 +10,9 @@ import StylesScreen from "../../../styles/StylesScreen";
 import ShoppingCartScreenStack from "../../ShoppingCartScreen/ShoppingCartConfigRoute/ShoppingCartScreenStack";
 import IconShoppingCart from "react-native-vector-icons/MaterialIcons";
 import IconLogout from 'react-native-vector-icons/AntDesign';
+import IconUser  from 'react-native-vector-icons/AntDesign';
 import LogoutScreenStackRouter from "../../LogoutScreen/LogoutScreenConfig/LogoutScreenRouter";
+import UserScreenRouter from "../../UserScreen/UserScreenRegisterConfigRouter/UserScreenRegisterStackRouter";
 
 
 const homeScreenBottom = createMaterialBottomTabNavigator(
@@ -29,12 +31,22 @@ const homeScreenBottom = createMaterialBottomTabNavigator(
             screen: ShoppingCartScreenStack,
             navigationOptions:{
                 title: 'Carrinho',
-                size: 15,
                 tabBarIcon: ()=> (<Icon>
                     <IconShoppingCart name={'shopping-cart'} color={'#fff'} size={25}/>
                 </Icon>)
             }
         },
+
+        UserScreenRegister:{
+            screen: UserScreenRouter,
+            navigationOptions:{
+                title: 'Usuário',
+                tabBarIcon: ()=> (<Icon>
+                    <IconUser name={'user'} color={'#fff'} size={25}/>
+                </Icon>)
+            }
+        },
+
         LogoutScreen:{
             screen: LogoutScreenStackRouter,
             navigationOptions:{

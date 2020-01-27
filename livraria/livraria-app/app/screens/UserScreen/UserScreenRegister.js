@@ -7,8 +7,9 @@ import TabListagemPromocoes from '../../tabs/TabListagemPromocoes';
 import HeaderComponent from '../../components/HeaderComponent';
 import TabListagemCategorias from '../../tabs/TabListagemCategorias';
 import IconHome from 'react-native-vector-icons/Octicons';
+import TabRegisterUser from "../../tabs/TabRegisterUser";
 
-export default class HomeScreen extends React.Component{
+export default class UserScreenRegister extends React.Component{
 
     detalhe = async (objeto)=>{
         this.props.navigation.navigate("ListagemLivrosLinkedCategoria", {
@@ -23,23 +24,28 @@ export default class HomeScreen extends React.Component{
         });
     };
 
+    static navigationOptions ={
+        header: null,
+    };
+
 
     render() {
         return (
             <HeaderComponent
-                title={"Livraria PDF"}
+                title={"Registro de Usuario"}
                 background={'#694fad'}
                 children={
                     <Tabs>
                         <Tab tabStyle={{backgroundColor: '#694fad'}} activeTextStyle={{color: '#fff'}}
-                             textStyle={{color: '#fff'}} activeTabStyle={{backgroundColor: '#694fad'}} heading={"Categorias"}>
-                            <TabListagemCategorias onDetalhe={this.detalhe}/>
+                             textStyle={{color: '#fff'}} activeTabStyle={{backgroundColor: '#694fad'}} heading={"Registro"}>
+                            <TabRegisterUser />
                         </Tab>
                         <Tab active tabStyle={{backgroundColor: '#694fad'}} activeTextStyle={{color: '#fff'}}
-                             textStyle={{color: '#fff'}} activeTabStyle={{backgroundColor: '#694fad'}} heading={"Livros"}>
+                             textStyle={{color: '#fff'}} activeTabStyle={{backgroundColor: '#694fad'}} heading={"Registro via Facebook"}>
                             <TabListagemLivros onDetalheLivro={this.detalheLivro} />
                         </Tab>
-                        <Tab tabStyle={{backgroundColor: '#694fad'}} activeTextStyle={{color: '#fff'}} textStyle={{color: '#fff'}} activeTabStyle={{backgroundColor: '#694fad'}} heading={"Promoções"}>
+                        <Tab tabStyle={{backgroundColor: '#694fad'}} activeTextStyle={{color: '#fff'}} textStyle={{color: '#fff'}}
+                             activeTabStyle={{backgroundColor: '#694fad'}} heading={"Registro via Gmail"}>
                             <TabListagemPromocoes onDetalheLivro={this.detalheLivro}/>
                         </Tab>
                     </Tabs>
