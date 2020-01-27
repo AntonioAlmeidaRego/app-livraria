@@ -16,12 +16,12 @@ export default class CardLivroDescrition  extends React.Component{
         return(
             <BoxContainerComponent
                 justifyContent={'center'} alignSelf={'center'} alignItems={'center'}
-                width={'100%'} height={'100%'} radius={15} padding={10}
+                width={'100%'} height={'100%'} radius={15} padding={2}
                 >
-                <BorderComponent color={"#000"} value={1} width={'100%'} height={'100%'} radius={15} padding={10}>
+                <BorderComponent color={"#c2c0c7"} value={0.3} width={'100%'} height={'100%'} padding={2}>
                     <RowComponent>
                         <LeftComponent>
-                            <Thumbnail square style={[StylesScreen.createWidth(150), StylesScreen.createHeight(200)]}
+                            <Thumbnail square style={[StylesScreen.createWidth(145), StylesScreen.createHeight(195)]}
                                        source={{uri: 'https://livraria-pdf.herokuapp.com/livro/imagem/'+this.props.id}} />
                         </LeftComponent>
                         <RightComponent>
@@ -29,7 +29,7 @@ export default class CardLivroDescrition  extends React.Component{
                                 text={this.props.title}
                                 upper
                                 color={'#000'}
-                                size={18}
+                                size={16}
                                 weight={'bold'}
                             />
                             <TextComponent

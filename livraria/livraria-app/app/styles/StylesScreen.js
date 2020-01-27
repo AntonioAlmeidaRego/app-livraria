@@ -556,26 +556,35 @@ export default class StylesScreen{
         return styles.flex;
     }
 
-    static createRight(value: number) {
-        let width = Dimensions.get('window').width;
-
-        let percentage = width * value;
-
+    static createRight() {
         const styles = StyleSheet.create({
             right:{
-                flex: value === undefined && value == null ? 1 : value,
-                right: 0,
+                marginLeft: 'auto',
+                justifyContent: 'flex-end',
             }
         });
 
         return styles.right;
     }
 
-    static createLeft(value: number) {
+    static createCenter() {
+        const styles = StyleSheet.create({
+            right:{
+                justifyContent: 'center',
+                alignSelf: 'center',
+                alignItems: 'center',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+            }
+        });
+
+        return styles.right;
+    }
+
+    static createLeft() {
         const styles = StyleSheet.create({
             left:{
-                flex: value === undefined && value == null ? 1 : value,
-                left: 0,
+                justifyContent: 'flex-start',
             }
         });
 

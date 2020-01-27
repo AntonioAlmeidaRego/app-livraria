@@ -5,7 +5,7 @@ import StylesScreen from "../styles/StylesScreen";
 export default class RightComponent extends React.Component{
     render() {
         return (
-            <View style={StylesScreen.createRight(this.props.value)} >
+            <View style={StylesScreen.createRight()} >
                 {this.props.children}
             </View>
         );

@@ -24,8 +24,8 @@ export default class CardSinopsieComponent extends React.Component{
     render() {
         return (
             <BoxContainerComponent justifyContent={'center'} alignSelf={'center'} alignItems={'center'}
-                                   width={'100%'} height={'100%'} radius={15} padding={10}>
-                <BorderComponent color={"#000"} value={1} radius={15} padding={15.4}>
+                                   width={'100%'} height={'100%'} radius={15} padding={2}>
+                <BorderComponent color={"#c2c0c7"} value={0.3} width={'100%'} height={'100%'} padding={2}>
                     <TextComponent
                         color={"#000"}
                         size={18}

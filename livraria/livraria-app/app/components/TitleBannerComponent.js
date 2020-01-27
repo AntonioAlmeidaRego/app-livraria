@@ -28,34 +28,19 @@ export default class TitleBannerComponent extends React.Component{
     render(){
         return (
                 <BoxContainerComponent
-                    justifyContent={'center'} alignSelf={'center'} alignItems={'center'}
+
                     width={85} height={85} radius={20}
                 >
-                    <BorderComponent
-                        color={"#000"} value={0.98}
-                        radius={200}
-                        style={[StylesScreen.createBackground('#694fad')]}>
-                        <RowComponent>
-                            <LeftComponent>
-                                <Thumbnail  style={[StylesScreen.createBackground('#694fad'), StylesScreen.createWidth(100),
-                                    StylesScreen.createHeight(30)]} large source={{uri: this.props.uri}}/>
-                            </LeftComponent>
-                            <RightComponent>
-                                <ContainerComponent>
-                                    <TextComponent
-                                        textAlign={'center'}
-                                        justifyContent={'center'}
-                                        alignSelf={'center'}
-                                        alignItems={'center'}
-                                        size={20}
-                                        upper
-                                        color={'#fff'}
-                                        text={this.props.title}
-                                    />
-                                </ContainerComponent>
-                            </RightComponent>
-                        </RowComponent>
-                    </BorderComponent>
+                    <RowComponent>
+                        <LeftComponent>
+                            <TextComponent
+                                size={20}
+                                upper
+                                color={'#694fad'}
+                                text={this.props.title}
+                            />
+                        </LeftComponent>
+                    </RowComponent>
                 </BoxContainerComponent>
         );
     }

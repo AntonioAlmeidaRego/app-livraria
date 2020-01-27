@@ -180,11 +180,6 @@ export default class DetalheLivroScreen extends React.Component{
                             title={this.state.livro.titulo}
                             year={this.state.livro.ano}
                         />
-                        <SpaceTopComponent />
-                        <TitleBannerComponent
-                            uri={'https://cdn.pixabay.com/photo/2017/01/13/13/11/book-1977235_960_720.png'}
-                            title={"Compra"}
-                        />
                         <CardAmountComponent
                             prazo={this.state.prazo}
                             freight={this.state.frete}

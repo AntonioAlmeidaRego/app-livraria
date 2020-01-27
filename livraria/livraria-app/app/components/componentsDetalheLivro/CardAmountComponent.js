@@ -24,8 +24,8 @@ export default class CardAmountComponent extends React.Component{
     render() {
         return (
             <BoxContainerComponent justifyContent={'center'} alignSelf={'center'} alignItems={'center'}
-                width={'100%'} height={'100%'} radius={15} padding={10}>
-                <BorderComponent color={"#000"} value={1} width={'100%'} height={'100%'} radius={15} padding={10}>
+                width={'100%'} height={'100%'} radius={15} padding={2}>
+                <BorderComponent color={"#c2c0c7"} value={0.3} width={'100%'} height={'100%'} padding={2}>
                     <ContainerCenterComponent>
                         <RowComponent>
                             <Image
@@ -53,30 +53,23 @@ export default class CardAmountComponent extends React.Component{
                     />
                     <SpaceBottomComponent />
                     <RowComponent>
-                        <LeftComponent
-                            children={
-                                <Button success onPress={() => this.props.onIncrement(this.state.value, this.props.price)}>
-                                    <Icon size={30}  name="ios-add"/>
-                                </Button>
-                            }
-                        />
-                       <CenterComponent
-                            children={
-                                <Text style={StylesScreen.createText('#000',
-                                    28, 'bold',null, 'center', 'center',
-                                    null, null)}>
-                                    {this.props.amount}
-                                </Text>
-                            }
-
-                        />
-                        <RightComponent
-                            children={
-                                <Button danger onPress={() => this.props.onDecrement(this.state.value, this.props.price)}>
-                                    <Icon size={30} name="ios-remove" />
-                                </Button>
-                            }
-                        />
+                        <LeftComponent>
+                            <Button success onPress={() => this.props.onIncrement(this.state.value, this.props.price)}>
+                                <Icon size={30}  name="ios-add"/>
+                            </Button>
+                        </LeftComponent>
+                        <CenterComponent style={StylesScreen.createFlex(6)}>
+                           <Text style={StylesScreen.createText('#000',
+                               28, 'bold',null, 'center', 'center',
+                               'center', 'center')}>
+                               {this.props.amount}
+                           </Text>
+                        </CenterComponent>
+                        <RightComponent>
+                            <Button danger onPress={() => this.props.onDecrement(this.state.value, this.props.price)}>
+                                <Icon size={30} name="ios-remove" />
+                            </Button>
+                        </RightComponent>
                     </RowComponent>
                     <SpaceBottomComponent space={15} />
                     <RowComponent>
