@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {Header, Body, Content, Container, Tabs, Tab, Title, Left, Item, CardItem, Thumbnail, Card, Button, Right, Icon, ListItem} from 'native-base';
 import StylesScreen from "../styles/StylesScreen";
 import IconInfo from 'react-native-vector-icons/Octicons';
@@ -11,14 +11,17 @@ import RightComponent from "./RightComponent";
 import TextComponent from "./TextComponent";
 import SpaceTopComponent from "./componentsSpace/SpaceTopComponent";
 import SpaceBottomComponent from "./componentsSpace/SpaceBottomComponent";
+import CenterComponent from "./CenterComponent";
+import SpaceLeftComponent from "./componentsSpace/SpaceLeftComponent";
+import LayoutComponent from "./LayoutComponent";
 export default class CardLivroDescrition  extends React.Component{
     render() {
         return(
-            <BoxContainerComponent
-                justifyContent={'center'} alignSelf={'center'} alignItems={'center'}
-                width={'100%'} height={'100%'} radius={15} padding={2}
+            <LayoutComponent
+
                 >
-                <BorderComponent color={"#c2c0c7"} value={0.3} width={'100%'} height={'100%'} padding={2}>
+                <BorderComponent button={this.props.onDetalheLivro}
+                                 object={this.props.livro} color={"#c2c0c7"} value={0.3} width={'100%'} height={'100%'} padding={2}>
                     <RowComponent>
                         <LeftComponent>
                             <Thumbnail square style={[StylesScreen.createWidth(145), StylesScreen.createHeight(195)]}
@@ -29,53 +32,43 @@ export default class CardLivroDescrition  extends React.Component{
                                 text={this.props.title}
                                 upper
                                 color={'#000'}
-                                size={16}
+                                size={14}
                                 weight={'bold'}
                             />
                             <TextComponent
                                 text={this.props.subtitle}
                                 upper
                                 color={'#000'}
-                                size={15}
+                                size={11}
                             />
-                            <SpaceTopComponent />
-                            <RowComponent style={[StylesScreen.createMarginRight(50)]}>
-                                <LeftComponent value={0}>
-                                    <Image
-                                        style={[StylesScreen.createWidth(40), StylesScreen.createHeight(40)]}
-                                        source={require('../../images/price.png')}
-                                    />
-                                </LeftComponent>
-                                <RightComponent>
+                            <RowComponent>
+                                <CenterComponent>
                                     <TextComponent
                                         text={'R$ '+ this.props.price}
                                         upper
                                         color={'#000'}
-                                        size={20}
+                                        size={25}
                                     />
-                                </RightComponent>
-                            </RowComponent>
-                            <SpaceBottomComponent />
-                            <Button onPress={() => this.props.onDetalheLivro(this.props.livro)}
-                                    rounded style={[StylesScreen.createButtonColor('#694fad'),
-                                    StylesScreen.createSpaceRight()]}>
-                                <Icon>
-                                    <IconInfo name={"info"} size={30} color={'#fff'}/>
-                                </Icon>
-                                <RightComponent>
                                     <TextComponent
-                                        text={'Detalhe'}
-                                        upper
-                                        color={'#fff'}
-                                        size={15}
+                                        text={'1x de R$ 9.32 s/ juros'}
+                                        size={16}
+                                        color={'#b3b1b8'}
                                     />
-                                </RightComponent>
-                            </Button>
-                            <SpaceBottomComponent />
+                                    <SpaceTopComponent space={6} />
+                                    <RowComponent>
+                                        <Thumbnail style={{width: 20, height: 20}} source={{uri: 'https://i.pinimg.com/originals/54/27/d1/5427d1dcdda19c993d44d6798ef029a2.png'}}/>
+                                        <Thumbnail style={{width: 20, height: 20}} source={{uri: 'https://i.pinimg.com/originals/54/27/d1/5427d1dcdda19c993d44d6798ef029a2.png'}}/>
+                                        <Thumbnail style={{width: 20, height: 20}} source={{uri: 'https://i.pinimg.com/originals/54/27/d1/5427d1dcdda19c993d44d6798ef029a2.png'}}/>
+                                        <Thumbnail style={{width: 20, height: 20}} source={{uri: 'https://i.pinimg.com/originals/54/27/d1/5427d1dcdda19c993d44d6798ef029a2.png'}}/>
+                                        <Thumbnail style={{width: 20, height: 20}} source={{uri: 'https://i.pinimg.com/originals/54/27/d1/5427d1dcdda19c993d44d6798ef029a2.png'}}/>
+                                    </RowComponent>
+                                </CenterComponent>
+                            </RowComponent>
+                            <SpaceBottomComponent space={3} />
                         </RightComponent>
                     </RowComponent>
                 </BorderComponent>
-            </BoxContainerComponent>
+            </LayoutComponent>
         );
     }
 }

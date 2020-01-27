@@ -5,7 +5,7 @@ import StylesScreen from "../styles/StylesScreen";
 export default class LeftComponent extends React.Component{
     render() {
         return (
-            <View style={StylesScreen.createLeft(this.props.value)} >
+            <View style={[StylesScreen.createCenter(), StylesScreen.createLeft()]} >
                 {this.props.children}
             </View>
         );

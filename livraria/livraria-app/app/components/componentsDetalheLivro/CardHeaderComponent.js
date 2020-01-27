@@ -35,26 +35,29 @@ export default class CardHeaderComponent extends React.Component{
                     <Thumbnail square style={[StylesScreen.createWidth(145), StylesScreen.createHeight(195)]}
                                source={{uri: this.props.uri}} />
                     <SpaceTopComponent />
-
                 </ContainerCenterComponent>
-                <RowComponent>
-                    <LeftComponent>
-                        <TextComponent
-                            text={this.props.title}
-                            color={'#585858'}
-                            size={18}
-                        />
-                    </LeftComponent>
-                </RowComponent>
-                <RowComponent>
-                    <LeftComponent>
-                        <TextComponent
-                            text={'Lançamento '+this.props.year}
-                            color={'#585858'}
-                            size={16}
-                        />
-                    </LeftComponent>
-                </RowComponent>
+                <LeftComponent>
+                    <TextComponent
+                        text={this.props.title}
+                        color={'#585858'}
+                        size={18}
+                    />
+                </LeftComponent>
+                <LeftComponent>
+                    <TextComponent
+                        text={'Lançamento '+this.props.year}
+                        color={'#585858'}
+                        size={16}
+                    />
+                </LeftComponent>
+                <SpaceTopComponent />
+                <LeftComponent>
+                    <TextComponent
+                        text={'(Cód. 1674455) '}
+                        color={'#585858'}
+                        size={14}
+                    />
+                </LeftComponent>
             </BoxContainerComponent>
         );
     }

@@ -190,40 +190,7 @@ export default class DetalheLivroScreen extends React.Component{
                             price={this.state.value}
                         />
                         <SpaceTopComponent />
-                        <TitleBannerComponent
-                            uri={'https://cdn.pixabay.com/photo/2017/01/13/13/11/book-1977235_960_720.png'}
-                            title={"Sinopse"}
-                        />
-                        <CardSinopsieComponent
-                            sinopsie={this.state.livro.sinopsie}
-                        />
-                        <SpaceTopComponent />
-                        <TitleBannerComponent
-                            uri={'https://cdn.pixabay.com/photo/2017/01/13/13/11/book-1977235_960_720.png'}
-                            title={"Autores"}
-                        />
-                        <CardAutorDescritionComponent autors={this.state.autors} />
-                        <SpaceTopComponent />
-                        <TitleBannerComponent
-                            uri={'https://cdn.pixabay.com/photo/2017/01/13/13/11/book-1977235_960_720.png'}
-                            title={"Mais sobre o Livro"}
-                        />
-                        <CardMoreLivroComponent
-                            ano={this.state.livro.ano}
-                            peso={this.state.livro.peso}
-                            largura={this.state.livro.largura}
-                            altura={this.state.livro.altura}
-                        />
-                        <SpaceBottomComponent />
-                        <TitleBannerComponent
-                            uri={'https://cdn.pixabay.com/photo/2017/01/13/13/11/book-1977235_960_720.png'}
-                            title={"Livros Relacionados pelo Preço"}
-                        />
-                        <TabComponent
-                            onDetalheLivro={this.detalheLivro}
-                            array={this.state.livrosRelateds}
-                        />
-                        <SpaceBottomComponent />
+
                         <LoadingCepModal visible={this.state.visible}/>
                     </Content>
                 }

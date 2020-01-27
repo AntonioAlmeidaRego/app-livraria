@@ -1,7 +1,6 @@
 import React, {} from 'react';
 import {FlatList} from 'react-native';
 import {Button, Spinner, List, ListItem, Container, Content, Card, CardItem, Item, Text, Thumbnail, Left, Right, Body} from 'native-base';
-import CategoriaController from '../controllers/CategoriaController';
 
 
 export default class TabListComponent extends React.Component{

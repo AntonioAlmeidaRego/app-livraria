@@ -13,6 +13,50 @@ export default class StylesScreen{
         return styles.border;
     }
 
+    static createBorderLeft(color: string, value: number, radius: number){
+        const styles = StyleSheet.create({
+            border:{
+                borderLeftColor: color,
+                borderLeftWidth: value,
+                borderRadius: radius
+            }
+        });
+        return styles.border;
+    }
+
+    static createBorderRight(color: string, value: number, radius: number){
+        const styles = StyleSheet.create({
+            border:{
+                borderRightWidth: value,
+                borderRightColor: color,
+                borderRadius: radius
+            }
+        });
+        return styles.border;
+    }
+
+    static createBorderTop(color: string, value: number, radius: number){
+        const styles = StyleSheet.create({
+            border:{
+                borderTopColor: color,
+                borderTopWidth: value,
+                borderRadius: radius
+            }
+        });
+        return styles.border;
+    }
+
+    static createBorderBottom(color: string, value: number, radius: number){
+        const styles = StyleSheet.create({
+            border:{
+                borderBottomColor: color,
+                borderBottomWidth: value,
+                borderRadius: radius
+            }
+        });
+        return styles.border;
+    }
+
     static createMargin(value: number){
         const styles = StyleSheet.create({
             margin: {
@@ -41,6 +85,16 @@ export default class StylesScreen{
         });
 
         return styles.justifyContent;
+    }
+
+    static createAlignContent(value: string){
+        const styles = StyleSheet.create({
+            alignContent: {
+                alignContent: value,
+            }
+        });
+
+        return styles.alignContent;
     }
 
     static createAlignItems(value: string){
@@ -165,46 +219,6 @@ export default class StylesScreen{
             }
         });
         return styles.height;
-    }
-
-    static createBorderLeft(color: string, value: number){
-        const styles = StyleSheet.create({
-            border:{
-                borderLeftWidth: value,
-                borderLeftColor: color,
-            }
-        });
-        return styles.border;
-    }
-
-    static createBorderRight(color: string, value: number){
-        const styles = StyleSheet.create({
-            border:{
-                borderRightWidth: value,
-                borderRightColor: color,
-            }
-        });
-        return styles.border;
-    }
-
-    static createBorderTop(color: string, value: number){
-        const styles = StyleSheet.create({
-            border:{
-                borderTopWidth: value,
-                borderTopColor: color,
-            }
-        });
-        return styles.border;
-    }
-
-    static createBorderBottom(color: string, value: number){
-        const styles = StyleSheet.create({
-            border:{
-                borderBottomWidth: value,
-                borderBottomColor: color,
-            }
-        });
-        return styles.border;
     }
 
     static createBorderRadius(value: number){
@@ -343,11 +357,11 @@ export default class StylesScreen{
         return styles.buttonColor;
     }
 
-    static createComponentLeft(){
+    static createComponentLeft(value: number){
         const styles = StyleSheet.create({
             component:{
                 flex: 1,
-                marginLeft: 0,
+                left: value === undefined && value == null ? 1 : value,
             }
         });
 
@@ -386,12 +400,11 @@ export default class StylesScreen{
         return styles.component;
     }
 
-    static createComponentRight(){
-        console.log(Dimensions.get('window').width);
+    static createComponentRight(value: number){
         const styles = StyleSheet.create({
             component:{
                 flex: 1,
-                marginRight: 0,
+                right: value,
             }
         });
 
@@ -413,7 +426,7 @@ export default class StylesScreen{
         return styles.boxButton;
     }
 
-    static createSpaceLeft(value?: number){
+    static createSpaceLeft(value?: number | string){
         const styles = StyleSheet.create({
             space:{
                 flex: 1,
@@ -455,7 +468,7 @@ export default class StylesScreen{
         return styles.text;
     }
 
-    static createSpaceRight(value?: number){
+    static createSpaceRight(value?: number | string){
         const styles = StyleSheet.create({
             space:{
                 flex: 1,
@@ -559,12 +572,31 @@ export default class StylesScreen{
     static createRight() {
         const styles = StyleSheet.create({
             right:{
+                flex: 1,
                 marginLeft: 'auto',
-                justifyContent: 'flex-end',
+                alignItems: 'center',
+                justifyContent: 'center',
             }
         });
 
         return styles.right;
+    }
+
+
+    static createLayout(){
+        const styles = StyleSheet.create({
+            layout:{
+                flex: 1,
+                justifyContent: 'space-around',
+                alignItems: 'center',
+                alignContent: 'space-between',
+                borderTopWidth: 0,
+                borderLeftWidth: 0,
+                borderRightWidth: 0,
+            }
+        });
+
+        return styles.layout;
     }
 
     static createCenter() {
@@ -573,8 +605,8 @@ export default class StylesScreen{
                 justifyContent: 'center',
                 alignSelf: 'center',
                 alignItems: 'center',
-                marginLeft: 'auto',
-                marginRight: 'auto',
+                alignContent: 'center',
+                flex: 1,
             }
         });
 
@@ -584,7 +616,8 @@ export default class StylesScreen{
     static createLeft() {
         const styles = StyleSheet.create({
             left:{
-                justifyContent: 'flex-start',
+                flex: 1,
+                flexWrap: 'wrap-reverse',
             }
         });
 
