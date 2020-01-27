@@ -19,6 +19,11 @@ import CardMoreLivroComponent from "../../components/componentsDetalheLivro/Card
 import SpaceTopComponent from "../../components/componentsSpace/SpaceTopComponent";
 import SpaceBottomComponent from "../../components/componentsSpace/SpaceBottomComponent";
 import TabComponent from "../../components/TabComponent";
+import CardButtomComponent from "../../components/componentsDetalheLivro/CardButtomComponent";
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import TextComponent from "../../components/TextComponent";
+
 const uriImg = "https://livraria-pdf.herokuapp.com/livro/imagem/";
 export default class DetalheLivroScreen extends React.Component{
 
@@ -190,7 +195,61 @@ export default class DetalheLivroScreen extends React.Component{
                             price={this.state.value}
                         />
                         <SpaceTopComponent />
-
+                        <CardButtomComponent
+                            renderIconLeft={
+                                <Icon>
+                                    <MaterialCommunityIcons
+                                        name={'format-list-bulleted'}
+                                        size={30}
+                                        color={'#000'}
+                                    />
+                                </Icon>
+                            }
+                            renderIconRight={
+                                <Icon>
+                                    <MaterialCommunityIcons
+                                        name={'arrow-right'}
+                                        size={30}
+                                        color={'#000'}
+                                    />
+                                </Icon>
+                            }
+                            textComponent={
+                                <TextComponent
+                                    color={'#000'}
+                                    size={18}
+                                    text={'Sinopsie'}
+                                />
+                            }
+                         />
+                        <SpaceTopComponent />
+                        <CardButtomComponent
+                            renderIconLeft={
+                                <Icon>
+                                    <AntDesign
+                                        name={'user'}
+                                        size={30}
+                                        color={'#000'}
+                                    />
+                                </Icon>
+                            }
+                            renderIconRight={
+                                <Icon>
+                                    <MaterialCommunityIcons
+                                        name={'arrow-right'}
+                                        size={30}
+                                        color={'#000'}
+                                    />
+                                </Icon>
+                            }
+                            textComponent={
+                                <TextComponent
+                                    color={'#000'}
+                                    size={18}
+                                    text={'Sinopsie'}
+                                />
+                            }
+                        />
                         <LoadingCepModal visible={this.state.visible}/>
                     </Content>
                 }

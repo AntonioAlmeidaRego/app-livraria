@@ -19,7 +19,7 @@ export default class CardAmountComponent extends React.Component{
 
     render() {
         return (
-            <LayoutComponent >
+            <LayoutComponent>
                 <BorderComponent color={"#c2c0c7"} borderTop={true} borderWidth={0.9} width={Dimensions.get('window').width} height={'100%'} padding={2}>
                     <SpaceTopComponent space={6} />
                     <CenterComponent>
