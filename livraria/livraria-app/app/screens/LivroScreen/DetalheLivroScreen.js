@@ -22,7 +22,11 @@ import TabComponent from "../../components/TabComponent";
 import CardButtomComponent from "../../components/componentsDetalheLivro/CardButtomComponent";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import TextComponent from "../../components/TextComponent";
+import CarouselComponent from "../../components/CarouselComponent";
+import BorderComponent from "../../components/BorderComponent";
+import LeftComponent from "../../components/LeftComponent";
 
 const uriImg = "https://livraria-pdf.herokuapp.com/livro/imagem/";
 export default class DetalheLivroScreen extends React.Component{
@@ -67,6 +71,12 @@ export default class DetalheLivroScreen extends React.Component{
     };
 
     async componentDidMount(): void {
+
+        const livroController = new ApiController();
+        const livros = await livroController.get('https://livraria-pdf.herokuapp.com/api/livro/findAll');
+        this.setState({
+            livrosRelateds: livros,
+        });
         const value =  parseFloat(this.props.navigation.state.params.livro.preco);
         const idLivro = parseInt(this.props.navigation.state.params.livro.id);
 
@@ -74,7 +84,7 @@ export default class DetalheLivroScreen extends React.Component{
             livro: this.props.navigation.state.params.livro
         });
 
-        await this.onListLivrosRelatedByValue(value, idLivro);
+     //   await this.onListLivrosRelatedByValue(value, idLivro);
 
         this.setState({
             value: value,
@@ -226,8 +236,8 @@ export default class DetalheLivroScreen extends React.Component{
                         <CardButtomComponent
                             renderIconLeft={
                                 <Icon>
-                                    <AntDesign
-                                        name={'user'}
+                                    <FontAwesome
+                                        name={'users'}
                                         size={30}
                                         color={'#000'}
                                     />
@@ -246,10 +256,51 @@ export default class DetalheLivroScreen extends React.Component{
                                 <TextComponent
                                     color={'#000'}
                                     size={18}
-                                    text={'Sinopsie'}
+                                    text={'Autores'}
                                 />
                             }
                         />
+                        <BorderComponent color={'#b3b1b8'} padding={10}>
+                            <LeftComponent>
+                                <TextComponent
+                                    color={'#585858'}
+                                    size={20}
+                                    upper
+                                    weight={'bold'}
+                                    text={"Livros vistos por últimos"}
+                                />
+                            </LeftComponent>
+                            <CarouselComponent array={this.state.livrosRelateds} onDetalheLivro={this.detalheLivro} />
+                        </BorderComponent>
+                        <BorderComponent color={'#b3b1b8'} padding={10}>
+                            <LeftComponent>
+                                <TextComponent
+                                    color={'#585858'}
+                                    size={20}
+                                    upper
+                                    weight={'bold'}
+                                    text={"Livros mais procurados"}
+                                />
+                            </LeftComponent>
+                            <CarouselComponent array={this.state.livrosRelateds} onDetalheLivro={this.detalheLivro} />
+                        </BorderComponent>
+                        <BorderComponent color={'#b3b1b8'} padding={10}>
+                            <LeftComponent>
+                                <TextComponent
+                                    color={'#585858'}
+                                    size={20}
+                                    upper
+                                    weight={'bold'}
+                                    text={"Mais Detalhes"}
+                                />
+                            </LeftComponent>
+                            <CardMoreLivroComponent
+                                ano={this.state.livro.ano}
+                                peso={this.state.livro.peso}
+                                largura={this.state.livro.largura}
+                                altura={this.state.livro.altura}
+                            />
+                        </BorderComponent>
                         <LoadingCepModal visible={this.state.visible}/>
                     </Content>
                 }

@@ -10,6 +10,7 @@ import BorderComponent from "../BorderComponent";
 import TextComponent from "../TextComponent";
 import LayoutComponent from "../LayoutComponent";
 import SpaceTopComponent from "../componentsSpace/SpaceTopComponent";
+import ConversorUtil from "../../utils/ConversorUtil";
 
 export default class CardAmountComponent extends React.Component{
 
@@ -24,7 +25,7 @@ export default class CardAmountComponent extends React.Component{
                     <SpaceTopComponent space={6} />
                     <CenterComponent>
                         <TextComponent
-                            text={'R$ ' + this.props.price + ',00'}
+                            text={'R$ ' + ConversorUtil.convertsPointToComma(this.props.price) }
                             size={25}
                             color={'#000'}
                         />

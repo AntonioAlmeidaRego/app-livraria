@@ -25,7 +25,7 @@ export default class BorderComponent extends React.Component{
                     </View>
                 </Button>
             ),
-            this.props.button == undefined &&(
+            this.props.button === undefined &&(
                 <View style={[
                     StylesScreen.createWidth( this.props.width),
                     StylesScreen.createHeight(this.props.height),
