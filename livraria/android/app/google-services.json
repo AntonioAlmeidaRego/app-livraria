@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "692048946675",
+    "firebase_url": "https://livraria-pdf.firebaseio.com",
+    "project_id": "livraria-pdf",
+    "storage_bucket": "livraria-pdf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:692048946675:android:aca6b18468c92f8ded1e86",
+        "android_client_info": {
+          "package_name": "com.livraria"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "692048946675-sjogi67llvrj920bq11snm4i44jdgu88.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDN2N3ZSJQcfPDvFs8kE5C0J0BVOXrEUkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "692048946675-sjogi67llvrj920bq11snm4i44jdgu88.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

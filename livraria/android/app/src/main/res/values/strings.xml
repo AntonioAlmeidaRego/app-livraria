@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">livraria</string>
+    <string name="facebook_app_id">499803857345503</string> <string name="fb_login_protocol_scheme">fb499803857345503</string>
+
 </resources>

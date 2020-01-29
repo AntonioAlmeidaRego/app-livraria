@@ -23,7 +23,15 @@ export default class TabRegisterUser extends React.Component{
                             size={16}
                             upper
                             colorLabel={'#694fad'}
+                            justifyContent={'center'}
+                            alignSelf={'center'}
+                            textAlign={'center'}
+                            alignItems={'center'}
                             paddingValue={10}
+                            borderBottom
+                            color={'#b3b1b8'}
+                            borderWidth={0.89}
+                            width={300}
                             renderIconLeft={
                                 <Icon>
                                     <AntDesign size={25} name={'user'} color={'#694fad'}/>
@@ -37,8 +45,15 @@ export default class TabRegisterUser extends React.Component{
                             upper
                             colorLabel={'#694fad'}
                             paddingValue={10}
-
                             borderColor={'#694fad'}
+                            borderBottom
+                            color={'#b3b1b8'}
+                            borderWidth={0.89}
+                            justifyContent={'center'}
+                            alignSelf={'center'}
+                            textAlign={'center'}
+                            alignItems={'center'}
+                            width={300}
                             renderIconLeft={
                                 <Icon>
                                     <FontAwesome name={'birthday-cake'} size={25} color={'#694fad'}/>
@@ -52,6 +67,14 @@ export default class TabRegisterUser extends React.Component{
                             type={'email'}
                             colorLabel={'#694fad'}
                             paddingValue={10}
+                            borderBottom
+                            color={'#b3b1b8'}
+                            borderWidth={0.89}
+                            justifyContent={'center'}
+                            alignSelf={'center'}
+                            textAlign={'center'}
+                            alignItems={'center'}
+                            width={300}
                             renderIconLeft={
                                 <Icon>
                                     <MaterialCommunityIcons name={'email'} size={25} color={'#694fad'}/>
@@ -64,6 +87,14 @@ export default class TabRegisterUser extends React.Component{
                             upper
                             type={'email'}
                             colorLabel={'#694fad'}
+                            borderBottom
+                            color={'#b3b1b8'}
+                            borderWidth={0.89}
+                            width={300}
+                            justifyContent={'center'}
+                            alignSelf={'center'}
+                            textAlign={'center'}
+                            alignItems={'center'}
                             renderIconLeft={
                                 <Icon>
                                     <MaterialCommunityIcons name={'textbox-password'} size={25} color={'#694fad'}/>
@@ -76,6 +107,14 @@ export default class TabRegisterUser extends React.Component{
                             size={16}
                             upper
                             type={'email'}
+                            borderBottom
+                            color={'#b3b1b8'}
+                            borderWidth={0.89}
+                            width={300}
+                            justifyContent={'center'}
+                            alignSelf={'center'}
+                            textAlign={'center'}
+                            alignItems={'center'}
                             colorLabel={'#694fad'}
                             renderIconLeft={
                                 <Icon>
@@ -89,6 +128,14 @@ export default class TabRegisterUser extends React.Component{
                             size={16}
                             upper
                             type={'email'}
+                            justifyContent={'center'}
+                            alignSelf={'center'}
+                            textAlign={'center'}
+                            alignItems={'center'}
+                            borderBottom
+                            color={'#b3b1b8'}
+                            borderWidth={0.89}
+                            width={300}
                             colorLabel={'#694fad'}
                             renderIconLeft={
                                 <Icon>
@@ -104,6 +151,14 @@ export default class TabRegisterUser extends React.Component{
                             type={'email'}
                             colorLabel={'#694fad'}
                             disabled={true}
+                            borderBottom
+                            color={'#b3b1b8'}
+                            justifyContent={'center'}
+                            alignSelf={'center'}
+                            textAlign={'center'}
+                            alignItems={'center'}
+                            borderWidth={0.89}
+                            width={300}
                             paddingValue={10}
                         />
                         <InputTextComponent
@@ -113,6 +168,14 @@ export default class TabRegisterUser extends React.Component{
                             type={'email'}
                             colorLabel={'#694fad'}
                             disabled={true}
+                            borderBottom
+                            color={'#b3b1b8'}
+                            justifyContent={'center'}
+                            alignSelf={'center'}
+                            textAlign={'center'}
+                            alignItems={'center'}
+                            borderWidth={0.89}
+                            width={300}
                             paddingValue={10}
                         />
                         <InputTextComponent
@@ -120,6 +183,14 @@ export default class TabRegisterUser extends React.Component{
                             size={16}
                             upper
                             type={'email'}
+                            borderBottom
+                            color={'#b3b1b8'}
+                            borderWidth={0.89}
+                            justifyContent={'center'}
+                            alignSelf={'center'}
+                            textAlign={'center'}
+                            alignItems={'center'}
+                            width={300}
                             colorLabel={'#694fad'}
                             paddingValue={10}
                         />
@@ -128,6 +199,14 @@ export default class TabRegisterUser extends React.Component{
                             size={16}
                             upper
                             type={'email'}
+                            borderBottom
+                            color={'#b3b1b8'}
+                            borderWidth={0.89}
+                            justifyContent={'center'}
+                            alignSelf={'center'}
+                            textAlign={'center'}
+                            alignItems={'center'}
+                            width={300}
                             colorLabel={'#694fad'}
                             paddingValue={10}
                         />
