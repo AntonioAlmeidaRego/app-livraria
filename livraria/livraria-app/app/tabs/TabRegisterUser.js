@@ -22,6 +22,7 @@ import SpaceLeftComponent from "../components/componentsSpace/SpaceLeftComponent
 import ContainerCenterComponent from "../components/ContainerCenterComponent";
 import User from "../model/User";
 import InputComponent from "../components/InputComponent";
+import LivrariaUtil from "../utils/LivrariaUtil";
 
 export default class TabRegisterUser extends React.Component{
 
@@ -53,6 +54,13 @@ export default class TabRegisterUser extends React.Component{
         } catch (error) {
 
         }
+    };
+
+
+    onMaskCep = async (cep: string)=>{
+        this.setState({
+            cep: LivrariaUtil.maskCPF(cep)
+        });
     };
 
 
@@ -127,11 +135,11 @@ export default class TabRegisterUser extends React.Component{
                             <Icon>
                                 <MaterialIcons name={'add-location'} size={25} color={'#694fad'}/>
                             </Icon>
-                            <InputComponent
-                                maskCep
-                                typeInput={'numeric'}
+                            <Input
+                                maxLength={9}
+                                keyboardType={'numeric'}
                                 value={this.state.cep}
-                                onChangeText={cep => this.setState({cep: cep})}
+                                onChangeText={cep => this.onMaskCep(cep)}
                             />
                         </Item>
                         <Item>

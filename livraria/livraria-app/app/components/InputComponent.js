@@ -12,11 +12,7 @@ export default class InputComponent extends React.Component{
     render() {
         return (
             <View>
-                {this.props.maskCep !== undefined && (
-                    <Input keyboardType={this.props.typeInput} value={this.state.value} onChangeText={val => this.setState({
-                        value: LivrariaUtil.maskCep(val)
-                    })} />
-                )}
+
             </View>
         );
     }
