@@ -1,5 +1,5 @@
 import React, {} from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, DatePickerAndroid, View} from 'react-native';
 import {Button, Spinner, List, ListItem, Container, Content, Card, CardItem, Item, Text, Thumbnail, Left, Right, Body, Form, Label, Input, Icon} from 'native-base';
 import TabListComponent from "../components/TabListComponent";
 import SpaceTopComponent from "../components/componentsSpace/SpaceTopComponent";
@@ -9,207 +9,196 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-
+import FormatterUtil from "../utils/FormatterUtil";
+import RowComponent from "../components/RowComponent";
+import LeftComponent from "../components/LeftComponent";
+import RightComponent from "../components/RightComponent";
+import SpaceBottomComponent from "../components/componentsSpace/SpaceBottomComponent";
+import SpacePaddingLeftComponent from "../components/componentsSpace/SpacePaddingLeftComponent";
+import SpacePaddingRightComponent from "../components/componentsSpace/SpacePaddingRightComponent";
+import SpaceRightComponent from "../components/componentsSpace/SpaceRightComponent";
+import CenterComponent from "../components/CenterComponent";
+import SpaceLeftComponent from "../components/componentsSpace/SpaceLeftComponent";
+import ContainerCenterComponent from "../components/ContainerCenterComponent";
+import User from "../model/User";
+import InputComponent from "../components/InputComponent";
 
 export default class TabRegisterUser extends React.Component{
+
+    constructor(props, context) {
+        super(props, context);
+        this.user = new User('', '', '', '', '', '', '', '');
+        this.state={
+            data: null,
+            confirmaSenha: '',
+            cep: '',
+        }
+    }
+
+    showDatePickerTwo = async (options) => {
+        try {
+            const {action, year, month, day} = await DatePickerAndroid.open(options);
+            if (action !== DatePickerAndroid.dismissedAction) {
+                let date = new Date(year, month, day);
+                let newState = {};
+                newState['date'] = date;
+                let formatter = new FormatterUtil();
+                this.setState({
+                    ...this.user.data = formatter.formatterDatePtBr(date),
+                });
+                this.setState({
+                    data: date,
+                });
+            }
+        } catch (error) {
+
+        }
+    };
+
+
     render() {
         return (
             <Container>
                 <Content>
                     <SpaceTopComponent />
                     <Form>
-                        <InputTextComponent
-                            label={"Nome"}
-                            size={16}
-                            upper
-                            colorLabel={'#694fad'}
-                            justifyContent={'center'}
-                            alignSelf={'center'}
-                            textAlign={'center'}
-                            alignItems={'center'}
-                            paddingValue={10}
-                            borderBottom
-                            color={'#b3b1b8'}
-                            borderWidth={0.89}
-                            width={300}
-                            renderIconLeft={
-                                <Icon>
-                                    <AntDesign size={25} name={'user'} color={'#694fad'}/>
-                                </Icon>
-                            }
-                        />
-                        <InputTextComponent
-                            label={"Data de NAscimento"}
-                            size={16}
-                            type={'numeric'}
-                            upper
-                            colorLabel={'#694fad'}
-                            paddingValue={10}
-                            borderColor={'#694fad'}
-                            borderBottom
-                            color={'#b3b1b8'}
-                            borderWidth={0.89}
-                            justifyContent={'center'}
-                            alignSelf={'center'}
-                            textAlign={'center'}
-                            alignItems={'center'}
-                            width={300}
-                            renderIconLeft={
-                                <Icon>
-                                    <FontAwesome name={'birthday-cake'} size={25} color={'#694fad'}/>
-                                </Icon>
-                            }
-                        />
-                        <InputTextComponent
-                            label={"Email"}
-                            size={16}
-                            upper
-                            type={'email'}
-                            colorLabel={'#694fad'}
-                            paddingValue={10}
-                            borderBottom
-                            color={'#b3b1b8'}
-                            borderWidth={0.89}
-                            justifyContent={'center'}
-                            alignSelf={'center'}
-                            textAlign={'center'}
-                            alignItems={'center'}
-                            width={300}
-                            renderIconLeft={
-                                <Icon>
-                                    <MaterialCommunityIcons name={'email'} size={25} color={'#694fad'}/>
-                                </Icon>
-                            }
-                        />
-                        <InputTextComponent
-                            label={"Senha"}
-                            size={16}
-                            upper
-                            type={'email'}
-                            colorLabel={'#694fad'}
-                            borderBottom
-                            color={'#b3b1b8'}
-                            borderWidth={0.89}
-                            width={300}
-                            justifyContent={'center'}
-                            alignSelf={'center'}
-                            textAlign={'center'}
-                            alignItems={'center'}
-                            renderIconLeft={
-                                <Icon>
-                                    <MaterialCommunityIcons name={'textbox-password'} size={25} color={'#694fad'}/>
-                                </Icon>
-                            }
-                            paddingValue={10}
-                        />
-                        <InputTextComponent
-                            label={"Confirme Senha"}
-                            size={16}
-                            upper
-                            type={'email'}
-                            borderBottom
-                            color={'#b3b1b8'}
-                            borderWidth={0.89}
-                            width={300}
-                            justifyContent={'center'}
-                            alignSelf={'center'}
-                            textAlign={'center'}
-                            alignItems={'center'}
-                            colorLabel={'#694fad'}
-                            renderIconLeft={
-                                <Icon>
-                                    <MaterialCommunityIcons name={'textbox-password'} size={25} color={'#694fad'}/>
-                                </Icon>
-                            }
-                            paddingValue={10}
-                        />
-                        <InputTextComponent
-                            label={"Cep"}
-                            size={16}
-                            upper
-                            type={'email'}
-                            justifyContent={'center'}
-                            alignSelf={'center'}
-                            textAlign={'center'}
-                            alignItems={'center'}
-                            borderBottom
-                            color={'#b3b1b8'}
-                            borderWidth={0.89}
-                            width={300}
-                            colorLabel={'#694fad'}
-                            renderIconLeft={
-                                <Icon>
-                                    <MaterialIcons name={'add-location'} size={25} color={'#694fad'}/>
-                                </Icon>
-                            }
-                            paddingValue={10}
-                        />
-                        <InputTextComponent
-                            label={"Estado"}
-                            size={16}
-                            upper
-                            type={'email'}
-                            colorLabel={'#694fad'}
-                            disabled={true}
-                            borderBottom
-                            color={'#b3b1b8'}
-                            justifyContent={'center'}
-                            alignSelf={'center'}
-                            textAlign={'center'}
-                            alignItems={'center'}
-                            borderWidth={0.89}
-                            width={300}
-                            paddingValue={10}
-                        />
-                        <InputTextComponent
-                            label={"Municipio"}
-                            size={16}
-                            upper
-                            type={'email'}
-                            colorLabel={'#694fad'}
-                            disabled={true}
-                            borderBottom
-                            color={'#b3b1b8'}
-                            justifyContent={'center'}
-                            alignSelf={'center'}
-                            textAlign={'center'}
-                            alignItems={'center'}
-                            borderWidth={0.89}
-                            width={300}
-                            paddingValue={10}
-                        />
-                        <InputTextComponent
-                            label={"Rua"}
-                            size={16}
-                            upper
-                            type={'email'}
-                            borderBottom
-                            color={'#b3b1b8'}
-                            borderWidth={0.89}
-                            justifyContent={'center'}
-                            alignSelf={'center'}
-                            textAlign={'center'}
-                            alignItems={'center'}
-                            width={300}
-                            colorLabel={'#694fad'}
-                            paddingValue={10}
-                        />
-                        <InputTextComponent
-                            label={"Bairro"}
-                            size={16}
-                            upper
-                            type={'email'}
-                            borderBottom
-                            color={'#b3b1b8'}
-                            borderWidth={0.89}
-                            justifyContent={'center'}
-                            alignSelf={'center'}
-                            textAlign={'center'}
-                            alignItems={'center'}
-                            width={300}
-                            colorLabel={'#694fad'}
-                            paddingValue={10}
-                        />
+                        <Item>
+                            <Label>Nome</Label>
+                            <Icon>
+                                <AntDesign size={25} name={'user'} color={'#694fad'}/>
+                            </Icon>
+                            <Input
+                                value={this.user.nome}
+                                onChangeText={nome => this.setState({
+                                    ...this.user.nome = nome
+                                })}
+                            />
+                        </Item>
+                        <Item>
+                            <Label>Data de Nascimento</Label>
+                            <Icon>
+                                <FontAwesome name={'birthday-cake'} size={25} color={'#694fad'}/>
+                            </Icon>
+                            <Input
+                                showSoftInputOnFocus={false}
+                                placeholder="__/__/____"
+                                value={this.user.data}
+                                onTouchStart={() => this.showDatePickerTwo(new Date())}
+                            />
+                        </Item>
+                        <Item>
+                            <Label>Email</Label>
+                            <Icon>
+                                <MaterialCommunityIcons name={'email'} size={25} color={'#694fad'}/>
+                            </Icon>
+                            <Input
+                                value={this.user.email}
+                                onChangeText={email => this.setState({
+                                    ...this.user.email = email
+                                })}
+                            />
+                        </Item>
+                        <Item>
+                            <Label>Senha</Label>
+                            <Icon>
+                                <MaterialCommunityIcons name={'textbox-password'} size={25} color={'#694fad'}/>
+                            </Icon>
+                            <Input
+                                value={this.user.senha}
+                                onChangeText={senha => this.setState({
+                                    ...this.user.senha = senha
+                                })}
+                            />
+                        </Item>
+                        <Item>
+                            <Label>Confirme Senha</Label>
+                            <Icon>
+                                <MaterialCommunityIcons name={'textbox-password'} size={25} color={'#694fad'}/>
+                            </Icon>
+                            <Input
+                                value={this.state.confirmaSenha}
+                                onChangeText={senha => this.setState({
+                                    confirmaSenha: senha
+                                })}
+                            />
+                        </Item>
+                        <Item>
+                            <Label>Cep</Label>
+                            <Icon>
+                                <MaterialIcons name={'add-location'} size={25} color={'#694fad'}/>
+                            </Icon>
+                            <InputComponent
+                                maskCep
+                                typeInput={'numeric'}
+                                value={this.state.cep}
+                                onChangeText={cep => this.setState({cep: cep})}
+                            />
+                        </Item>
+                        <Item>
+                            <Label>Estado</Label>
+                            <Icon>
+                                <MaterialIcons name={'add-location'} size={25} color={'#694fad'}/>
+                            </Icon>
+                            <Input
+                                value={this.user.estado}
+                                onChangeText={estado => this.setState({
+                                    ...this.user.estado = estado
+                                })}
+                            />
+                        </Item>
+                        <Item>
+                            <Label>Municipio</Label>
+                            <Icon>
+                                <MaterialIcons name={'add-location'} size={25} color={'#694fad'}/>
+                            </Icon>
+                            <Input
+                                value={this.user.cidade}
+                                onChangeText={cidade => this.setState({
+                                    ...this.user.cidade = cidade
+                                })}
+                            />
+                        </Item>
+                        <Item>
+                            <Label>Rua</Label>
+                            <Icon>
+                                <MaterialIcons name={'add-location'} size={25} color={'#694fad'}/>
+                            </Icon>
+                            <Input
+                                value={this.user.rua}
+                                onChangeText={rua => this.setState({
+                                    ...this.user.rua = rua
+                                })}
+                            />
+                        </Item>
+                        <Item>
+                            <Label>Bairro</Label>
+                            <Icon>
+                                <MaterialIcons name={'add-location'} size={25} color={'#694fad'}/>
+                            </Icon>
+                            <Input
+                                value={this.user.bairro}
+                                onChangeText={bairro => this.setState({
+                                    ...this.user.bairro = bairro
+                                })}
+                            />
+                        </Item>
+                        <SpaceBottomComponent />
+                        <RowComponent>
+                            <LeftComponent>
+                                <ContainerCenterComponent>
+                                    <Button onPress={() => {}} success style={{width: '85%',}}>
+                                        <Text>Salvar Usuario</Text>
+                                    </Button>
+                                </ContainerCenterComponent>
+                            </LeftComponent>
+                            <RightComponent>
+                                <ContainerCenterComponent>
+                                    <Button onPress={() => {}} danger style={{width: '85%',}}>
+                                        <Text>Limpar Campos</Text>
+                                    </Button>
+                                </ContainerCenterComponent>
+                            </RightComponent>
+                        </RowComponent>
                     </Form>
                 </Content>
             </Container>

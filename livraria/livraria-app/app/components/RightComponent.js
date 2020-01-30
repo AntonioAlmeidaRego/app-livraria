@@ -7,7 +7,7 @@ export default class RightComponent extends React.Component{
     render() {
         return (
             <View style={[StylesScreen.createCenter(),
-
+                this.props.style,
             ]} >
                 {this.props.children}
             </View>
