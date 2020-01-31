@@ -136,7 +136,7 @@ export default class TabRegisterUser extends React.Component{
                                 <MaterialIcons name={'add-location'} size={25} color={'#694fad'}/>
                             </Icon>
                             <Input
-                                maxLength={9}
+                                maxLength={14}
                                 keyboardType={'numeric'}
                                 value={this.state.cep}
                                 onChangeText={cep => this.onMaskCep(cep)}
