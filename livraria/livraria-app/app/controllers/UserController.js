@@ -6,12 +6,12 @@ export default class UserController {
         this._request = new RequestController;
     }
 
-    saveUser = async (url, data) =>{
+     saveUser = async (url, data) =>{
        const api = await this._request.$postJSON(url, data);
-       return await api.json();
+       return api;
     };
 
-    userAutentication = async (url, data) => {
+     userAutentication = async (url, data) => {
         const api = await this._request.$postJSON(url, data);
         return api;
     };

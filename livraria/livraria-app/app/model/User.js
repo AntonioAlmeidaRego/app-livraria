@@ -86,4 +86,15 @@ export default class User {
         }
         return true;
     }
+
+    clear(){
+        this.nome = "";
+        this.data = "";
+        this.email = "";
+        this.senha = "";
+        this.estado =  "";
+        this.cidade =  "";
+        this.rua = "";
+        this.bairro =  "";
+    }
 }

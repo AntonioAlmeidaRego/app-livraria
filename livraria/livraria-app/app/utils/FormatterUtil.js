@@ -1,6 +1,6 @@
 export default class FormatterUtil {
-    formatterDatePtBr(date){
 
+    formatterDatePtBr(date){
         const mes = date.getMonth() + 1;
         const data = date.getDate();
         let dataConvert = "";
@@ -17,4 +17,16 @@ export default class FormatterUtil {
         }
         return dataConvert+"/"+mesConvert+"/"+ date.getFullYear();
     }
+
+    formatterDateUSA(data: string){
+        const dateStr = data.split('/');
+        return new Date(parseInt(dateStr[2]), parseInt(dateStr[1]), parseInt(dateStr[0]));
+    }
+
+    formatterDateUSAMoreDatail(data: string){
+        const dateStr = data.split('/');
+        return new Date(parseInt(dateStr[2]), parseInt(dateStr[1]), parseInt(dateStr[0]), new Date().getHours(),
+            new Date().getMinutes(), new Date().getSeconds(), new Date().getMilliseconds());
+    }
+
 }
