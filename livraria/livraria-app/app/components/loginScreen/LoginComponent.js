@@ -2,34 +2,18 @@ import React from 'react';
 import {View, Text, Image} from 'react-native';
 import {Header, Body, Content, Container, Tabs, Tab, Icon, Form, Item, Label, Input, Button, Thumbnail} from 'native-base';
 import SpaceTopComponent from "../componentsSpace/SpaceTopComponent";
-import AntDesign from "react-native-vector-icons/AntDesign";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import SpaceBottomComponent from "../componentsSpace/SpaceBottomComponent";
-import RowComponent from "../RowComponent";
-import LeftComponent from "../LeftComponent";
 import ContainerCenterComponent from "../ContainerCenterComponent";
-import RightComponent from "../RightComponent";
 import User from "../../model/User";
 import StylesScreen from "../../styles/StylesScreen";
-import ContainerComponent from "../ContainerComponent";
 import SpacePaddingBottomComponent from "../componentsSpace/SpacePaddingBottomComponent";
 import LayoutComponent from "../LayoutComponent";
-import CenterComponent from "../CenterComponent";
 
 export default class LoginComponent extends React.Component{
+
     constructor(props, context) {
         super(props, context);
         this.user = new User('', '', '', '', '', '', '', '');
-        this.state={
-            data: null,
-            confirmaSenha: '',
-            cep: '',
-            isDisabledCep: false,
-            isDisabledBairro: false,
-            isDisabledRua: false,
-        }
     }
 
 
@@ -51,6 +35,8 @@ export default class LoginComponent extends React.Component{
                             </Icon>
                             <Input
                                 value={this.user.email}
+                                autoCapitalize={'none'}
+                                keyboardType={'email-address'}
                                 onChangeText={email => this.setState({
                                     ...this.user.email = email
                                 })}
@@ -63,6 +49,8 @@ export default class LoginComponent extends React.Component{
                             </Icon>
                             <Input
                                 value={this.user.senha}
+                                secureTextEntry={true}
+                                autoCapitalize={'none'}
                                 onChangeText={senha => this.setState({
                                     ...this.user.senha = senha
                                 })}
@@ -76,7 +64,7 @@ export default class LoginComponent extends React.Component{
                         </Item>
                         <SpacePaddingBottomComponent space={20}/>
                         <Item />
-                        <Button transparent style={StylesScreen.createContainerButton()}>
+                        <Button onPress={() => this.props.register()} transparent style={StylesScreen.createContainerButton()}>
                             <Text style={[StylesScreen.createText('#694fad', 16, null)
                             ]}>Não tem cadastro ? </Text>
                             <Text style={[StylesScreen.createText('#694fad', 16, null),

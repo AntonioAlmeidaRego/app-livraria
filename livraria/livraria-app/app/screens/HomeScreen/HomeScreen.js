@@ -34,11 +34,6 @@ export default class HomeScreen extends React.Component{
                         <FontAwesome size={30} name={'book'} color={'#fff'} />
                     </Icon>
                 }
-                iconRight={
-                    <Icon>
-                        <FontAwesome color={'#fff'} name={'user-plus'} size={30} />
-                    </Icon>
-                }
                 children={
                     <Tabs>
                         <Tab tabStyle={{backgroundColor: '#694fad'}} activeTextStyle={{color: '#fff'}}

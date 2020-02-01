@@ -11,7 +11,8 @@ import TabRegisterUser from "../../tabs/TabRegisterUser";
 import HeaderStackComponent from "../../components/HeaderStackComponent";
 import LoginComponent from "../../components/loginScreen/LoginComponent";
 
-export default class UserScreenRegister extends React.Component{
+
+export default class UserScreen extends React.Component{
 
     detalhe = async (objeto)=>{
         this.props.navigation.navigate("ListagemLivrosLinkedCategoria", {
@@ -33,11 +34,14 @@ export default class UserScreenRegister extends React.Component{
 
     render() {
         return (
-            <HeaderStackComponent
+            <HeaderComponent
                 title={"Login"}
+                iconLeft={
+                    <Icon />
+                }
                 background={'#694fad'}
                 children={
-                    <LoginComponent />
+                    <LoginComponent register={() => this.props.navigation.push('RegisterUser')} />
                 }
             />
         );
