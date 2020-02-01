@@ -8,6 +8,8 @@ import HeaderComponent from '../../components/HeaderComponent';
 import TabListagemCategorias from '../../tabs/TabListagemCategorias';
 import IconHome from 'react-native-vector-icons/Octicons';
 import TabRegisterUser from "../../tabs/TabRegisterUser";
+import HeaderStackComponent from "../../components/HeaderStackComponent";
+import LoginComponent from "../../components/loginScreen/LoginComponent";
 
 export default class UserScreenRegister extends React.Component{
 
@@ -31,24 +33,11 @@ export default class UserScreenRegister extends React.Component{
 
     render() {
         return (
-            <HeaderComponent
-                title={"Registro de Usuario"}
+            <HeaderStackComponent
+                title={"Login"}
                 background={'#694fad'}
                 children={
-                    <Tabs>
-                        <Tab tabStyle={{backgroundColor: '#694fad'}} activeTextStyle={{color: '#fff'}}
-                             textStyle={{color: '#fff'}} activeTabStyle={{backgroundColor: '#694fad'}} heading={"Registro"}>
-                            <TabRegisterUser />
-                        </Tab>
-                        <Tab active tabStyle={{backgroundColor: '#694fad'}} activeTextStyle={{color: '#fff'}}
-                             textStyle={{color: '#fff'}} activeTabStyle={{backgroundColor: '#694fad'}} heading={"Registro via Facebook"}>
-                            <TabListagemLivros onDetalheLivro={this.detalheLivro} />
-                        </Tab>
-                        <Tab tabStyle={{backgroundColor: '#694fad'}} activeTextStyle={{color: '#fff'}} textStyle={{color: '#fff'}}
-                             activeTabStyle={{backgroundColor: '#694fad'}} heading={"Registro via Gmail"}>
-                            <TabListagemPromocoes onDetalheLivro={this.detalheLivro}/>
-                        </Tab>
-                    </Tabs>
+                    <LoginComponent />
                 }
             />
         );

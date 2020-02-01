@@ -300,7 +300,7 @@ export default class TabRegisterUser extends React.Component{
                             </LeftComponent>
                             <RightComponent>
                                 <ContainerCenterComponent>
-                                    <Button onPress={() => {}} danger style={{width: '85%',}}>
+                                    <Button onPress={() => this.onClear()} danger style={{width: '85%',}}>
                                         <Text>Limpar Campos</Text>
                                     </Button>
                                 </ContainerCenterComponent>

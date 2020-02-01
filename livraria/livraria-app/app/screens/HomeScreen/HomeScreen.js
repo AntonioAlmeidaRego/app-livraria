@@ -1,13 +1,13 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import {Header, Body, Content, Container, Tabs, Tab, Icon} from 'native-base';
+import {Header, Body, Content, Container, Tabs, Tab, Icon, Left} from 'native-base';
 import StylesScreen from '../../styles/StylesScreen';
 import TabListagemLivros from '../../tabs/TabListagemLivros';
 import TabListagemPromocoes from '../../tabs/TabListagemPromocoes';
 import HeaderComponent from '../../components/HeaderComponent';
 import TabListagemCategorias from '../../tabs/TabListagemCategorias';
 import IconHome from 'react-native-vector-icons/Octicons';
-
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 export default class HomeScreen extends React.Component{
 
     detalhe = async (objeto)=>{
@@ -29,6 +29,16 @@ export default class HomeScreen extends React.Component{
             <HeaderComponent
                 title={"Livraria PDF"}
                 background={'#694fad'}
+                iconLeft={
+                    <Icon>
+                        <FontAwesome size={30} name={'book'} color={'#fff'} />
+                    </Icon>
+                }
+                iconRight={
+                    <Icon>
+                        <FontAwesome color={'#fff'} name={'user-plus'} size={30} />
+                    </Icon>
+                }
                 children={
                     <Tabs>
                         <Tab tabStyle={{backgroundColor: '#694fad'}} activeTextStyle={{color: '#fff'}}
