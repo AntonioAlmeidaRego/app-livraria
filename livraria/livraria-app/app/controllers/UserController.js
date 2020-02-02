@@ -15,4 +15,10 @@ export default class UserController {
         const api = await this._request.$postJSON(url, data);
         return api;
     };
+
+
+    checkEmail = async (url) =>{
+        const api = await this._request.$getJSON(url);
+        return api;
+    }
 }

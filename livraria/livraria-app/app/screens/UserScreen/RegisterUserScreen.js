@@ -20,7 +20,10 @@ import HeaderStackComponent from "../../components/HeaderStackComponent";
 import HeaderComponent from "../../components/HeaderComponent";
 import TextComponent from "../../components/TextComponent";
 
+let arrayCep = [];
+
 const url = "http://192.168.1.7:8080/api/user/saveUser";
+const urlLocal = "http://192.168.1.7:8080/api/user/verificarEmail/";
 
 export default class RegisterUserScreen extends React.Component{
 
@@ -38,6 +41,14 @@ export default class RegisterUserScreen extends React.Component{
             isDisabledCep: false,
             isDisabledBairro: false,
             isDisabledRua: false,
+            isValid: false,
+            isInValid: false,
+            isPasswordEquals: false,
+            isInserting: false,
+            isCepFound: false,
+            isInsertingCep: false,
+            isInsertingCepValue: false,
+            isDeletingCep: false,
         }
     }
 
@@ -66,11 +77,28 @@ export default class RegisterUserScreen extends React.Component{
         this.setState({
             cep: LivrariaUtil.maskCep(cep)
         });
+
+        await this.verificandoCep(cep);
+    };
+
+    verificandoCep = async ()=>{
+        if(LivrariaUtil.isInserting(this.state.cep.split(''), arrayCep)){
+            arrayCep = this.state.cep.split('');
+            this.setState({
+                isDeletingCep: false,
+            });
+        }else if(LivrariaUtil.isDeleting(this.state.cep.split(''), arrayCep)){
+            arrayCep.pop();
+            this.setState({
+                isDeletingCep: true,
+            });
+        }
     };
 
     onConsulCep = async ()=>{
         const api = new ApiController();
         const objeto = await api.get('https://api.postmon.com.br/v1/cep/'+this.state.cep);
+
         if(!Array.isArray(objeto)){
             this.setState({
                 ...this.user.estado = objeto.estado_info.nome,
@@ -80,9 +108,14 @@ export default class RegisterUserScreen extends React.Component{
                 isDisabledCep: true,
                 isDisabledRua: this.user.rua != "" ? true : false,
                 isDisabledBairro: this.user.bairro != "" ? true : false,
+                isCepFound: true,
+                isInsertingCep: true,
             });
         }else {
-            alert("CEP não encontrado!");
+            this.setState({
+                isCepFound: false,
+                isInsertingCep: true,
+            });
         }
     };
 
@@ -144,6 +177,57 @@ export default class RegisterUserScreen extends React.Component{
         }
     };
 
+
+    verificarEmailExist = async (email: string)=>{
+        this.setState({
+            ...this.user.email = email,
+        });
+
+        let userController = new UserController;
+
+        const api = await userController.checkEmail(urlLocal+email);
+
+        if(api.status == 404){
+            this.setState({
+                isValid: true,
+                isInValid: false,
+            });
+        }else if(api.status == 200){
+            this.setState({
+                isValid: false,
+                isInValid: true,
+            });
+        }
+    };
+
+    verificarSenhas = async (confirmarSenha: string)=>{
+        this.setState({
+            confirmaSenha: confirmarSenha,
+        });
+
+        this.setState({
+            isInserting: true,
+            isPasswordEquals: LivrariaUtil.checkPasswords(this.user.senha, confirmarSenha),
+        });
+    };
+
+
+    showMessageCep(text: string){
+        if(this.state.isInsertingCep && !this.state.isCepFound){
+            return(
+                <TextComponent
+                    color={'red'}
+                    size={12}
+                    text={text}
+                />
+            );
+        }
+        if(this.state.isDeletingCep && !this.state.isCepFound && this.state.isInsertingCep){
+            console.log('Entrou...');
+            return;
+        }
+    }
+
     render(){
         return (
             <HeaderStackComponent
@@ -189,10 +273,30 @@ export default class RegisterUserScreen extends React.Component{
                                     </Icon>
                                     <Input
                                         value={this.user.email}
-                                        onChangeText={email => this.setState({
-                                            ...this.user.email = email
-                                        })}
+                                        onChangeText={email => this.verificarEmailExist(email)}
                                     />
+                                    {this.state.isValid == true && this.state.isInValid == false && (
+                                        [
+                                        <TextComponent
+                                            color={'green'}
+                                            size={12}
+                                            text={'Email está ok!'}
+                                        />,
+                                        <Icon>
+                                            <AntDesign color={'#694fad'} name={'check'} size={25} />
+                                        </Icon>]
+                                    )}
+                                    {this.state.isInValid == true && this.state.isValid == false && (
+                                        [
+                                            <TextComponent
+                                                color={'red'}
+                                                size={12}
+                                                text={'Email já Existe!'}
+                                            />,
+                                        <Icon>
+                                            <AntDesign name={'close'} size={25} color={'#694fad'}/>
+                                        </Icon>]
+                                    )}
                                 </Item>
                                 <Item>
                                     <Label>Senha</Label>
@@ -201,6 +305,7 @@ export default class RegisterUserScreen extends React.Component{
                                     </Icon>
                                     <Input
                                         value={this.user.senha}
+                                        secureTextEntry={true}
                                         onChangeText={senha => this.setState({
                                             ...this.user.senha = senha
                                         })}
@@ -213,10 +318,31 @@ export default class RegisterUserScreen extends React.Component{
                                     </Icon>
                                     <Input
                                         value={this.state.confirmaSenha}
-                                        onChangeText={senha => this.setState({
-                                            confirmaSenha: senha
-                                        })}
+                                        secureTextEntry={true}
+                                        onChangeText={senha => this.verificarSenhas(senha)}
                                     />
+                                    {this.state.isPasswordEquals == true && this.state.isInserting == true && (
+                                        [
+                                            <TextComponent
+                                                color={'green'}
+                                                size={12}
+                                                text={'Senhas iguais!'}
+                                            />,
+                                            <Icon>
+                                                <AntDesign color={'#694fad'} name={'check'} size={25} />
+                                            </Icon>]
+                                    )}
+                                    {this.state.isPasswordEquals == false && this.state.isInserting == true &&(
+                                        [
+                                            <TextComponent
+                                                color={'red'}
+                                                size={12}
+                                                text={'Senhas não são iguais!'}
+                                            />,
+                                            <Icon>
+                                                <AntDesign name={'close'} size={25} color={'#694fad'}/>
+                                            </Icon>]
+                                    )}
                                 </Item>
                                 <Item>
                                     <Label>Cep</Label>
@@ -230,6 +356,7 @@ export default class RegisterUserScreen extends React.Component{
                                         value={this.state.cep}
                                         onChangeText={cep => this.onMaskCep(cep)}
                                     />
+                                    {this.showMessageCep('Cep não encontrado!')}
                                     {this.state.isDisabledCep == false &&(
                                         <Icon onPress={() => this.onConsulCep()}>
                                             <AntDesign color={'#694fad'} size={25} name={'search1'} />
