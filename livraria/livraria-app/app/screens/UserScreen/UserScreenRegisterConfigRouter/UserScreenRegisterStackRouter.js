@@ -6,7 +6,7 @@ import RegisterUserRouterStack from "../RegisterUserScreenConfigRouter/RegisterU
 
 
 const UserScreenRouter = createStackNavigator({
-        UserScreenRegister:{
+        UserScreen:{
             screen: UserScreen,
         },
         RegisterUser:{

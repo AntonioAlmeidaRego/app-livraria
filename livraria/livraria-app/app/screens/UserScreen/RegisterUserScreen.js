@@ -18,6 +18,7 @@ import ApiController from "../../controllers/ApiController";
 import UserController from "../../controllers/UserController";
 import HeaderStackComponent from "../../components/HeaderStackComponent";
 import HeaderComponent from "../../components/HeaderComponent";
+import TextComponent from "../../components/TextComponent";
 
 const url = "http://192.168.1.7:8080/api/user/saveUser";
 
@@ -295,18 +296,22 @@ export default class RegisterUserScreen extends React.Component{
                                 <SpaceBottomComponent />
                                 <RowComponent>
                                     <LeftComponent>
-                                        <ContainerCenterComponent>
-                                            <Button onPress={() => this.onSaveUser()} success style={{width: '85%',}}>
-                                                <Text>Salvar Usuario</Text>
-                                            </Button>
-                                        </ContainerCenterComponent>
+                                        <Button onPress={() => this.onSaveUser()} success style={{width: '85%', justifyContent: 'center'}}>
+                                            <TextComponent
+                                                text={'Salvar Usuario'}
+                                                color={'#fff'}
+                                                size={18}
+                                            />
+                                        </Button>
                                     </LeftComponent>
                                     <RightComponent>
-                                        <ContainerCenterComponent>
-                                            <Button onPress={() => this.onClear()} danger style={{width: '85%',}}>
-                                                <Text>Limpar Campos</Text>
-                                            </Button>
-                                        </ContainerCenterComponent>
+                                        <Button onPress={() => this.onClear()} danger style={{width: '85%', justifyContent: 'center'}}>
+                                            <TextComponent
+                                                text={'Limpar Campos'}
+                                                color={'#fff'}
+                                                size={18}
+                                            />
+                                        </Button>
                                     </RightComponent>
                                 </RowComponent>
                             </Form>

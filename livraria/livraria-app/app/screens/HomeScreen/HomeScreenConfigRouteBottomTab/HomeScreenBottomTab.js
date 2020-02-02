@@ -37,7 +37,7 @@ const homeScreenBottom = createMaterialBottomTabNavigator(
             }
         },
 
-        UserScreenRegister:{
+        UserScreen:{
             screen: UserScreenRouter,
             navigationOptions:{
                 title: 'Usuário',
