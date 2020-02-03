@@ -213,7 +213,9 @@ export default class RegisterUserScreen extends React.Component{
 
 
     showMessageCep(text: string){
-        if(this.state.isInsertingCep && !this.state.isCepFound){
+        console.log();
+
+        if(this.state.isInsertingCep && !this.state.isCepFound && !this.state.isDeletingCep){
             return(
                 <TextComponent
                     color={'red'}
@@ -221,9 +223,7 @@ export default class RegisterUserScreen extends React.Component{
                     text={text}
                 />
             );
-        }
-        if(this.state.isDeletingCep && !this.state.isCepFound && this.state.isInsertingCep){
-            console.log('Entrou...');
+        }else if(this.state.isDeletingCep && !this.state.isCepFound && this.state.isInsertingCep){
             return;
         }
     }
