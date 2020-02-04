@@ -8,13 +8,31 @@ import User from "../../model/User";
 import StylesScreen from "../../styles/StylesScreen";
 import SpacePaddingBottomComponent from "../componentsSpace/SpacePaddingBottomComponent";
 import LayoutComponent from "../LayoutComponent";
-
+import UserController from "../../controllers/UserController";
+const urlLocal = "http://192.168.1.8:8080/api/user/autenticationUser";
 export default class LoginComponent extends React.Component{
 
     constructor(props, context) {
         super(props, context);
         this.user = new User('', '', '', '', '', '', '', '');
     }
+
+
+    autentication = async ()=>{
+       if(this.user.email != "" && this.user.senha != ""){
+           const userController = new UserController;
+           const data={
+               email: this.user.email,
+               senha: this.user.senha,
+           };
+
+           const api = await userController.userAutentication(urlLocal, data);
+
+           console.log(api.status);
+       }else{
+           alert("Preencha os campos");
+       }
+    };
 
 
     render() {
@@ -58,7 +76,7 @@ export default class LoginComponent extends React.Component{
                         </Item>
                         <SpacePaddingBottomComponent space={20}/>
                         <Item style={[StylesScreen.removeBorderBottom(), StylesScreen.createContainerButton()]}>
-                            <Button onPress={() => this.onSaveUser()} success style={[StylesScreen.createWidth('85%'), StylesScreen.createContainerButton()]}>
+                            <Button onPress={() => this.autentication()} success style={[StylesScreen.createWidth('85%'), StylesScreen.createContainerButton()]}>
                                 <Text style={StylesScreen.createText('#fff', 20, 'bold')}>Entrar</Text>
                             </Button>
                         </Item>

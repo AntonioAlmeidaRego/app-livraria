@@ -22,8 +22,8 @@ import TextComponent from "../../components/TextComponent";
 
 let arrayCep = [];
 
-const url = "http://192.168.1.7:8080/api/user/saveUser";
-const urlLocal = "http://192.168.1.7:8080/api/user/verificarEmail/";
+const url = "http://192.168.1.8:8080/api/user/saveUser";
+const urlLocal = "http://192.168.1.8:8080/api/user/verificarEmail/";
 
 export default class RegisterUserScreen extends React.Component{
 
@@ -154,6 +154,7 @@ export default class RegisterUserScreen extends React.Component{
 
     onSaveUser = async ()=>{
         const format = new FormatterUtil;
+        console.log(this.user.senha);
         if(!this.user.isEmpty()){
             const data ={
                 nome: this.user.nome,
