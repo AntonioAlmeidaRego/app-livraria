@@ -86,10 +86,12 @@ export default class RegisterUserScreen extends React.Component{
             arrayCep = this.state.cep.split('');
             this.setState({
                 isDeletingCep: false,
+                isInsertingCep: false,
             });
         }else if(LivrariaUtil.isDeleting(this.state.cep.split(''), arrayCep)){
             arrayCep.pop();
             this.setState({
+                isInsertingCep: false,
                 isDeletingCep: true,
             });
         }
@@ -212,19 +214,19 @@ export default class RegisterUserScreen extends React.Component{
     };
 
 
-    showMessageCep(text: string){
-        console.log();
-
-        if(this.state.isInsertingCep && !this.state.isCepFound && !this.state.isDeletingCep){
-            return(
+    showMessageCep(text: string) {
+        if (!this.state.isCepFound && this.state.isInsertingCep) {
+            return (
                 <TextComponent
                     color={'red'}
                     size={12}
                     text={text}
                 />
             );
-        }else if(this.state.isDeletingCep && !this.state.isCepFound && this.state.isInsertingCep){
-            return;
+        }else{
+            if(this.state.isDeletingCep){
+                return;
+            }
         }
     }
 
