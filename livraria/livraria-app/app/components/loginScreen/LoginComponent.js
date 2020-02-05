@@ -9,12 +9,17 @@ import StylesScreen from "../../styles/StylesScreen";
 import SpacePaddingBottomComponent from "../componentsSpace/SpacePaddingBottomComponent";
 import LayoutComponent from "../LayoutComponent";
 import UserController from "../../controllers/UserController";
+import TextComponent from "../TextComponent";
 const urlLocal = "http://192.168.1.8:8080/api/user/autenticationUser";
 export default class LoginComponent extends React.Component{
 
     constructor(props, context) {
         super(props, context);
         this.user = new User('', '', '', '', '', '', '', '');
+        this.state ={
+            isEmptyEmail: false,
+            isEmptyPassword: false,
+        }
     }
 
 
@@ -30,10 +35,34 @@ export default class LoginComponent extends React.Component{
 
            console.log(api.status);
        }else{
-           alert("Preencha os campos");
+
+          if(this.user.email == ""){
+              this.setState({
+                  isEmptyEmail: true,
+              });
+          }
+          if(this.user.senha == ""){
+              this.setState({
+                  isEmptyPassword: true,
+              });
+          }
        }
     };
 
+
+    isInsertingEmail = async (email)=>{
+        this.setState({
+            ...this.user.email = email,
+            isEmptyEmail: false,
+        });
+    };
+
+    isInsertingPassword = async (password)=>{
+        this.setState({
+            ...this.user.senha = password,
+            isEmptyPassword: false,
+        });
+    };
 
     render() {
         return (
@@ -55,10 +84,25 @@ export default class LoginComponent extends React.Component{
                                 value={this.user.email}
                                 autoCapitalize={'none'}
                                 keyboardType={'email-address'}
-                                onChangeText={email => this.setState({
-                                    ...this.user.email = email
-                                })}
+                                onChangeText={email => this.isInsertingEmail(email)}
                             />
+                            {this.state.isEmptyEmail && (
+                                [
+                                    <TextComponent
+                                        color={'red'}
+                                        size={12}
+                                        text={'Campo obrigatório!'}
+                                    />,
+                                <Icon>
+                                    <MaterialCommunityIcons name={'alert'} size={25} color={'red'}/>
+                                </Icon>
+                                    ]
+                            )}
+                            {
+                                !this.state.isEmptyEmail && (
+                                    undefined
+                                )
+                            }
                         </Item>
                         <Item>
                             <Label>Senha</Label>
@@ -69,10 +113,25 @@ export default class LoginComponent extends React.Component{
                                 value={this.user.senha}
                                 secureTextEntry={true}
                                 autoCapitalize={'none'}
-                                onChangeText={senha => this.setState({
-                                    ...this.user.senha = senha
-                                })}
+                                onChangeText={senha => this.isInsertingPassword(senha)}
                             />
+                            {this.state.isEmptyPassword && (
+                                [
+                                    <TextComponent
+                                        color={'red'}
+                                        size={12}
+                                        text={'Campo obrigatório!'}
+                                    />,
+                                    <Icon>
+                                        <MaterialCommunityIcons name={'alert'} size={25} color={'red'}/>
+                                    </Icon>
+                                ]
+                            )}
+                            {
+                                !this.state.isEmptyPassword && (
+                                    undefined
+                                )
+                            }
                         </Item>
                         <SpacePaddingBottomComponent space={20}/>
                         <Item style={[StylesScreen.removeBorderBottom(), StylesScreen.createContainerButton()]}>

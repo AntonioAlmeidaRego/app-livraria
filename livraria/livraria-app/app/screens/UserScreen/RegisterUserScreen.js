@@ -38,6 +38,18 @@ export default class RegisterUserScreen extends React.Component{
             data: null,
             confirmaSenha: '',
             cep: '',
+
+            isEmptyConfirmaSenha: false,
+            isEmptyCep: false,
+            isEmptyNome: false,
+            isEmptyEmail: false,
+            isEmptySenha: false,
+            isEmptyEstado: false,
+            isEmptyCidade: false,
+            isEmptyRua: false,
+            isEmptyBairro: false,
+            isEmptyData: false,
+
             isDisabledCep: false,
             isDisabledBairro: false,
             isDisabledRua: false,
@@ -62,6 +74,7 @@ export default class RegisterUserScreen extends React.Component{
                 let formatter = new FormatterUtil();
                 this.setState({
                     ...this.user.data = formatter.formatterDatePtBr(date),
+                    isEmptyData: false,
                 });
                 this.setState({
                     data: date,
@@ -75,7 +88,8 @@ export default class RegisterUserScreen extends React.Component{
 
     onMaskCep = async (cep: string)=>{
         this.setState({
-            cep: LivrariaUtil.maskCep(cep)
+            cep: LivrariaUtil.maskCep(cep),
+            isEmptyCep: false,
         });
 
         await this.verificandoCep(cep);
@@ -176,14 +190,107 @@ export default class RegisterUserScreen extends React.Component{
             }
             await this.onClear();
         }else{
-            alert("Informe todos os dados!!!");
+            if(this.user.nome == ""){
+                this.setState({
+                    isEmptyNome: true,
+                });
+            }
+            if(this.user.senha == ""){
+                this.setState({
+                    isEmptySenha: true,
+                });
+            }
+            if(this.user.email == ""){
+                this.setState({
+                    isEmptyEmail: true,
+                });
+            }
+            if(this.user.bairro == ""){
+                this.setState({
+                    isEmptyBairro: true,
+                });
+            }
+            if(this.user.rua == ""){
+                this.setState({
+                    isEmptyRua: true,
+                });
+            }
+            if(this.user.data == ""){
+                this.setState({
+                    isEmptyData: true,
+                });
+            }
+            if(this.user.cidade == ""){
+                this.setState({
+                    isEmptyCidade: true,
+                });
+            }
+            if(this.user.estado == ""){
+                this.setState({
+                    isEmptyEstado: true,
+                });
+            }
+            if(this.state.cep == ""){
+                this.setState({
+                    isEmptyCep: true,
+                });
+            }
+            if(this.state.confirmaSenha == ""){
+                this.setState({
+                    isEmptyConfirmaSenha: true,
+                });
+            }
         }
+    };
+
+
+    isInsertingNome = async (nome: string)=>{
+        this.setState({
+            ...this.user.nome = nome,
+            isEmptyNome: false,
+        });
+    };
+
+    isInsertingSenha = async (senha: string)=>{
+        this.setState({
+            ...this.user.senha = senha,
+            isEmptySenha: false,
+        })
+    };
+
+    isInsertingEstado = async (estado: string)=>{
+        this.setState({
+            ...this.user.estado = estado,
+            isEmptyEstado: false,
+        });
+    };
+
+    isInsertingCidade = async (cidade: string)=>{
+        this.setState({
+            ...this.user.cidade = cidade,
+            isEmptyCidade: false,
+        })
+    };
+
+    isInsertingRua = async (rua: string)=>{
+        this.setState({
+            ...this.user.rua = rua,
+            isEmptyRua: false,
+        });
+    };
+
+    isInsertingBairro = async (bairro: string) =>{
+        this.setState({
+            ...this.user.bairro = bairro,
+            isEmptyBairro: false,
+        });
     };
 
 
     verificarEmailExist = async (email: string)=>{
         this.setState({
             ...this.user.email = email,
+            isEmptyEmail: false,
         });
 
         let userController = new UserController;
@@ -206,6 +313,7 @@ export default class RegisterUserScreen extends React.Component{
     verificarSenhas = async (confirmarSenha: string)=>{
         this.setState({
             confirmaSenha: confirmarSenha,
+            isEmptyConfirmaSenha: false,
         });
 
         this.setState({
@@ -252,10 +360,25 @@ export default class RegisterUserScreen extends React.Component{
                                     </Icon>
                                     <Input
                                         value={this.user.nome}
-                                        onChangeText={nome => this.setState({
-                                            ...this.user.nome = nome
-                                        })}
+                                        onChangeText={nome => this.isInsertingNome(nome)}
                                     />
+                                    {this.state.isEmptyNome && (
+                                        [
+                                            <TextComponent
+                                                color={'red'}
+                                                size={12}
+                                                text={'Campo obrigatório!'}
+                                            />,
+                                            <Icon>
+                                                <MaterialCommunityIcons name={'alert'} size={25} color={'red'}/>
+                                            </Icon>
+                                        ]
+                                    )}
+                                    {
+                                        !this.state.isEmptyNome && (
+                                            undefined
+                                        )
+                                    }
                                 </Item>
                                 <Item>
                                     <Label>Data de Nascimento</Label>
@@ -268,6 +391,23 @@ export default class RegisterUserScreen extends React.Component{
                                         value={this.user.data}
                                         onTouchStart={() => this.showDatePickerTwo(new Date())}
                                     />
+                                    {this.state.isEmptyData && (
+                                        [
+                                            <TextComponent
+                                                color={'red'}
+                                                size={12}
+                                                text={'Campo obrigatório!'}
+                                            />,
+                                            <Icon>
+                                                <MaterialCommunityIcons name={'alert'} size={25} color={'red'}/>
+                                            </Icon>
+                                        ]
+                                    )}
+                                    {
+                                        !this.state.isEmptyData && (
+                                            undefined
+                                        )
+                                    }
                                 </Item>
                                 <Item>
                                     <Label>Email</Label>
@@ -300,6 +440,23 @@ export default class RegisterUserScreen extends React.Component{
                                             <AntDesign name={'close'} size={25} color={'#694fad'}/>
                                         </Icon>]
                                     )}
+                                    {this.state.isEmptyEmail && (
+                                        [
+                                            <TextComponent
+                                                color={'red'}
+                                                size={12}
+                                                text={'Campo obrigatório!'}
+                                            />,
+                                            <Icon>
+                                                <MaterialCommunityIcons name={'alert'} size={25} color={'red'}/>
+                                            </Icon>
+                                        ]
+                                    )}
+                                    {
+                                        !this.state.isEmptyEmail && (
+                                            undefined
+                                        )
+                                    }
                                 </Item>
                                 <Item>
                                     <Label>Senha</Label>
@@ -309,10 +466,25 @@ export default class RegisterUserScreen extends React.Component{
                                     <Input
                                         value={this.user.senha}
                                         secureTextEntry={true}
-                                        onChangeText={senha => this.setState({
-                                            ...this.user.senha = senha
-                                        })}
+                                        onChangeText={senha => this.isInsertingSenha(senha)}
                                     />
+                                    {this.state.isEmptySenha && (
+                                        [
+                                            <TextComponent
+                                                color={'red'}
+                                                size={12}
+                                                text={'Campo obrigatório!'}
+                                            />,
+                                            <Icon>
+                                                <MaterialCommunityIcons name={'alert'} size={25} color={'red'}/>
+                                            </Icon>
+                                        ]
+                                    )}
+                                    {
+                                        !this.state.isEmptySenha && (
+                                            undefined
+                                        )
+                                    }
                                 </Item>
                                 <Item>
                                     <Label>Confirme Senha</Label>
@@ -346,6 +518,23 @@ export default class RegisterUserScreen extends React.Component{
                                                 <AntDesign name={'close'} size={25} color={'#694fad'}/>
                                             </Icon>]
                                     )}
+                                    {this.state.isEmptyConfirmaSenha && (
+                                        [
+                                            <TextComponent
+                                                color={'red'}
+                                                size={12}
+                                                text={'Campo obrigatório!'}
+                                            />,
+                                            <Icon>
+                                                <MaterialCommunityIcons name={'alert'} size={25} color={'red'}/>
+                                            </Icon>
+                                        ]
+                                    )}
+                                    {
+                                        !this.state.isEmptyConfirmaSenha && (
+                                            undefined
+                                        )
+                                    }
                                 </Item>
                                 <Item>
                                     <Label>Cep</Label>
@@ -370,6 +559,23 @@ export default class RegisterUserScreen extends React.Component{
                                             <FontAwesome name={'remove'} size={25} color={'#694fad'} />
                                         </Icon>
                                     )}
+                                    {this.state.isEmptyCep && (
+                                        [
+                                            <TextComponent
+                                                color={'red'}
+                                                size={12}
+                                                text={'Campo obrigatório!'}
+                                            />,
+                                            <Icon>
+                                                <MaterialCommunityIcons name={'alert'} size={25} color={'red'}/>
+                                            </Icon>
+                                        ]
+                                    )}
+                                    {
+                                        !this.state.isEmptyCep && (
+                                            undefined
+                                        )
+                                    }
                                 </Item>
                                 <Item>
                                     <Label>Estado</Label>
@@ -379,10 +585,25 @@ export default class RegisterUserScreen extends React.Component{
                                     <Input
                                         value={this.user.estado}
                                         disabled={true}
-                                        onChangeText={estado => this.setState({
-                                            ...this.user.estado = estado
-                                        })}
+                                        onChangeText={estado => this.isInsertingEstado(estado)}
                                     />
+                                    {this.state.isEmptyEstado && (
+                                        [
+                                            <TextComponent
+                                                color={'red'}
+                                                size={12}
+                                                text={'Campo obrigatório!'}
+                                            />,
+                                            <Icon>
+                                                <MaterialCommunityIcons name={'alert'} size={25} color={'red'}/>
+                                            </Icon>
+                                        ]
+                                    )}
+                                    {
+                                        !this.state.isEmptyEstado && (
+                                            undefined
+                                        )
+                                    }
                                 </Item>
                                 <Item>
                                     <Label>Municipio</Label>
@@ -392,10 +613,25 @@ export default class RegisterUserScreen extends React.Component{
                                     <Input
                                         value={this.user.cidade}
                                         disabled={true}
-                                        onChangeText={cidade => this.setState({
-                                            ...this.user.cidade = cidade
-                                        })}
+                                        onChangeText={cidade => this.isInsertingCidade(cidade)}
                                     />
+                                    {this.state.isEmptyCidade && (
+                                        [
+                                            <TextComponent
+                                                color={'red'}
+                                                size={12}
+                                                text={'Campo obrigatório!'}
+                                            />,
+                                            <Icon>
+                                                <MaterialCommunityIcons name={'alert'} size={25} color={'red'}/>
+                                            </Icon>
+                                        ]
+                                    )}
+                                    {
+                                        !this.state.isEmptyCidade && (
+                                            undefined
+                                        )
+                                    }
                                 </Item>
                                 <Item>
                                     <Label>Rua</Label>
@@ -405,10 +641,25 @@ export default class RegisterUserScreen extends React.Component{
                                     <Input
                                         value={this.user.rua}
                                         disabled={this.state.isDisabledRua}
-                                        onChangeText={rua => this.setState({
-                                            ...this.user.rua = rua
-                                        })}
+                                        onChangeText={rua => this.isInsertingRua(rua)}
                                     />
+                                    {this.state.isEmptyRua && (
+                                        [
+                                            <TextComponent
+                                                color={'red'}
+                                                size={12}
+                                                text={'Campo obrigatório!'}
+                                            />,
+                                            <Icon>
+                                                <MaterialCommunityIcons name={'alert'} size={25} color={'red'}/>
+                                            </Icon>
+                                        ]
+                                    )}
+                                    {
+                                        !this.state.isEmptyRua && (
+                                            undefined
+                                        )
+                                    }
                                 </Item>
                                 <Item>
                                     <Label>Bairro</Label>
@@ -418,10 +669,25 @@ export default class RegisterUserScreen extends React.Component{
                                     <Input
                                         value={this.user.bairro}
                                         disabled={this.state.isDisabledBairro}
-                                        onChangeText={bairro => this.setState({
-                                            ...this.user.bairro = bairro
-                                        })}
+                                        onChangeText={bairro => this.isInsertingBairro(bairro)}
                                     />
+                                    {this.state.isEmptyBairro && (
+                                        [
+                                            <TextComponent
+                                                color={'red'}
+                                                size={12}
+                                                text={'Campo obrigatório!'}
+                                            />,
+                                            <Icon>
+                                                <MaterialCommunityIcons name={'alert'} size={25} color={'red'}/>
+                                            </Icon>
+                                        ]
+                                    )}
+                                    {
+                                        !this.state.isEmptyBairro && (
+                                            undefined
+                                        )
+                                    }
                                 </Item>
                                 <SpaceBottomComponent />
                                 <RowComponent>
