@@ -10,7 +10,7 @@ import SpacePaddingBottomComponent from "../componentsSpace/SpacePaddingBottomCo
 import LayoutComponent from "../LayoutComponent";
 import UserController from "../../controllers/UserController";
 import TextComponent from "../TextComponent";
-const urlLocal = "http://192.168.1.8:8080/api/user/autenticationUser";
+const urlLocal = "http://192.168.1.7:8080/api/user/autenticationUser";
 export default class LoginComponent extends React.Component{
 
     constructor(props, context) {

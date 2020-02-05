@@ -22,8 +22,8 @@ import TextComponent from "../../components/TextComponent";
 
 let arrayCep = [];
 
-const url = "http://192.168.1.8:8080/api/user/saveUser";
-const urlLocal = "http://192.168.1.8:8080/api/user/verificarEmail/";
+const url = "http://192.168.1.7:8080/api/user/saveUser";
+const urlLocal = "http://192.168.1.7:8080/api/user/verificarEmail/";
 
 export default class RegisterUserScreen extends React.Component{
 
@@ -125,6 +125,9 @@ export default class RegisterUserScreen extends React.Component{
                 isDisabledRua: this.user.rua != "" ? true : false,
                 isDisabledBairro: this.user.bairro != "" ? true : false,
                 isCepFound: true,
+                isEmptyBairro: objeto.bairro != "" ? false : undefined,
+                isEmptyEstado: objeto.estado_info.nome != "" ? false : undefined,
+                isEmptyCidade: objeto.cidade != "" ? false : undefined,
                 isInsertingCep: true,
             });
         }else {
