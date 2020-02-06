@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, ActivityIndicator} from 'react-native';
 import {Header, Body, Content, Container, Tabs, Tab, Icon, Form, Item, Label, Input, Button, Thumbnail} from 'native-base';
 import SpaceTopComponent from "../componentsSpace/SpaceTopComponent";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -10,6 +10,9 @@ import SpacePaddingBottomComponent from "../componentsSpace/SpacePaddingBottomCo
 import LayoutComponent from "../LayoutComponent";
 import UserController from "../../controllers/UserController";
 import TextComponent from "../TextComponent";
+import CenterComponent from "../CenterComponent";
+import SpaceBottomComponent from "../componentsSpace/SpaceBottomComponent";
+import SessionController from "../../controllers/SessionController";
 const urlLocal = "http://192.168.1.7:8080/api/user/autenticationUser";
 export default class LoginComponent extends React.Component{
 
@@ -19,21 +22,46 @@ export default class LoginComponent extends React.Component{
         this.state ={
             isEmptyEmail: false,
             isEmptyPassword: false,
+            isInvalidUser: false,
+            isButtonClick: false,
         }
     }
 
 
     autentication = async ()=>{
        if(this.user.email != "" && this.user.senha != ""){
+
            const userController = new UserController;
            const data={
                email: this.user.email,
                senha: this.user.senha,
            };
 
-           const api = await userController.userAutentication(urlLocal, data);
 
-           console.log(api.status);
+           this.setState({
+               isButtonClick: true,
+           });
+
+
+          const api = await userController.userAutentication(urlLocal, data);
+
+
+          if(api.status == 200){
+
+              const session = new SessionController;
+
+              await session.criarSession("usuario-logado", await api.json());
+
+              this.setState({
+                 isInvalidUser: false,
+                 isButtonClick: false,
+              });
+          }else if (api.status == 404){
+              this.setState({
+                  isInvalidUser: true,
+                  isButtonClick: false,
+              });
+          }
        }else{
 
           if(this.user.email == ""){
@@ -64,6 +92,23 @@ export default class LoginComponent extends React.Component{
         });
     };
 
+    showButtom(){
+        if(!this.state.isButtonClick) {
+            return (
+                <Button onPress={() => this.autentication()} success style={[StylesScreen.createWidth('85%'), StylesScreen.createContainerButton()]}>
+                    <Text style={StylesScreen.createText('#fff', 20, 'bold')}>Entrar</Text>
+                </Button>
+            );
+        }
+        else if(this.state.isButtonClick){
+            return (
+                <Button disabled={true} onPress={() => this.autentication()} success style={[StylesScreen.createWidth('85%'), StylesScreen.createContainerButton()]}>
+                    <ActivityIndicator color={'#fff'}/>
+                </Button>
+            );
+        }
+    };
+
     render() {
         return (
             <Container>
@@ -75,6 +120,19 @@ export default class LoginComponent extends React.Component{
                 </LayoutComponent>
                 <ContainerCenterComponent>
                     <Form>
+                        {this.state.isInvalidUser && (
+                            <Item style={StylesScreen.removeBorderBottom()}>
+                                <CenterComponent>
+                                    <TextComponent
+                                        color={'red'}
+                                        size={18}
+                                        upper
+                                        text={'Usuário invalido!'}
+                                    />
+                                    <SpaceBottomComponent space={3} />
+                                </CenterComponent>
+                            </Item>
+                        )}
                         <Item>
                             <Label>Email</Label>
                             <Icon>
@@ -135,9 +193,7 @@ export default class LoginComponent extends React.Component{
                         </Item>
                         <SpacePaddingBottomComponent space={20}/>
                         <Item style={[StylesScreen.removeBorderBottom(), StylesScreen.createContainerButton()]}>
-                            <Button onPress={() => this.autentication()} success style={[StylesScreen.createWidth('85%'), StylesScreen.createContainerButton()]}>
-                                <Text style={StylesScreen.createText('#fff', 20, 'bold')}>Entrar</Text>
-                            </Button>
+                            {this.showButtom()}
                         </Item>
                         <SpacePaddingBottomComponent space={20}/>
                         <Item />
