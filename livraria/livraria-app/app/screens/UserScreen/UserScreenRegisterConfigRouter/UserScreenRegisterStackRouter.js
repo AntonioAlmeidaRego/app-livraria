@@ -3,6 +3,7 @@ import {createSwitchNavigator, createAppContainer, createStackNavigator} from 'r
 import UserScreen from "../UserScreen";
 import RegisterUserScreen from "../RegisterUserScreen";
 import RegisterUserRouterStack from "../RegisterUserScreenConfigRouter/RegisterUserScreenRouterStack";
+import MyAccountRouterStack from "../MyAccountScreenConfigRouter/MyAccountRouterStack";
 
 
 const UserScreenRouter = createStackNavigator({
@@ -14,7 +15,13 @@ const UserScreenRouter = createStackNavigator({
             navigationOptions:{
                 header: null,
             }
-        }
+        },
+        MyAccount:{
+            screen: MyAccountRouterStack,
+            navigationOptions:{
+                header: null,
+            }
+        },
 
     },
     {

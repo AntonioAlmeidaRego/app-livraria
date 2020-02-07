@@ -1,18 +1,41 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {Header, Body, Content, Container, Tabs, Tab, Icon} from 'native-base';
-import StylesScreen from '../../styles/StylesScreen';
-import TabListagemLivros from '../../tabs/TabListagemLivros';
-import TabListagemPromocoes from '../../tabs/TabListagemPromocoes';
 import HeaderComponent from '../../components/HeaderComponent';
-import TabListagemCategorias from '../../tabs/TabListagemCategorias';
-import IconHome from 'react-native-vector-icons/Octicons';
-import TabRegisterUser from "../../tabs/TabRegisterUser";
-import HeaderStackComponent from "../../components/HeaderStackComponent";
-import LoginComponent from "../../components/loginScreen/LoginComponent";
+import LoginComponent from "../../components/UserScreenComponent/LoginComponent";
+import SessionController from "../../controllers/SessionController";
+import MyAccountComponent from "../../components/UserScreenComponent/MyAccountComponent";
 
 
 export default class UserScreen extends React.Component{
+
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            isScreenUser: false,
+            isScreenLogin: false,
+            usuario: {},
+        };
+    }
+
+
+    async componentDidMount(): void {
+        let session = new SessionController;
+        const object = await session.getSession("usuario-logado");
+
+        if(!Array.isArray(object)){
+            this.setState({
+                usuario: object,
+                isScreenUser: true,
+                isScreenLogin: false,
+            });
+        }else{
+            this.setState({
+                isScreenUser: false,
+                isScreenLogin: true,
+            });
+        }
+    }
 
     detalhe = async (objeto)=>{
         this.props.navigation.navigate("ListagemLivrosLinkedCategoria", {
@@ -31,6 +54,16 @@ export default class UserScreen extends React.Component{
         header: null,
     };
 
+    returnScreen(){
+        if(this.state.isScreenLogin){
+            return (
+                <LoginComponent register={() => this.props.navigation.push('RegisterUser')} />
+            )
+        }else if(this.state.isScreenUser){
+            this.props.navigation.navigate('MyAccount');
+        }
+
+    }
 
     render() {
         return (
@@ -41,7 +74,7 @@ export default class UserScreen extends React.Component{
                 }
                 background={'#694fad'}
                 children={
-                    <LoginComponent register={() => this.props.navigation.push('RegisterUser')} />
+                    this.returnScreen()
                 }
             />
         );

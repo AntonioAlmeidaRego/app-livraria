@@ -8,7 +8,7 @@ export default class HeaderComponent extends React.Component{
     render() {
         return (
             <Container>
-                <Content>
+                <Content style={StylesScreen.createColorBackground(this.props.backgroundContent)}>
                     <Header style={StylesScreen.createColorBackground(this.props.background)}>
                         {this.props.iconLeft !== undefined && (
                             <Left>

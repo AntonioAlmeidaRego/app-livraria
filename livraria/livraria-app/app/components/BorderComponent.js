@@ -5,7 +5,6 @@ import {Button} from "native-base";
 
 export default class BorderComponent extends React.Component{
     render() {
-        console.log(this.props.borderBottom);
         return (
             [this.props.button !== undefined && (
                 <Button style={[StylesScreen.createWidth(Dimensions.get('window').width), StylesScreen.createHeight(220)]} transparent onPress={() => this.props.button(this.props.object)}>
@@ -28,6 +27,7 @@ export default class BorderComponent extends React.Component{
             ),
             this.props.button === undefined &&(
                 <View style={[
+                    this.props.background !== undefined ? StylesScreen.createBackground(this.props.background) : null,
                     StylesScreen.createWidth( this.props.width),
                     StylesScreen.createHeight(this.props.height),
                     StylesScreen.createBorderRadius(this.props.radius),

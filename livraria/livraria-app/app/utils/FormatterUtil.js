@@ -18,6 +18,13 @@ export default class FormatterUtil {
         return dataConvert+"/"+mesConvert+"/"+ date.getFullYear();
     }
 
+    formatterDatePtBr(data){
+       /* const dateStr = data.split('-');
+        return new Date(parseInt(dateStr[2]), parseInt(dateStr[1]), parseInt(dateStr[0])).toDateString();*/
+       console.log(data.toString());
+        return "";
+    }
+
     formatterDateUSA(data: string){
         const dateStr = data.split('/');
         return new Date(parseInt(dateStr[2]), parseInt(dateStr[1]), parseInt(dateStr[0]));
