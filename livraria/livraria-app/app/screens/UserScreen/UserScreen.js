@@ -57,7 +57,7 @@ export default class UserScreen extends React.Component{
     returnScreen(){
         if(this.state.isScreenLogin){
             return (
-                <LoginComponent register={() => this.props.navigation.push('RegisterUser')} />
+                <LoginComponent action={() => this.props.navigation.navigate('MyAccount')} register={() => this.props.navigation.push('RegisterUser')} />
             )
         }else if(this.state.isScreenUser){
             this.props.navigation.navigate('MyAccount');

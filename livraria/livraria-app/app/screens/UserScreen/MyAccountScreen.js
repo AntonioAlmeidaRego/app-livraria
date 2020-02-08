@@ -39,8 +39,10 @@ export default class MyAccountScreen extends React.Component{
                             sizeTextEmail={16}
                             colorTextEmail={'#585858'}
                             colorTextData={'#585858'}
-                            data={formatterUtil.formatterDatePtBr(this.state.usuario.dataNascimento)}
+                            data={this.state.usuario.dataNascimento}
                             sizeTextData={16}
+
+
                         />
                     </View>
                 }

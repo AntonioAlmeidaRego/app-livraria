@@ -19,12 +19,13 @@ import UserController from "../../controllers/UserController";
 import HeaderStackComponent from "../../components/HeaderStackComponent";
 import HeaderComponent from "../../components/HeaderComponent";
 import TextComponent from "../../components/TextComponent";
+import LivrariaUtilImpl from "../../utils/LivrariaUtilImpl";
 
 let arrayCep = [];
 
 const url = "http://192.168.1.7:8080/api/user/saveUser";
 const urlLocal = "http://192.168.1.7:8080/api/user/verificarEmail/";
-
+const livrariaUtil = new LivrariaUtilImpl();
 export default class RegisterUserScreen extends React.Component{
 
     static navigationOptions ={
@@ -49,7 +50,7 @@ export default class RegisterUserScreen extends React.Component{
             isEmptyRua: false,
             isEmptyBairro: false,
             isEmptyData: false,
-
+            isEmptyPhone: false,
             isDisabledCep: false,
             isDisabledBairro: false,
             isDisabledRua: false,
@@ -72,12 +73,10 @@ export default class RegisterUserScreen extends React.Component{
                 let newState = {};
                 newState['date'] = date;
                 let formatter = new FormatterUtil();
+
                 this.setState({
                     ...this.user.data = formatter.formatterDatePtBr(date),
                     isEmptyData: false,
-                });
-                this.setState({
-                    data: date,
                 });
             }
         } catch (error) {
@@ -88,7 +87,7 @@ export default class RegisterUserScreen extends React.Component{
 
     onMaskCep = async (cep: string)=>{
         this.setState({
-            cep: LivrariaUtil.maskCep(cep),
+            cep: livrariaUtil.maskCep(cep),
             isEmptyCep: false,
         });
 
@@ -148,11 +147,33 @@ export default class RegisterUserScreen extends React.Component{
             ...this.user.senha = "",
             ...this.user.email = "",
             ...this.user.nome = "",
+            ...this.user.telefone = "",
+            data: null,
             confirmaSenha: '',
             cep: '',
-            isDisabledRua: false,
-            isDisabledBairro: false,
+
+            isEmptyConfirmaSenha: false,
+            isEmptyCep: false,
+            isEmptyNome: false,
+            isEmptyEmail: false,
+            isEmptySenha: false,
+            isEmptyEstado: false,
+            isEmptyCidade: false,
+            isEmptyRua: false,
+            isEmptyBairro: false,
+            isEmptyData: false,
+            isEmptyPhone: false,
             isDisabledCep: false,
+            isDisabledBairro: false,
+            isDisabledRua: false,
+            isValid: false,
+            isInValid: false,
+            isPasswordEquals: false,
+            isInserting: false,
+            isCepFound: false,
+            isInsertingCep: false,
+            isInsertingCepValue: false,
+            isDeletingCep: false,
         });
     };
 
@@ -179,9 +200,10 @@ export default class RegisterUserScreen extends React.Component{
                 senha: this.user.senha,
                 rua: this.user.rua,
                 bairro: this.user.bairro,
-                dataNascimento: format.formatterDateUSA(this.user.data),
+                dataNascimento: this.user.data,
                 municipio: this.user.cidade,
-                estado: this.user.estado
+                estado: this.user.estado,
+                telefone: this.user.telefone,
             };
 
             const userController = new UserController;
@@ -243,6 +265,11 @@ export default class RegisterUserScreen extends React.Component{
                     isEmptyConfirmaSenha: true,
                 });
             }
+            if(this.user.telefone == ""){
+                this.setState({
+                    isEmptyPhone: true,
+                });
+            }
         }
     };
 
@@ -265,6 +292,13 @@ export default class RegisterUserScreen extends React.Component{
         this.setState({
             ...this.user.estado = estado,
             isEmptyEstado: false,
+        });
+    };
+
+    isInsertingPhone = async (phone: string)=>{
+        this.setState({
+            ...this.user.telefone = "",
+            isEmptyPhone: false,
         });
     };
 
@@ -535,6 +569,35 @@ export default class RegisterUserScreen extends React.Component{
                                     )}
                                     {
                                         !this.state.isEmptyConfirmaSenha && (
+                                            undefined
+                                        )
+                                    }
+                                </Item>
+                                <Item>
+                                    <Label>Telefone</Label>
+                                    <Icon>
+                                        <MaterialCommunityIcons name={'phone'} size={25} color={'#694fad'}/>
+                                    </Icon>
+                                    <Input
+                                        value={this.user.telefone}
+                                        keyboardType={'numeric'}
+                                        placeholder={"(__) _____-____"}
+                                        onChangeText={phone => this.isInsertingPhone(phone)}
+                                    />
+                                    {this.state.isEmptyPhone && (
+                                        [
+                                            <TextComponent
+                                                color={'red'}
+                                                size={12}
+                                                text={'Campo obrigatório!'}
+                                            />,
+                                            <Icon>
+                                                <MaterialCommunityIcons name={'alert'} size={25} color={'red'}/>
+                                            </Icon>
+                                        ]
+                                    )}
+                                    {
+                                        !this.state.isEmptyPhone && (
                                             undefined
                                         )
                                     }

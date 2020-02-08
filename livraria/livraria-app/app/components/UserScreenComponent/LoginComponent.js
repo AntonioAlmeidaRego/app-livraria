@@ -56,6 +56,8 @@ export default class LoginComponent extends React.Component{
                  isInvalidUser: false,
                  isButtonClick: false,
               });
+
+              this.props.action();
           }else if (api.status == 404){
               this.setState({
                   isInvalidUser: true,

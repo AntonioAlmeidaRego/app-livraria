@@ -1,6 +1,6 @@
 export default class User {
     constructor(nome: string, data: string, email: string, senha: string,
-                estado: string, cidade: string, rua: string, bairro: string) {
+                estado: string, cidade: string, rua: string, bairro: string, telefone: string) {
         this._nome = nome;
         this._data = data;
         this._email = email;
@@ -9,6 +9,7 @@ export default class User {
         this._cidade = cidade;
         this._rua = rua;
         this._bairro = bairro;
+        this._telefone = telefone;
     }
 
 
@@ -87,6 +88,14 @@ export default class User {
         return true;
     }
 
+    get telefone(): string {
+        return this._telefone;
+    }
+
+    set telefone(value: string) {
+        this._telefone = value;
+    }
+
     clear(){
         this.nome = "";
         this.data = "";
@@ -96,5 +105,6 @@ export default class User {
         this.cidade =  "";
         this.rua = "";
         this.bairro =  "";
+        this.telefone = "";
     }
 }
