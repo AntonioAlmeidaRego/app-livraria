@@ -95,7 +95,7 @@ export default class RegisterUserScreen extends React.Component{
     };
 
     verificandoCep = async ()=>{
-        if(LivrariaUtil.isInserting(this.state.cep.split(''), arrayCep)){
+        /*if(LivrariaUtil.isInserting(this.state.cep.split(''), arrayCep)){
             arrayCep = this.state.cep.split('');
             this.setState({
                 isDeletingCep: false,
@@ -107,7 +107,7 @@ export default class RegisterUserScreen extends React.Component{
                 isInsertingCep: false,
                 isDeletingCep: true,
             });
-        }
+        }*/
     };
 
     onConsulCep = async ()=>{
@@ -297,7 +297,7 @@ export default class RegisterUserScreen extends React.Component{
 
     isInsertingPhone = async (phone: string)=>{
         this.setState({
-            ...this.user.telefone = "",
+            ...this.user.telefone = livrariaUtil.maskPhone(phone),
             isEmptyPhone: false,
         });
     };

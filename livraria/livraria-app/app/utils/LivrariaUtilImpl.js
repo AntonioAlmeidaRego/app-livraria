@@ -104,107 +104,13 @@ export default class LivrariaUtilImpl extends LivrariaUtil{
         return str;
     }
 
-    static maskPhone(value: string): string{
-        const phone = value.split('');
-
-        if(this.isInserting(phone, arrayPhone)){
-            /*if((!this.findCharacter(',', phone, 0)) && (!this.findCharacter(',', phone, 1))
-                && (!this.findCharacter(',', phone, 2)) &&
-                (!this.findCharacter(',', phone, 4)) && (!this.findCharacter(',', phone, 5)) &&
-                (!this.findCharacter(',', phone, 6)) && (!this.findCharacter(',', phone, 8)) &&
-                (!this.findCharacter(',', phone, 9)) && (!this.findCharacter(',', phone, 10))  &&
-                (!this.findCharacter(',', phone, 12)) && (!this.findCharacter(',', phone, 13))
-                &&
-                (!this.findCharacter('.', phone, 0)) && (!this.findCharacter('.', phone, 1))
-                && (!this.findCharacter('.', phone, 2)) &&
-                (!this.findCharacter('.', phone, 4)) && (!this.findCharacter('.', phone, 5)) &&
-                (!this.findCharacter('.', phone, 6)) && (!this.findCharacter('.', phone, 8)) &&
-                (!this.findCharacter('.', phone, 9)) && (!this.findCharacter('.', phone, 10))  &&
-                (!this.findCharacter('.', phone, 12)) && (!this.findCharacter('.', phone, 13))
-                &&
-                (!this.findCharacter('-', phone, 0)) && (!this.findCharacter('-', phone, 1))
-                && (!this.findCharacter('-', phone, 2)) &&
-                (!this.findCharacter('-', phone, 4)) && (!this.findCharacter('-', phone, 5)) &&
-                (!this.findCharacter('-', phone, 6)) && (!this.findCharacter('-', phone, 8)) &&
-                (!this.findCharacter('-', phone, 9)) && (!this.findCharacter('-', phone, 10))  &&
-                (!this.findCharacter('-', phone, 12)) && (!this.findCharacter('-', phone, 13))
-                &&
-                (!this.findCharacter(';', phone, 0)) && (!this.findCharacter(';', phone, 1))
-                && (!this.findCharacter(';', phone, 2)) &&
-                (!this.findCharacter(';', phone, 4)) && (!this.findCharacter(';', phone, 5)) &&
-                (!this.findCharacter(';', phone, 6)) && (!this.findCharacter(';', phone, 8)) &&
-                (!this.findCharacter(';', phone, 9)) && (!this.findCharacter(';', phone, 10))
-                && (!this.findCharacter(';', phone, 12)) && (!this.findCharacter(';', phone, 13))
-                &&
-                (!this.findCharacter('_', phone, 0)) && (!this.findCharacter('_', phone, 1))
-                && (!this.findCharacter('_', phone, 2)) &&
-                (!this.findCharacter('_', phone, 4)) &&
-                (!this.findCharacter('_', phone, 5)) &&
-                (!this.findCharacter('_', phone, 6)) &&
-                (!this.findCharacter('_', phone, 8)) &&
-                (!this.findCharacter('_', phone, 9))
-                && (!this.findCharacter('_', phone, 10))
-                && (!this.findCharacter('_', phone, 12)) && (!this.findCharacter('_', phone, 13))
-                &&
-                (!this.findCharacter(' ', phone, 0)) && (!this.findCharacter(' ', phone, 1))
-                && (!this.findCharacter(' ', phone, 2)) &&
-                (!this.findCharacter(' ', phone, 4)) && (!this.findCharacter(' ', phone, 5)) &&
-                (!this.findCharacter(' ', phone, 6)) && (!this.findCharacter(' ', phone, 8))
-                &&
-                (!this.findCharacter(' ', phone, 9))
-                &&
-                (!this.findCharacter(' ', phone, 10))
-                &&
-                (!this.findCharacter(' ', phone, 12)) && (!this.findCharacter(' ', phone, 13))){
-                arrayPhone = phone;
-            }else{
-                return value.substring(0, value.length-1);
-            }*/
-
-
-
-        }else if(this.isDeleting(phone, arrayPhone)){
-            arrayPhone.pop();
-            if(!this.findCharacter('.', phone, 3)){
-                inCPFPos2 = false;
-            }else if(!this.findCharacter('.', phone, 7)){
-                inCPFPos6 = false;
-            }else if(!this.findCharacter('-', phone, 11)){
-                inCPFPos9 = false;
-            }
-        }
-
-        let str = [];
-
-        for(let i = 0; i < phone.length;i++){
-            if(i == 0 && !inPhonePos0){
-                str += "(" + phone[i];
-                inPhonePos0 = true;
-            }else if(i == 2 && !inPhonePos3){
-                str += phone[i] + ")";
-                inPhonePos3 = true;
-            }else if(i == 3 && !inPhonePos4){
-                str += phone[i] + " ";
-                inPhonePos4 = true;
-            }else if(i == 10 && !inPhonePos10){
-                str += phone[i] + "-";
-                inPhonePos10 = true;
-            }else {
-                str += phone[i];
-            }
-        }
-        return str;
-    }
-
-
     maskPhone(phone: string): string {
         return super.maskPhone(phone);
     }
 
-    maskCep(cep: string): string {
-        let maskCepAtrr = new MaskCep(cep);
-        return maskCepAtrr.mask();
-    }
+     maskCep(cep: string): string {
+         return super.maskCep(cep);
+     }
 
     maskCpf(cpf: string): string {
         return super.maskCpf(cpf);
