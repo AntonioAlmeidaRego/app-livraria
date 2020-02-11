@@ -13,6 +13,7 @@ import SpacePaddingTopComponent from "../componentsSpace/SpacePaddingTopComponen
 import RightComponent from "../RightComponent";
 import CenterComponent from "../CenterComponent";
 import SpaceRightComponent from "../componentsSpace/SpaceRightComponent";
+import SpacePaddingBottomComponent from "../componentsSpace/SpacePaddingBottomComponent";
 
 export default class UserDataComponent extends React.Component{
     render() {
@@ -24,57 +25,60 @@ export default class UserDataComponent extends React.Component{
                         <SpacePaddingTopComponent space={5} />
                         <LeftComponent>
                             <TextComponent
-                                color={this.props.colorTextName}
-                                text={this.props.nomeUser}
-                                size={this.props.sizeTextName}
+                                color={this.props.colorTextOne}
+                                text={this.props.oneText}
+                                size={this.props.sizeTextOne}
                                 upper={this.props.upper}
                             />
                         </LeftComponent>
                         <SpacePaddingTopComponent space={15} />
                         <LeftComponent>
                             <TextComponent
-                                color={this.props.colorTextEmail}
-                                text={this.props.emailUser}
-                                size={this.props.sizeTextEmail}
+                                color={this.props.colorTextTwo}
+                                text={this.props.twoText}
+                                size={this.props.sizeTextTwo}
                                 upper={this.props.upper}
                             />
                         </LeftComponent>
                         <SpacePaddingTopComponent space={5} />
                         <LeftComponent>
                             <TextComponent
-                                color={this.props.colorTextData}
-                                text={this.props.data}
-                                size={this.props.sizeTextData}
+                                color={this.props.colorTextThree}
+                                text={this.props.threeText}
+                                size={this.props.sizeTextThree}Text
                                 upper={this.props.upper}
                             />
                         </LeftComponent>
                         <SpacePaddingTopComponent space={5} />
                         <LeftComponent>
                             <TextComponent
-                                color={this.props.colorTextPhone}
-                                text={this.props.phone}
-                                size={this.props.sizeTextPhone}
+                                color={this.props.colorTextFour}
+                                text={this.props.fourText}
+                                size={this.props.sizeTextFour}
                                 upper={this.props.upper}
                             />
                         </LeftComponent>
+                        <SpacePaddingTopComponent space={5} />
+                        <LeftComponent>
+                            <TextComponent
+                                color={this.props.colorTextFive}
+                                text={this.props.fiveText}
+                                size={this.props.sizeTextFive}
+                                upper={this.props.upper}
+                            />
+                        </LeftComponent>
+                        <SpacePaddingBottomComponent space={5} />
                     </SpaceLeftComponent>
                     <RowComponent>
-                        <LeftComponent />
+                        {this.props.buttonLeft === undefined &&(
+                            <LeftComponent />
+                        )}
                         <SpaceRightComponent>
-                            <RightComponent>
-                                <Button transparent>
-                                    <RowComponent>
-                                        <CenterComponent>
-                                            <TextComponent
-                                                text={'Alterar Email ou senha'}
-                                                upper
-                                                weight={'bold'}
-                                                color={'#694fad'}
-                                            />
-                                        </CenterComponent>
-                                    </RowComponent>
-                                </Button>
-                            </RightComponent>
+                            {this.props.buttonRight !== undefined &&(
+                                <RightComponent>
+                                    {this.props.buttonRight}
+                                </RightComponent>
+                            )}
                         </SpaceRightComponent>
                     </RowComponent>
                 </BorderComponent>

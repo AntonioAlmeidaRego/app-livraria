@@ -62,20 +62,18 @@ export default class MaskPhone extends MaskUtil{
         let str = "";
 
         for(let i = 0; i < phone.length;i++){
-            if(i == 0 && !this.valid.isInvalidCharacter(arrayChars, array, 0)){
+            if(i == 0 && !this.valid.isExistCharacter('(', array, 0)){
                 str += "(" + phone[i];
-            }else if(i == 2 && !this.valid.isInvalidCharacter(arrayChars, array, 3)){
-                str += phone[i] + ")";
-            }else if(i == 3 && !this.valid.isInvalidCharacter(arrayChars, array, 4)){
-                str += phone[i] + " ";
-            }else if(i == 10 && !this.valid.isInvalidCharacter(arrayChars, array, 10)){
+            }else if(i == 2 && !this.valid.isExistCharacter(')', array, 3)){
+                str += phone[i] + ") ";
+            }else if(i == 9 && !this.valid.isExistCharacter('-', array, 10)){
                 str += phone[i] + "-";
             }else {
                 str += phone[i];
             }
         }
 
-        return;
+        return str;
     }
 
     isInserting(array, auxArray): boolean {

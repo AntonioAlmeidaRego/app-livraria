@@ -355,7 +355,7 @@ export default class RegisterUserScreen extends React.Component{
 
         this.setState({
             isInserting: true,
-            isPasswordEquals: LivrariaUtil.checkPasswords(this.user.senha, confirmarSenha),
+            isPasswordEquals: livrariaUtil.checkPasswords(this.user.senha, confirmarSenha),
         });
     };
 
@@ -580,6 +580,7 @@ export default class RegisterUserScreen extends React.Component{
                                     </Icon>
                                     <Input
                                         value={this.user.telefone}
+                                        maxLength={15}
                                         keyboardType={'numeric'}
                                         placeholder={"(__) _____-____"}
                                         onChangeText={phone => this.isInsertingPhone(phone)}

@@ -6,6 +6,9 @@ import UserDataComponent from "../../components/componentsUser/UserDataComponent
 import SessionController from "../../controllers/SessionController";
 import HeaderComponent from "../../components/HeaderComponent";
 import FormatterUtil from "../../utils/FormatterUtil";
+import RowComponent from "../../components/RowComponent";
+import CenterComponent from "../../components/CenterComponent";
+import TextComponent from "../../components/TextComponent";
 
 const formatterUtil = new FormatterUtil;
 
@@ -32,17 +35,54 @@ export default class MyAccountScreen extends React.Component{
                 children={
                     <View>
                         <UserDataComponent
-                            nomeUser={this.state.usuario.nome}
-                            sizeTextName={18}
-                            colorTextName={'#585858'}
-                            emailUser={this.state.usuario.email}
-                            sizeTextEmail={16}
-                            colorTextEmail={'#585858'}
-                            colorTextData={'#585858'}
-                            data={this.state.usuario.dataNascimento}
-                            sizeTextData={16}
-
-
+                            oneText={this.state.usuario.nome}
+                            sizeTextOne={18}
+                            colorTextOne={'#585858'}
+                            twoText={this.state.usuario.email}
+                            sizeTextTwo={16}
+                            colorTextTwo={'#585858'}
+                            colorTextThree={'#585858'}
+                            threeText={this.state.usuario.dataNascimento}
+                            sizeTextThree={16}
+                            textFour={this.state.usuario.telefone}
+                            sizeTextFour={16}
+                            colorTextFour={'#585858'}
+                            buttonRight={
+                                <Button transparent>
+                                    <RowComponent>
+                                        <CenterComponent>
+                                            <TextComponent
+                                                text={'Alterar Email ou senha'}
+                                                upper
+                                                weight={'bold'}
+                                                color={'#694fad'}
+                                            />
+                                        </CenterComponent>
+                                    </RowComponent>
+                                </Button>
+                            }
+                        />
+                        <UserDataComponent
+                            oneText={'Endereço'}
+                            sizeTextOne={18}
+                            colorTextOne={'#585858'}
+                            twoText={'Estado: '+this.state.usuario.estado}
+                            sizeTextTwo={16}
+                            colorTextTwo={'#585858'}
+                            colorTextThree={'#585858'}
+                            threeText={'Cidade: ' + this.state.usuario.municipio}
+                            sizeTextThree={16}
+                            fourText={'Bairro: '+this.state.usuario.bairro}
+                            sizeTextFour={16}
+                            colorTextFour={'#585858'}
+                            fiveText={'Rua: '+this.state.usuario.rua}
+                            sizeTextFive={16}
+                            colorTextFive={'#585858'}
+                        />
+                        <UserDataComponent
+                            oneText={'Compras Realizadas'}
+                            sizeTextOne={18}
+                            colorTextOne={'#585858'}
                         />
                     </View>
                 }
