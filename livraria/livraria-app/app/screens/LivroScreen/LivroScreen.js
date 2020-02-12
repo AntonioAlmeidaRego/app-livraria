@@ -7,7 +7,7 @@ import LivroController from '../../controllers/LivroController';
 import HeaderStackComponent from '../../components/HeaderStackComponent';
 import TabComponent from '../../components/TabComponent';
 const url = "https://livraria-pdf.herokuapp.com";
-
+const urlLocal = "http://192.168.1.7:8080";
 export default class LivroScreen extends React.Component{
 
 
@@ -24,7 +24,7 @@ export default class LivroScreen extends React.Component{
         const livro = new LivroController;
 
         livro.getListAllLinkedCategoria(
-            url+'/api/livro/findAllLinkedCategoria/'+objetoCategoria.id).then().then(data=>{
+            urlLocal+'/api/livro/findAllLinkedCategoria/'+objetoCategoria.id).then().then(data=>{
             this.setState({
                 livros: data,
                 categoria: 'Livros sobre ' + objetoCategoria.nome

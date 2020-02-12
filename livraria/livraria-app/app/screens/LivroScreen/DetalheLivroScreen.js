@@ -27,6 +27,8 @@ import TextComponent from "../../components/TextComponent";
 import CarouselComponent from "../../components/CarouselComponent";
 import BorderComponent from "../../components/BorderComponent";
 import LeftComponent from "../../components/LeftComponent";
+import LoadingComponent from "../../components/LoadingComponent";
+import LoginComponent from "../../components/UserScreenComponent/LoginComponent";
 
 
 const urlImage = "https://livraria-pdf.herokuapp.com/livro/imagem/";
@@ -48,6 +50,7 @@ export default class DetalheLivroScreen extends React.Component{
         visible: false,
         isAmount: false,
         isConsult: false,
+        isViewSpinner: true,
     };
 
     increment= async ()=>{
@@ -73,6 +76,11 @@ export default class DetalheLivroScreen extends React.Component{
     };
 
     async componentDidMount(): void {
+        setInterval(()=>{
+            this.setState({
+                isViewSpinner: false,
+            })
+        }, 4000);
 
         const livroController = new ApiController();
         const livros = await livroController.get('https://livraria-pdf.herokuapp.com/api/livro/findAll');
@@ -190,121 +198,122 @@ export default class DetalheLivroScreen extends React.Component{
                 title={"Detalhe do Livro"}
                 onBack={() => this.props.navigation.goBack()}
                 children={
-                    <Content>
-                        <SpaceTopComponent />
-                        <CardHeaderComponent
-                            uri={urlLocalImage+this.state.livro.id}
-                            title={this.state.livro.titulo}
-                            year={this.state.livro.ano}
-                        />
-                        <CardAmountComponent
-                            prazo={this.state.prazo}
-                            freight={this.state.frete}
-                            onSearchCep={this.consulCEP}
-                            amount={this.state.amount}
-                            onIncrement={this.onIncrementAndCep}
-                            onDecrement={this.onDecrementAndCep}
-                            price={this.state.value}
-                        />
-                        <SpaceTopComponent />
-                        <CardButtomComponent
-                            renderIconLeft={
-                                <Icon>
-                                    <MaterialCommunityIcons
-                                        name={'format-list-bulleted'}
-                                        size={30}
-                                        color={'#000'}
-                                    />
-                                </Icon>
-                            }
-                            renderIconRight={
-                                <Icon>
-                                    <MaterialCommunityIcons
-                                        name={'arrow-right'}
-                                        size={30}
-                                        color={'#000'}
-                                    />
-                                </Icon>
-                            }
-                            textComponent={
-                                <TextComponent
-                                    color={'#000'}
-                                    size={18}
-                                    text={'Sinopsie'}
-                                />
-                            }
-                         />
-                        <SpaceTopComponent />
-                        <CardButtomComponent
-                            renderIconLeft={
-                                <Icon>
-                                    <FontAwesome
-                                        name={'users'}
-                                        size={30}
-                                        color={'#000'}
-                                    />
-                                </Icon>
-                            }
-                            renderIconRight={
-                                <Icon>
-                                    <MaterialCommunityIcons
-                                        name={'arrow-right'}
-                                        size={30}
-                                        color={'#000'}
-                                    />
-                                </Icon>
-                            }
-                            textComponent={
-                                <TextComponent
-                                    color={'#000'}
-                                    size={18}
-                                    text={'Autores'}
-                                />
-                            }
-                        />
-                        <BorderComponent color={'#b3b1b8'} padding={10}>
-                            <LeftComponent>
-                                <TextComponent
-                                    color={'#585858'}
-                                    size={20}
-                                    upper
-                                    weight={'bold'}
-                                    text={"Livros vistos por últimos"}
-                                />
-                            </LeftComponent>
-                            <CarouselComponent array={this.state.livrosRelateds} onDetalheLivro={this.detalheLivro} />
-                        </BorderComponent>
-                        <BorderComponent color={'#b3b1b8'} padding={10}>
-                            <LeftComponent>
-                                <TextComponent
-                                    color={'#585858'}
-                                    size={20}
-                                    upper
-                                    weight={'bold'}
-                                    text={"Livros mais procurados"}
-                                />
-                            </LeftComponent>
-                            <CarouselComponent array={this.state.livrosRelateds} onDetalheLivro={this.detalheLivro} />
-                        </BorderComponent>
-                        <BorderComponent color={'#b3b1b8'} padding={10}>
-                            <LeftComponent>
-                                <TextComponent
-                                    color={'#585858'}
-                                    size={20}
-                                    upper
-                                    weight={'bold'}
-                                    text={"Mais Detalhes"}
-                                />
-                            </LeftComponent>
-                            <CardMoreLivroComponent
-                                ano={this.state.livro.ano}
-                                peso={this.state.livro.peso}
-                                largura={this.state.livro.largura}
-                                altura={this.state.livro.altura}
+                    <LoadingComponent isViewSpinner={this.state.isViewSpinner} children={
+                        <Content>
+                            <SpaceTopComponent />
+                            <CardHeaderComponent
+                                uri={urlLocalImage+this.state.livro.id}
+                                title={this.state.livro.titulo}
+                                year={this.state.livro.ano}
                             />
-                        </BorderComponent>
-                        <LoadingCepModal visible={this.state.visible}/>
-                    </Content>
+                            <CardAmountComponent
+                                prazo={this.state.prazo}
+                                freight={this.state.frete}
+                                onSearchCep={this.consulCEP}
+                                amount={this.state.amount}
+                                onIncrement={this.onIncrementAndCep}
+                                onDecrement={this.onDecrementAndCep}
+                                price={this.state.value}
+                            />
+                            <SpaceTopComponent />
+                            <CardButtomComponent
+                                renderIconLeft={
+                                    <Icon>
+                                        <MaterialCommunityIcons
+                                            name={'format-list-bulleted'}
+                                            size={30}
+                                            color={'#000'}
+                                        />
+                                    </Icon>
+                                }
+                                renderIconRight={
+                                    <Icon>
+                                        <MaterialCommunityIcons
+                                            name={'arrow-right'}
+                                            size={30}
+                                            color={'#000'}
+                                        />
+                                    </Icon>
+                                }
+                                textComponent={
+                                    <TextComponent
+                                        color={'#000'}
+                                        size={18}
+                                        text={'Sinopsie'}
+                                    />
+                                }
+                            />
+                            <SpaceTopComponent />
+                            <CardButtomComponent
+                                renderIconLeft={
+                                    <Icon>
+                                        <FontAwesome
+                                            name={'users'}
+                                            size={30}
+                                            color={'#000'}
+                                        />
+                                    </Icon>
+                                }
+                                renderIconRight={
+                                    <Icon>
+                                        <MaterialCommunityIcons
+                                            name={'arrow-right'}
+                                            size={30}
+                                            color={'#000'}
+                                        />
+                                    </Icon>
+                                }
+                                textComponent={
+                                    <TextComponent
+                                        color={'#000'}
+                                        size={18}
+                                        text={'Autores'}
+                                    />
+                                }
+                            />
+                            <BorderComponent color={'#b3b1b8'} padding={10}>
+                                <LeftComponent>
+                                    <TextComponent
+                                        color={'#585858'}
+                                        size={20}
+                                        upper
+                                        weight={'bold'}
+                                        text={"Livros vistos por últimos"}
+                                    />
+                                </LeftComponent>
+                                <CarouselComponent array={this.state.livrosRelateds} onDetalheLivro={this.detalheLivro} />
+                            </BorderComponent>
+                            <BorderComponent color={'#b3b1b8'} padding={10}>
+                                <LeftComponent>
+                                    <TextComponent
+                                        color={'#585858'}
+                                        size={20}
+                                        upper
+                                        weight={'bold'}
+                                        text={"Livros mais procurados"}
+                                    />
+                                </LeftComponent>
+                                <CarouselComponent array={this.state.livrosRelateds} onDetalheLivro={this.detalheLivro} />
+                            </BorderComponent>
+                            <BorderComponent color={'#b3b1b8'} padding={10}>
+                                <LeftComponent>
+                                    <TextComponent
+                                        color={'#585858'}
+                                        size={20}
+                                        upper
+                                        weight={'bold'}
+                                        text={"Mais Detalhes"}
+                                    />
+                                </LeftComponent>
+                                <CardMoreLivroComponent
+                                    ano={this.state.livro.ano}
+                                    peso={this.state.livro.peso}
+                                    largura={this.state.livro.largura}
+                                    altura={this.state.livro.altura}
+                                />
+                            </BorderComponent>
+                        </Content>
+                    }/>
                 }
             />
         );

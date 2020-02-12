@@ -14,9 +14,11 @@ import SpaceBottomComponent from "./componentsSpace/SpaceBottomComponent";
 import CenterComponent from "./CenterComponent";
 import SpaceLeftComponent from "./componentsSpace/SpaceLeftComponent";
 import LayoutComponent from "./LayoutComponent";
+import ConversorUtil from "../utils/ConversorUtil";
 
 const urlImage = "https://livraria-pdf.herokuapp.com/livro/imagem/";
 const urlLocalImage = "http://192.168.1.7:8080/livro/imagem/";
+
 export default class CardLivroDescrition  extends React.Component{
     render() {
         return(
@@ -47,13 +49,13 @@ export default class CardLivroDescrition  extends React.Component{
                             <RowComponent>
                                 <CenterComponent>
                                     <TextComponent
-                                        text={'R$ '+ this.props.price}
+                                        text={'R$ '+ ConversorUtil.convertsPointToComma(this.props.price)}
                                         upper
                                         color={'#000'}
                                         size={25}
                                     />
                                     <TextComponent
-                                        text={'1x de R$ 9.32 s/ juros'}
+                                        text={'1x de R$ 9,32 s/ juros'}
                                         size={16}
                                         color={'#b3b1b8'}
                                     />
