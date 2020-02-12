@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import {Header, Body, Content, Container, Tabs, Tab, Icon, Left} from 'native-base';
+import {Header, Body, Content, Container, Tabs, Tab, Icon, Left, TabHeading} from 'native-base';
 import StylesScreen from '../../styles/StylesScreen';
 import TabListagemLivros from '../../tabs/TabListagemLivros';
 import TabListagemPromocoes from '../../tabs/TabListagemPromocoes';
@@ -8,6 +8,8 @@ import HeaderComponent from '../../components/HeaderComponent';
 import TabListagemCategorias from '../../tabs/TabListagemCategorias';
 import IconHome from 'react-native-vector-icons/Octicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import TextComponent from "../../components/TextComponent";
+import SpacePaddingLeftComponent from "../../components/componentsSpace/SpacePaddingLeftComponent";
 export default class HomeScreen extends React.Component{
 
     detalhe = async (objeto)=>{
@@ -37,11 +39,13 @@ export default class HomeScreen extends React.Component{
                 children={
                     <Tabs>
                         <Tab tabStyle={{backgroundColor: '#694fad'}} activeTextStyle={{color: '#fff'}}
-                             textStyle={{color: '#fff'}} activeTabStyle={{backgroundColor: '#694fad'}} heading={"Categorias"}>
+                             textStyle={{color: '#fff'}} activeTabStyle={{backgroundColor: '#694fad'}}
+                             heading={<TabHeading style={StylesScreen.createColorBackground('#694fad')}><Icon name={'ios-list'} /><SpacePaddingLeftComponent space={3}/><TextComponent text={'Categorias'} color={'#fff'}/></TabHeading>}>
                             <TabListagemCategorias onDetalhe={this.detalhe}/>
                         </Tab>
-                        <Tab active tabStyle={{backgroundColor: '#694fad'}} activeTextStyle={{color: '#fff'}}
-                             textStyle={{color: '#fff'}} activeTabStyle={{backgroundColor: '#694fad'}} heading={"Livros"}>
+                        <Tab tabStyle={{backgroundColor: '#694fad'}} activeTextStyle={{color: '#fff'}}
+                             textStyle={{color: '#fff'}} activeTabStyle={{backgroundColor: '#694fad'}}
+                             heading={<TabHeading style={StylesScreen.createColorBackground('#694fad')}><Icon name={'ios-book'} /><SpacePaddingLeftComponent space={3}/><TextComponent text={'Livros'} color={'#fff'}/></TabHeading>}>
                             <TabListagemLivros onDetalheLivro={this.detalheLivro} />
                         </Tab>
                         <Tab tabStyle={{backgroundColor: '#694fad'}} activeTextStyle={{color: '#fff'}} textStyle={{color: '#fff'}} activeTabStyle={{backgroundColor: '#694fad'}} heading={"Promoções"}>

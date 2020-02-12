@@ -28,7 +28,9 @@ import CarouselComponent from "../../components/CarouselComponent";
 import BorderComponent from "../../components/BorderComponent";
 import LeftComponent from "../../components/LeftComponent";
 
-const uriImg = "https://livraria-pdf.herokuapp.com/livro/imagem/";
+
+const urlImage = "https://livraria-pdf.herokuapp.com/livro/imagem/";
+const urlLocalImage = "http://192.168.1.7:8080/livro/imagem/";
 export default class DetalheLivroScreen extends React.Component{
 
     static navigationOptions ={
@@ -191,7 +193,7 @@ export default class DetalheLivroScreen extends React.Component{
                     <Content>
                         <SpaceTopComponent />
                         <CardHeaderComponent
-                            uri={uriImg+this.state.livro.id}
+                            uri={urlLocalImage+this.state.livro.id}
                             title={this.state.livro.titulo}
                             year={this.state.livro.ano}
                         />

@@ -23,5 +23,7 @@ export default class LivroController {
     getListAllLinkedCategoria = async (url)=>{
         const api = await this._request.$getJSON(url);
         return await api.json() || [];
-    }
+    };
+
+
 }

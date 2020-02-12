@@ -14,6 +14,9 @@ import SpaceBottomComponent from "./componentsSpace/SpaceBottomComponent";
 import CenterComponent from "./CenterComponent";
 import SpaceLeftComponent from "./componentsSpace/SpaceLeftComponent";
 import LayoutComponent from "./LayoutComponent";
+
+const urlImage = "https://livraria-pdf.herokuapp.com/livro/imagem/";
+const urlLocalImage = "http://192.168.1.7:8080/livro/imagem/";
 export default class CardLivroDescrition  extends React.Component{
     render() {
         return(
@@ -25,7 +28,7 @@ export default class CardLivroDescrition  extends React.Component{
                     <RowComponent>
                         <LeftComponent>
                             <Thumbnail square style={[StylesScreen.createWidth(145), StylesScreen.createHeight(195)]}
-                                       source={{uri: 'https://livraria-pdf.herokuapp.com/livro/imagem/'+this.props.id}} />
+                                       source={{uri: urlLocalImage+this.props.id}} />
                         </LeftComponent>
                         <RightComponent>
                             <TextComponent
