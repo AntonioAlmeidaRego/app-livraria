@@ -20,10 +20,23 @@ const urlImage = "https://livraria-pdf.herokuapp.com/livro/imagem/";
 const urlLocalImage = "http://192.168.1.7:8080/livro/imagem/";
 
 export default class CardLivroDescrition  extends React.Component{
+
+    state={
+        parcelamento: {},
+    };
+
     render() {
+
+        this.props.onParcelamento(this.props.livro).then(()=>{}).then(
+            data=>{
+                this.setState({
+                    parcelamento: data,
+                });
+            }
+        );
+
         return(
             <LayoutComponent
-
                 >
                 <BorderComponent button={this.props.onDetalheLivro}
                                  object={this.props.livro} color={"#c2c0c7"} value={0.3} width={'100%'} height={'100%'} padding={2}>
@@ -55,7 +68,7 @@ export default class CardLivroDescrition  extends React.Component{
                                         size={25}
                                     />
                                     <TextComponent
-                                        text={'1x de R$ 9,32 s/ juros'}
+                                        text={this.state.parcelamento.totalParcelas+'x' + 'de R$ 9,32 ' + 's/ juros'}
                                         size={16}
                                         color={'#b3b1b8'}
                                     />

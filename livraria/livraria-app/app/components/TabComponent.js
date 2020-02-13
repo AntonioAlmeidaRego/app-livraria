@@ -35,6 +35,9 @@ export default class TabComponent extends React.Component{
         }
     }
 
+
+
+
     render() {
         return (
             <Content>
@@ -45,7 +48,7 @@ export default class TabComponent extends React.Component{
                     data={this.props.array}
                     renderItem={({ item }) =>
                         [
-                            <CardLivroDescrition livro={item} onDetalheLivro={this.props.onDetalheLivro} price={item.preco} subtitle={item.titulo} id={item.id} title={item.titulo}/>
+                            <CardLivroDescrition onParcelamento={this.props.onParcelamento}  livro={item} onDetalheLivro={this.props.onDetalheLivro} price={item.preco} subtitle={item.titulo} id={item.id} title={item.titulo}/>
                         ]
                     }
                 />

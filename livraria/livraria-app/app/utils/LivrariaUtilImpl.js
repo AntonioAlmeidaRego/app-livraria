@@ -120,6 +120,8 @@ export default class LivrariaUtilImpl extends LivrariaUtil{
         return super.maskRg(rg);
     }
 
+
+
     checkPasswords(password: string, confirmPassword: string): boolean {
         if(password != "" && confirmPassword != ""){
             if(password == confirmPassword){

@@ -21,6 +21,10 @@ export default class LivrariaUtil {
         return this.maskPhoneAtrr.mask();
     };
 
+    public installmentPaymentIn(price: number, total: number, swear?: number): number{
+        return (price / total);
+    }
+
     public maskRg(rg: string) : string{return};
 
     public checkPasswords(password: string, confirmPassword: string): boolean{return };

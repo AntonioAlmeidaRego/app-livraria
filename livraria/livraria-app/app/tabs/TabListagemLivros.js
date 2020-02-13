@@ -24,10 +24,16 @@ export default class TabListagemLivros extends React.Component{
         });
     }
 
+    onParcelamento = async (item)=>{
+        const apiController = new ApiController;
+        return await apiController.get(urlLocal+"/api/parcelamento/findOneLinkedLivro/"+item.id);
+    };
+
     render() {
         return (
             <TabComponent
                 isEmpty={this.state.isEmpty}
+                onParcelamento={this.onParcelamento}
                 onDetalheLivro={this.props.onDetalheLivro}
                 array={this.state.livros} />
         );
