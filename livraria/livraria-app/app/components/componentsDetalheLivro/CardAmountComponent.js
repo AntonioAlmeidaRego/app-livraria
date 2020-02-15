@@ -30,7 +30,7 @@ export default class CardAmountComponent extends React.Component{
                             color={'#000'}
                         />
                         <TextComponent
-                            text={'1x de R$ 9.32 s/ juros'}
+                            text={this.props.totalParcelas+'x de ' + 'R$ ' + this.props.valueParcela + ' s/ juros'}
                             size={16}
                             color={'#b3b1b8'}
                         />

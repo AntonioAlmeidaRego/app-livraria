@@ -29,10 +29,13 @@ import BorderComponent from "../../components/BorderComponent";
 import LeftComponent from "../../components/LeftComponent";
 import LoadingComponent from "../../components/LoadingComponent";
 import LoginComponent from "../../components/UserScreenComponent/LoginComponent";
+import LivrariaUtilImpl from "../../utils/LivrariaUtilImpl";
 
 
 const urlImage = "https://livraria-pdf.herokuapp.com/livro/imagem/";
 const urlLocalImage = "http://192.168.1.7:8080/livro/imagem/";
+const urlLocal = "http://192.168.1.7:8080";
+const livrariaUtil = new LivrariaUtilImpl;
 export default class DetalheLivroScreen extends React.Component{
 
     static navigationOptions ={
@@ -51,6 +54,7 @@ export default class DetalheLivroScreen extends React.Component{
         isAmount: false,
         isConsult: false,
         isViewSpinner: true,
+        parcelamento: {},
     };
 
     increment= async ()=>{
@@ -83,7 +87,7 @@ export default class DetalheLivroScreen extends React.Component{
         }, 4000);
 
         const livroController = new ApiController();
-        const livros = await livroController.get('https://livraria-pdf.herokuapp.com/api/livro/findAll');
+        const livros = await livroController.get(urlLocal+'/api/livro/findAll');
         this.setState({
             livrosRelateds: livros,
         });
@@ -94,7 +98,6 @@ export default class DetalheLivroScreen extends React.Component{
             livro: this.props.navigation.state.params.livro
         });
 
-     //   await this.onListLivrosRelatedByValue(value, idLivro);
 
         this.setState({
             value: value,
@@ -132,7 +135,7 @@ export default class DetalheLivroScreen extends React.Component{
     onListAutorLinkedLivro = async (idLivro: number)=>{
         this.onVisible();
         const autorController = new ApiController();
-        const autors = await autorController.get('https://livraria-pdf.herokuapp.com/api/autor/findAllLinkedLivro/'+idLivro);
+        const autors = await autorController.get(urlLocal+'/api/autor/findAllLinkedLivro/'+idLivro);
         this.setState({
             autors: autors,
         });
@@ -141,7 +144,7 @@ export default class DetalheLivroScreen extends React.Component{
 
     onListLivrosRelatedByValue = async (value: number, idLivro: number)=>{
         const apiController = new ApiController();
-        const livros = await apiController.get('https://livraria-pdf.herokuapp.com/api/livro/findAllRelatedByValue/'+value+'/'+idLivro);
+        const livros = await apiController.get(urlLocal+'/api/livro/findAllRelatedByValue/'+value+'/'+idLivro);
         this.setState({
             livrosRelateds: livros,
         });
@@ -190,7 +193,20 @@ export default class DetalheLivroScreen extends React.Component{
         });
     };
 
+    onParcelamento = async (item)=>{
+        const apiController = new ApiController;
+        return await apiController.get(urlLocal+"/api/parcelamento/findOneLinkedLivro/"+item.id);
+    };
+
     render() {
+
+        this.onParcelamento(this.state.livro).then(data=>
+        {
+            this.setState({
+                parcelamento: data,
+            });
+        });
+
         return (
             <HeaderStackComponent
                 background={"#694fad"}
@@ -207,13 +223,17 @@ export default class DetalheLivroScreen extends React.Component{
                                 year={this.state.livro.ano}
                             />
                             <CardAmountComponent
+                                totalParcelas={this.state.parcelamento.totalParcelas}
                                 prazo={this.state.prazo}
+                                valueParcela={livrariaUtil.calPMT(this.state.value, this.state.parcelamento.totalParcelas, '2,29%')
+                                    .toFixed(2)}
                                 freight={this.state.frete}
                                 onSearchCep={this.consulCEP}
                                 amount={this.state.amount}
                                 onIncrement={this.onIncrementAndCep}
                                 onDecrement={this.onDecrementAndCep}
-                                price={this.state.value}
+                                price={(livrariaUtil.calPMT(this.state.value, this.state.parcelamento.totalParcelas, '2,29%')
+                                    .toFixed(2) * this.state.parcelamento.totalParcelas)}
                             />
                             <SpaceTopComponent />
                             <CardButtomComponent
@@ -281,7 +301,7 @@ export default class DetalheLivroScreen extends React.Component{
                                         text={"Livros vistos por últimos"}
                                     />
                                 </LeftComponent>
-                                <CarouselComponent array={this.state.livrosRelateds} onDetalheLivro={this.detalheLivro} />
+                                <CarouselComponent onParcelamento={this.onParcelamento} array={this.state.livrosRelateds} onDetalheLivro={this.detalheLivro} />
                             </BorderComponent>
                             <BorderComponent color={'#b3b1b8'} padding={10}>
                                 <LeftComponent>
@@ -293,7 +313,7 @@ export default class DetalheLivroScreen extends React.Component{
                                         text={"Livros mais procurados"}
                                     />
                                 </LeftComponent>
-                                <CarouselComponent array={this.state.livrosRelateds} onDetalheLivro={this.detalheLivro} />
+                                <CarouselComponent onParcelamento={this.onParcelamento} array={this.state.livrosRelateds} onDetalheLivro={this.detalheLivro} />
                             </BorderComponent>
                             <BorderComponent color={'#b3b1b8'} padding={10}>
                                 <LeftComponent>

@@ -1,12 +1,13 @@
 import MaskCep from "./MaskCep";
 import MaskPhone from "./MaskPhone";
-
+import ConversorUtil from "./ConversorUtil";
 
 export default class LivrariaUtil {
     private maskCepAtrr: MaskCep;
     private maskPhoneAtrr: MaskPhone;
 
     constructor() {
+
     }
 
     public maskCep(cep: string) : string{
@@ -14,16 +15,21 @@ export default class LivrariaUtil {
         return this.maskCepAtrr.mask();
     };
 
+    public calPMT(pv: number, n: number, i: string): number{
+        const porcent = i.split('%');
+        const taxa = (ConversorUtil.convertsCommaToPoint(porcent[0]) / 100);
+        const resultOne = (Math.pow((1 + taxa), n) - 1);
+        const resultTwo = ((Math.pow((1 + taxa), n) * taxa));
+        const resultThree = resultOne / resultTwo;
+        return pv / resultThree;
+    }
+
     public maskCpf(cpf: string) : string{return};
 
     public maskPhone(phone: string) : string{
         this.maskPhoneAtrr = new MaskPhone(phone);
         return this.maskPhoneAtrr.mask();
     };
-
-    public installmentPaymentIn(price: number, total: number, swear?: number): number{
-        return (price / total);
-    }
 
     public maskRg(rg: string) : string{return};
 

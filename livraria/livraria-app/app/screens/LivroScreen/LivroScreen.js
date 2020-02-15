@@ -6,6 +6,7 @@ import ListComponent from '../../components/ListComponent';
 import LivroController from '../../controllers/LivroController';
 import HeaderStackComponent from '../../components/HeaderStackComponent';
 import TabComponent from '../../components/TabComponent';
+import ApiController from "../../controllers/ApiController";
 const url = "https://livraria-pdf.herokuapp.com";
 const urlLocal = "http://192.168.1.7:8080";
 export default class LivroScreen extends React.Component{
@@ -36,6 +37,11 @@ export default class LivroScreen extends React.Component{
         header: null,
     };
 
+    onParcelamento = async (item)=>{
+        const apiController = new ApiController;
+        return await apiController.get(urlLocal+"/api/parcelamento/findOneLinkedLivro/"+item.id);
+    };
+
     render() {
         return (
             <HeaderStackComponent
@@ -44,6 +50,7 @@ export default class LivroScreen extends React.Component{
                 title={this.state.categoria}
                 children={
                     <TabComponent
+                        onParcelamento={this.onParcelamento}
                         onDetalheLivro={this.props.navigation.state.params.onDetalheLivro}
                         array={this.state.livros}
                     />

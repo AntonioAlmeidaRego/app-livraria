@@ -15,7 +15,8 @@ import CenterComponent from "./CenterComponent";
 import SpaceLeftComponent from "./componentsSpace/SpaceLeftComponent";
 import LayoutComponent from "./LayoutComponent";
 import ConversorUtil from "../utils/ConversorUtil";
-
+import LivrariaUtilImpl from "../utils/LivrariaUtilImpl";
+const livrariaUtil = new LivrariaUtilImpl;
 const urlImage = "https://livraria-pdf.herokuapp.com/livro/imagem/";
 const urlLocalImage = "http://192.168.1.7:8080/livro/imagem/";
 
@@ -27,13 +28,12 @@ export default class CardLivroDescrition  extends React.Component{
 
     render() {
 
-        this.props.onParcelamento(this.props.livro).then(()=>{}).then(
-            data=>{
-                this.setState({
-                    parcelamento: data,
-                });
-            }
-        );
+        this.props.onParcelamento(this.props.livro).then(data=>
+        {
+            this.setState({
+                parcelamento: data,
+            });
+        });
 
         return(
             <LayoutComponent
@@ -62,13 +62,16 @@ export default class CardLivroDescrition  extends React.Component{
                             <RowComponent>
                                 <CenterComponent>
                                     <TextComponent
-                                        text={'R$ '+ ConversorUtil.convertsPointToComma(this.props.price)}
+                                        text={'R$ '+ ConversorUtil.convertsPointToComma(livrariaUtil.calPMT(this.props.price, this.state.parcelamento.totalParcelas, '2,29%')
+                                            .toFixed(2) * this.state.parcelamento.totalParcelas)}
                                         upper
                                         color={'#000'}
                                         size={25}
                                     />
                                     <TextComponent
-                                        text={this.state.parcelamento.totalParcelas+'x' + 'de R$ 9,32 ' + 's/ juros'}
+                                        text={this.state.parcelamento.totalParcelas+'x' + ' de R$  '+
+                                        livrariaUtil.calPMT(this.props.price, this.state.parcelamento.totalParcelas, '2,29%').toFixed(2)
+                                        + ' com juros'}
                                         size={16}
                                         color={'#b3b1b8'}
                                     />

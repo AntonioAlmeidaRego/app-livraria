@@ -120,7 +120,9 @@ export default class LivrariaUtilImpl extends LivrariaUtil{
         return super.maskRg(rg);
     }
 
-
+    calPMT(pv: number, n: number, i: string): number {
+        return super.calPMT(pv, n, i);
+    }
 
     checkPasswords(password: string, confirmPassword: string): boolean {
         if(password != "" && confirmPassword != ""){

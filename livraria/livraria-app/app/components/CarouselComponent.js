@@ -13,7 +13,7 @@ export default class CarouselComponent extends React.Component{
                     horizontal
                 >
                 {this.props.array.map(item=>
-                    <CardLivroDescrition livro={item} onDetalheLivro={this.props.onDetalheLivro} price={item.preco} subtitle={item.titulo} id={item.id} title={item.titulo} />
+                    <CardLivroDescrition onParcelamento={this.props.onParcelamento} parcelamento={this.props.parcelamento} livro={item} onDetalheLivro={this.props.onDetalheLivro} price={item.preco} subtitle={item.titulo} id={item.id} title={item.titulo} />
                 )}
                 </ScrollView>
             </LayoutComponent>
