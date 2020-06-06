@@ -1,5 +1,4 @@
-import React, {} from 'react';
-import {View} from 'react-native';
+import React from 'react';
 import {Icon} from 'native-base';
 import IconInfo from "react-native-vector-icons/Octicons";
 

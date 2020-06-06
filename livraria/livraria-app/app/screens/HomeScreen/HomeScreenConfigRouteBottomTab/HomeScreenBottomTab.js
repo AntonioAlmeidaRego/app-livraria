@@ -1,16 +1,14 @@
-import * as React from 'react';
-import {View} from 'react-native';
-import {Icon, List} from 'native-base';
+
+import React from 'react';
+
+import {Icon} from 'native-base';
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 import HomeScreenStack from "../HomeScreenConfigRoute/HomeScreenStack";
 import IconHome from 'react-native-vector-icons/Octicons';
-import ContainerComponent from "../../../components/ContainerComponent";
-import ContainerCenterComponent from "../../../components/ContainerCenterComponent";
-import StylesScreen from "../../../styles/StylesScreen";
 import ShoppingCartScreenStack from "../../ShoppingCartScreen/ShoppingCartConfigRoute/ShoppingCartScreenStack";
 import IconShoppingCart from "react-native-vector-icons/MaterialIcons";
 import IconLogout from 'react-native-vector-icons/AntDesign';
-import IconUser  from 'react-native-vector-icons/AntDesign';
+import IconUser from 'react-native-vector-icons/AntDesign';
 import LogoutScreenStackRouter from "../../LogoutScreen/LogoutScreenConfig/LogoutScreenRouter";
 import UserScreenRouter from "../../UserScreen/UserScreenRegisterConfigRouter/UserScreenRegisterStackRouter";
 
@@ -62,7 +60,7 @@ const homeScreenBottom = createMaterialBottomTabNavigator(
     {
         activeColor: '#f0edf6',
         inactiveColor: '#c2c0c7',
-        barStyle: { backgroundColor: '#694fad' },
+        barStyle: { backgroundColor: '#DF5757' },
     }
 
 );

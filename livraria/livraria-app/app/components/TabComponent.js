@@ -1,28 +1,20 @@
-import React, {} from 'react';
+import React from 'react';
 import {FlatList, View} from 'react-native';
-import {Button, Spinner, List, ListItem, Container, Content, Card, CardItem, Item, Text, Thumbnail, Left, Right, Body} from 'native-base';
+import {Content, Spinner} from 'native-base';
 import CardLivroDescrition from "./CardLivroDescrition";
-import StylesScreen from "../styles/StylesScreen";
 import EmptyComponent from "./componentsEmpty/EmptyComponent";
+import StylesScreen from '../styles/StylesScreen';
 
 export default class TabComponent extends React.Component{
 
     state={
-        viewSpinner: true,
+        viewSpinner: this.props.isViewSpinner,
     };
-
-    componentDidMount(): void {
-        setInterval(()=>{
-            this.setState({
-                viewSpinner: false,
-            });
-        }, 8000);
-    }
 
     showViewSpinner(){
         if(this.state.viewSpinner){
             return (
-                <Spinner color={'#694fad'}/>
+                <Spinner color={'#DF5757'}/>
             )
         }
         else if(this.props.isEmpty){
@@ -48,7 +40,14 @@ export default class TabComponent extends React.Component{
                     data={this.props.array}
                     renderItem={({ item }) =>
                         [
-                            <CardLivroDescrition onParcelamento={this.props.onParcelamento}  livro={item} onDetalheLivro={this.props.onDetalheLivro} price={item.preco} subtitle={item.titulo} id={item.id} title={item.titulo}/>
+                            <CardLivroDescrition 
+                                onParcelamento={this.props.onParcelamento}
+                                livro={item} onDetalheLivro={this.props.onDetalheLivro}
+                                price={item.preco}
+                                subtitle={item.titulo}
+                                id={item.id} 
+                                title={item.titulo}
+                            />
                         ]
                     }
                 />

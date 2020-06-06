@@ -1,7 +1,6 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
-import {Header, Body, Content, Container, Tabs, Tab, Card, CardItem, Thumbnail, Left,
-    Right, Button, Icon, ListItem, List, Item, Input, Label, Spinner} from 'native-base';
+import {View} from 'react-native';
+import {Spinner} from 'native-base';
 
 export default class LoadingComponent extends React.Component{
     render() {

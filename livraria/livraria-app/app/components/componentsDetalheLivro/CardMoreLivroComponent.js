@@ -1,21 +1,6 @@
 import React from 'react';
-import {View, Text, Image, Dimensions, FlatList} from 'react-native';
-import {
-    Header,
-    Body,
-    Content,
-    Container,
-    Tabs,
-    Tab,
-    Title,
-    Left,
-    CardItem,
-    Thumbnail,
-    Card,
-    Button,
-    Icon, Right, Item, Input, ListItem
-} from 'native-base';
-import StylesScreen from '../../styles/StylesScreen';
+import {View} from 'react-native';
+import {ListItem} from 'native-base';
 import BoxContainerComponent from "../BoxContainerComponent";
 import BorderComponent from "../BorderComponent";
 import LeftComponent from "../LeftComponent";

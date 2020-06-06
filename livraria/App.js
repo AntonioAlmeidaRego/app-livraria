@@ -6,14 +6,16 @@
  * @flow
  */
 
-import {createSwitchNavigator, createAppContainer} from 'react-navigation';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import HomeScreen from './livraria-app/app/screens/HomeScreen/HomeScreen';
 import LivroScreenStack from './livraria-app/app/screens/LivroScreen/LivroScreenConfigRoute/LivroScreenStack';
-import HomeScreenBottomTab from './livraria-app/app/screens/HomeScreen/HomeScreenConfigRouteBottomTab/HomeScreenBottomTab';
-import ShoppingCartScreenStack from './livraria-app/app/screens/ShoppingCartScreen/ShoppingCartConfigRoute/ShoppingCartScreenStack';
+import HomeScreenBottomTab
+    from './livraria-app/app/screens/HomeScreen/HomeScreenConfigRouteBottomTab/HomeScreenBottomTab';
+import ShoppingCartScreenStack
+    from './livraria-app/app/screens/ShoppingCartScreen/ShoppingCartConfigRoute/ShoppingCartScreenStack';
 import LogoutScreenStackRouter from "./livraria-app/app/screens/LogoutScreen/LogoutScreenConfig/LogoutScreenRouter";
-import HomeScreenRouter from "./livraria-app/app/screens/HomeScreen/HomeScreenConfigRoute";
-import HomeScreenStack from "./livraria-app/app/screens/HomeScreen/HomeScreenConfigRoute/HomeScreenStack";
+import HomeScreenStack from './livraria-app/app/screens/HomeScreen/HomeScreenConfigRoute/HomeScreenStack';
+
 const switchRoute = createSwitchNavigator({
         HomeScreen: {
             screen: HomeScreenBottomTab,

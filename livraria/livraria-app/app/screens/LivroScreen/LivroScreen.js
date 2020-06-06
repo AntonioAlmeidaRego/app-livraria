@@ -1,12 +1,9 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {Header, Body, Content, Container, Tabs, Tab} from 'native-base';
-import HeaderComponent from '../../components/HeaderComponent';
-import ListComponent from '../../components/ListComponent';
 import LivroController from '../../controllers/LivroController';
 import HeaderStackComponent from '../../components/HeaderStackComponent';
 import TabComponent from '../../components/TabComponent';
 import ApiController from "../../controllers/ApiController";
+
 const url = "https://livraria-pdf.herokuapp.com";
 const urlLocal = "http://192.168.1.7:8080";
 export default class LivroScreen extends React.Component{

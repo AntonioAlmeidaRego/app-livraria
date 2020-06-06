@@ -1,6 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {Header, Body, Content, Container, Tabs, Tab, Left, Button, Title, Icon, Right} from 'native-base';
+import {Body, Button, Container, Content, Header, Icon, Left, Right, Title} from 'native-base';
 
 import IconBack from 'react-native-vector-icons/MaterialIcons';
 import IconFavorito from 'react-native-vector-icons/MaterialIcons';
@@ -26,7 +25,7 @@ export default class HeaderStackComponent extends React.Component{
                         this.props.favorite !== undefined &&(
                             <Right>
                                 <Icon>
-                                    <IconFavorito size={30} name={"favorite-border"}/>
+                                    <IconFavorito color={'#fff'} size={30} name={"favorite-border"}/>
                                 </Icon>
                             </Right>
                         )

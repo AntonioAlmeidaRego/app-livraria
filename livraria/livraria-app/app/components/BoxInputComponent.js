@@ -1,5 +1,5 @@
-import React , {} from 'react';
-import {View, Text} from 'react-native';
+import React from 'react';
+import {View} from 'react-native';
 import StylesScreen from "../styles/StylesScreen";
 
 export default class BoxInputComponent extends React.Component{

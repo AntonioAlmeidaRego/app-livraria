@@ -1,7 +1,5 @@
-import {createSwitchNavigator, createAppContainer, createStackNavigator} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation';
 import MyAccountScreen from "../MyAccountScreen";
-
-
 
 
 const MyAccountRouterStack = createStackNavigator({

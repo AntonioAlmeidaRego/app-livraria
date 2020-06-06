@@ -1,6 +1,4 @@
 import React from 'react';
-import {View, Text, Image, ActivityIndicator} from 'react-native';
-import {Header, Body, Content, Container, Tabs, Tab, Icon, Form, Item, Label, Input, Button, Thumbnail} from 'native-base';
 import LayoutComponent from "../LayoutComponent";
 import UserDataComponent from "../componentsUser/UserDataComponent";
 

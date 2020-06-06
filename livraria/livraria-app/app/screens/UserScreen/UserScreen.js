@@ -1,10 +1,8 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {Header, Body, Content, Container, Tabs, Tab, Icon} from 'native-base';
+import {Icon} from 'native-base';
 import HeaderComponent from '../../components/HeaderComponent';
 import LoginComponent from "../../components/UserScreenComponent/LoginComponent";
 import SessionController from "../../controllers/SessionController";
-import MyAccountComponent from "../../components/UserScreenComponent/MyAccountComponent";
 
 
 export default class UserScreen extends React.Component{

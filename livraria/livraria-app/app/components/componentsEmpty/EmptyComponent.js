@@ -1,10 +1,7 @@
-import React, {} from 'react';
-import {FlatList, Text, View} from 'react-native';
-import {Button, Spinner, List, ListItem, Container, Content, Card, CardItem, Item, Thumbnail, Left, Right, Body, Icon} from 'native-base';
+import React from 'react';
+import {Thumbnail} from 'native-base';
 import LayoutComponent from "../LayoutComponent";
 import StylesScreen from "../../styles/StylesScreen";
-import CenterComponent from "../CenterComponent";
-import ContainerComponent from "../ContainerComponent";
 import RowComponent from "../RowComponent";
 import LeftComponent from "../LeftComponent";
 import RightComponent from "../RightComponent";

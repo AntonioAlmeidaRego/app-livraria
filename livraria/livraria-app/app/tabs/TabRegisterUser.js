@@ -1,10 +1,7 @@
-import React, {} from 'react';
-import {FlatList, DatePickerAndroid, View} from 'react-native';
-import {Button, Spinner, List, ListItem, Container, Content, Card, CardItem, Item, Text, Thumbnail, Left, Right, Body, Form, Label, Input, Icon} from 'native-base';
-import TabListComponent from "../components/TabListComponent";
+import React from 'react';
+import {DatePickerAndroid} from 'react-native';
+import {Button, Container, Content, Form, Icon, Input, Item, Label, Text} from 'native-base';
 import SpaceTopComponent from "../components/componentsSpace/SpaceTopComponent";
-import StylesScreen from "../styles/StylesScreen";
-import InputTextComponent from "../components/InputTextComponent";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -14,18 +11,11 @@ import RowComponent from "../components/RowComponent";
 import LeftComponent from "../components/LeftComponent";
 import RightComponent from "../components/RightComponent";
 import SpaceBottomComponent from "../components/componentsSpace/SpaceBottomComponent";
-import SpacePaddingLeftComponent from "../components/componentsSpace/SpacePaddingLeftComponent";
-import SpacePaddingRightComponent from "../components/componentsSpace/SpacePaddingRightComponent";
-import SpaceRightComponent from "../components/componentsSpace/SpaceRightComponent";
-import CenterComponent from "../components/CenterComponent";
-import SpaceLeftComponent from "../components/componentsSpace/SpaceLeftComponent";
 import ContainerCenterComponent from "../components/ContainerCenterComponent";
 import User from "../model/User";
-import InputComponent from "../components/InputComponent";
 import LivrariaUtil from "../utils/LivrariaUtil";
 import UserController from "../controllers/UserController";
 import ApiController from "../controllers/ApiController";
-import toArray from "@babel/runtime/helpers/esm/toArray";
 
 const url = "http://192.168.1.7:8080/api/user/saveUser";
 

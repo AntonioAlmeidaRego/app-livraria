@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Text, DatePickerAndroid} from 'react-native';
-import {Header, Body, Content, Container, Tabs, Tab, Icon, Form, Item, Label, Input, Button} from 'native-base';
+import {DatePickerAndroid} from 'react-native';
+import {Button, Container, Content, Form, Icon, Input, Item, Label} from 'native-base';
 import SpaceTopComponent from "../../components/componentsSpace/SpaceTopComponent";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -9,15 +9,12 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import SpaceBottomComponent from "../../components/componentsSpace/SpaceBottomComponent";
 import RowComponent from "../../components/RowComponent";
 import LeftComponent from "../../components/LeftComponent";
-import ContainerCenterComponent from "../../components/ContainerCenterComponent";
 import RightComponent from "../../components/RightComponent";
 import User from "../../model/User";
 import FormatterUtil from "../../utils/FormatterUtil";
-import LivrariaUtil from "../../utils/LivrariaUtil";
 import ApiController from "../../controllers/ApiController";
 import UserController from "../../controllers/UserController";
 import HeaderStackComponent from "../../components/HeaderStackComponent";
-import HeaderComponent from "../../components/HeaderComponent";
 import TextComponent from "../../components/TextComponent";
 import LivrariaUtilImpl from "../../utils/LivrariaUtilImpl";
 

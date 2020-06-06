@@ -1,7 +1,4 @@
-import React, {} from 'react';
-import {FlatList} from 'react-native';
-import {Button, Spinner, List, ListItem, Container, Content, Card, CardItem, Item, Text, Thumbnail, Left, Right, Body} from 'native-base';
-import LivroController from '../controllers/LivroController';
+import React from 'react';
 import TabComponent from '../components/TabComponent';
 import ApiController from "../controllers/ApiController";
 
@@ -15,7 +12,7 @@ export default class TabListagemPromocoes extends React.Component{
 
     async componentDidMount(): void {
         const livroController = new ApiController();
-        const livros = await livroController.get(urlLocal+'/api/livro/findAllPromocaoPrimeiros');
+        const livros = await livroController.get(url+'/api/livro/findAllPromocaoPrimeiros');
         this.setState({
             livros: livros,
             isEmpty: livroController.isEmpty(),

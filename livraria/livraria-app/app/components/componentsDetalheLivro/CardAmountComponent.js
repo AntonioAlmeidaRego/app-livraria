@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Text, Image, Dimensions} from 'react-native';
-import {Header, Body, Content, Container, Tabs, Tab, Title, Left, Item, CardItem, Thumbnail, Card, Button, Right, Icon, Picker, Form, Input} from 'native-base';
-import StylesScreen from '../../styles/StylesScreen'; 
+import {Dimensions} from 'react-native';
+import {Button, Icon} from 'native-base';
+import StylesScreen from '../../styles/StylesScreen';
 import CenterComponent from "../CenterComponent";
 import RowComponent from "../RowComponent";
 import SpaceBottomComponent from "../componentsSpace/SpaceBottomComponent";
@@ -37,8 +37,8 @@ export default class CardAmountComponent extends React.Component{
                     </CenterComponent>
                     <SpaceBottomComponent />
                     <BoxContainerComponent width={'87%'} height={'100%'} justifyContent={'center'} alignSelf={'center'} alignItems={'center'} >
-                        <Button style={[StylesScreen.createButtonColor('#694fad')
-                        ]}>
+                        <Button style={[StylesScreen.createButtonColor('#DF5757')
+                        ]}> 
                             <CenterComponent>
                                 <RowComponent>
                                     <Icon name={"ios-cart"} size={30}/>

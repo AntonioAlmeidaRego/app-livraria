@@ -1,15 +1,10 @@
-import React , {} from 'react';
-import {View, Text} from 'react-native';
-import StylesScreen from "../../app/styles/StylesScreen";
-import {Input, Item, Label, Container, Left, Right} from "native-base";
+import React from 'react';
+import {View} from 'react-native';
+import {Input} from "native-base";
 import TextComponent from "./TextComponent";
 import RowComponent from "./RowComponent";
 import LeftComponent from "./LeftComponent";
 import RightComponent from "./RightComponent";
-import ContainerComponent from "./ContainerComponent";
-import SpaceRightComponent from "./componentsSpace/SpaceRightComponent";
-import SpaceLeftComponent from "./componentsSpace/SpaceLeftComponent";
-import SpaceBottomComponent from "./componentsSpace/SpaceBottomComponent";
 import CenterComponent from "./CenterComponent";
 import BorderComponent from "./BorderComponent";
 import ContainerCenterComponent from "./ContainerCenterComponent";

@@ -1,5 +1,5 @@
-import React , {} from 'react';
-import {View, Text} from 'react-native';
+import React from 'react';
+import {Text, View} from 'react-native';
 import StylesScreen from "../../app/styles/StylesScreen";
 
 export default class TextComponent extends React.Component{

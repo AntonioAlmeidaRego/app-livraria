@@ -1,7 +1,7 @@
-import React , {} from 'react';
-import {View, Text} from 'react-native';
-import StylesScreen from "../styles/StylesScreen";
+import React from 'react';
+import {View} from 'react-native';
 import ContainerComponent from "./ContainerComponent";
+import StylesScreen from '../styles/StylesScreen';
 
 export default class CenterComponent extends React.Component{
     render() {

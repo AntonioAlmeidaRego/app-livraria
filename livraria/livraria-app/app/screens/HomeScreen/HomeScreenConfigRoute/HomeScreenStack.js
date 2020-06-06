@@ -1,10 +1,8 @@
-
 import {createStackNavigator} from 'react-navigation';
 import LivroScreen from '../../LivroScreen/LivroScreen';
 import HomeScreen from '../HomeScreen';
 import DetalheLivroScreen from '../../LivroScreen/DetalheLivroScreen';
 import ShoppingCartScreen from "../../ShoppingCartScreen/ShoppingCartScreen";
-import RegisterUserScreen from "../../UserScreen/RegisterUserScreen";
 
 const HomeScreenStack = createStackNavigator({
         HomeScreen:{

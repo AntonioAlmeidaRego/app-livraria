@@ -1,7 +1,6 @@
-import {createSwitchNavigator, createAppContainer, createStackNavigator} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation';
 
 import UserScreen from "../UserScreen";
-import RegisterUserScreen from "../RegisterUserScreen";
 import RegisterUserRouterStack from "../RegisterUserScreenConfigRouter/RegisterUserScreenRouterStack";
 import MyAccountRouterStack from "../MyAccountScreenConfigRouter/MyAccountRouterStack";
 

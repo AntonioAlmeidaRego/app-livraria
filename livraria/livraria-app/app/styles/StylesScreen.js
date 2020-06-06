@@ -1,4 +1,4 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
 export default class StylesScreen{
 
@@ -571,11 +571,12 @@ export default class StylesScreen{
 
     static createRight() {
         const styles = StyleSheet.create({
-            right:{
+            right:{ 
                 flex: 1,
                 marginLeft: 'auto',
                 alignItems: 'center',
                 justifyContent: 'center',
+                right: 1,
             }
         });
 
@@ -615,9 +616,12 @@ export default class StylesScreen{
 
     static createLeft() {
         const styles = StyleSheet.create({
-            left:{
-                flex: 1,
+            left:{ 
                 flexWrap: 'wrap-reverse',
+                left: 1,
+                marginRight: 'auto',
+                alignItems: 'center',
+                justifyContent: 'center',
             }
         });
 

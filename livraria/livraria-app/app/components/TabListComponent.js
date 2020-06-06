@@ -1,23 +1,20 @@
-import React, {} from 'react';
-import {FlatList, Text, View} from 'react-native';
-import {Button, Spinner, List, ListItem, Container, Content, Card, CardItem, Item, Thumbnail, Left, Right, Body} from 'native-base';
+import React from 'react';
+import {FlatList, Text} from 'react-native';
+import {Body, Button, Container, Content, ListItem, Right, Spinner, Icon, Item, Left, List, Row} from 'native-base';
 import EmptyComponent from "./componentsEmpty/EmptyComponent";
+import StylesScreen from '../styles/StylesScreen';
+import RowComponent from './RowComponent';
+import LeftComponent from './LeftComponent';
+import RightComponent from './RightComponent';
+import TextComponent from './TextComponent';
+import SpaceTopComponent from './componentsSpace/SpaceTopComponent';
 
 
 export default class TabListComponent extends React.Component{
 
     state={
-       viewSpinner: true,
+       viewSpinner: this.props.isViewSpinner,
     };
-
-    componentDidMount(): void {
-        setInterval(()=>{
-            this.setState({
-                viewSpinner: false,
-            });
-        }, 8000);
-    }
-
 
     showViewSpinner(){
         if(this.state.viewSpinner){
@@ -45,18 +42,18 @@ export default class TabListComponent extends React.Component{
                         }
                         data={this.props.array}
                         renderItem={({ item }) =>
-                            [
-                                <ListItem thumbnail>
-                                    <Body>
-                                        <Text>{item.nome}</Text>
-                                    </Body>
+                            <List> 
+                                <ListItem>
+                                    <Left>
+                                        <TextComponent color={"#000"} upper alignText={"center"} text={item.nome}></TextComponent>
+                                    </Left>
                                     <Right>
-                                        <Button onPress={() => this.props.onDetalhe(item)} transparent>
-                                            <Text>Detalhe</Text>
+                                        <Button danger rounded onPress={() => this.props.onDetalhe(item)}>
+                                            <Icon name={"ios-information-circle"} size={30} color={"#000"}/>
                                         </Button>
                                     </Right>
-                                </ListItem>
-                            ]
+                                </ListItem>                       
+                            </List>
                         }
                     />
                 </Content>

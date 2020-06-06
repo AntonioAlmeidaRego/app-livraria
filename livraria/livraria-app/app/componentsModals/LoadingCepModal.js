@@ -1,6 +1,5 @@
 import React from 'react';
-import {View, Text, Image, Modal, ActivityIndicator} from 'react-native';
-import {Header, Body, Content, Container, Tabs, Tab, Title, Left, Item, CardItem, Thumbnail, Card, Button, Right, Icon, ListItem, Form} from 'native-base';
+import {ActivityIndicator, Modal, Text, View} from 'react-native';
 import StylesScreen from "../styles/StylesScreen";
 
 export default class LoadingCepModal extends React.Component{

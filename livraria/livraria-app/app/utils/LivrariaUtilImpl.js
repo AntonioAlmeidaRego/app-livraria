@@ -1,5 +1,4 @@
 import LivrariaUtil from "./LivrariaUtil";
-import MaskCep from "./MaskCep";
 
 let inCep = false;
 let inCPFPos2 = false;

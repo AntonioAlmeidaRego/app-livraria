@@ -1,5 +1,5 @@
-import React , {} from 'react';
-import {View, Text, Dimensions} from "react-native";
+import React from 'react';
+import {Dimensions, View} from "react-native";
 import StylesScreen from "../styles/StylesScreen";
 import {Button} from "native-base";
 

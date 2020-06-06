@@ -1,17 +1,13 @@
 import React from 'react';
-import {View, Text, Image, ActivityIndicator, Dimensions} from 'react-native';
-import {Header, Body, Content, Container, Tabs, Tab, Icon, Form, Item, Label, Input, Button, Thumbnail, Right} from 'native-base';
-import LayoutComponent from "../LayoutComponent";
+import {Text} from 'react-native';
 import TextComponent from "../TextComponent";
 import RowComponent from "../RowComponent";
 import LeftComponent from "../LeftComponent";
 import BorderComponent from "../BorderComponent";
-import SpaceTopComponent from "../componentsSpace/SpaceTopComponent";
 import BoxContainerComponent from "../BoxContainerComponent";
 import SpaceLeftComponent from "../componentsSpace/SpaceLeftComponent";
 import SpacePaddingTopComponent from "../componentsSpace/SpacePaddingTopComponent";
 import RightComponent from "../RightComponent";
-import CenterComponent from "../CenterComponent";
 import SpaceRightComponent from "../componentsSpace/SpaceRightComponent";
 import SpacePaddingBottomComponent from "../componentsSpace/SpacePaddingBottomComponent";
 

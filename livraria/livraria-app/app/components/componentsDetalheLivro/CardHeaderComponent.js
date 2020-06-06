@@ -1,30 +1,11 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
-import {
-    Header,
-    Body,
-    Content,
-    Container,
-    Tabs,
-    Tab,
-    Title,
-    Left,
-    CardItem,
-    Thumbnail,
-    Card,
-    Right,
-    Button, Icon
-} from 'native-base';
+import {Thumbnail} from 'native-base';
 import StylesScreen from "../../styles/StylesScreen";
 import BoxContainerComponent from "../BoxContainerComponent";
 import ContainerCenterComponent from "../ContainerCenterComponent";
 import SpaceTopComponent from "../componentsSpace/SpaceTopComponent";
 import TextComponent from "../TextComponent";
-import RowComponent from "../RowComponent";
 import LeftComponent from "../LeftComponent";
-import RightComponent from "../RightComponent";
-import SpaceLeftComponent from "../componentsSpace/SpaceLeftComponent";
-import CenterComponent from "../CenterComponent";
 
 export default class CardHeaderComponent extends React.Component{
     render() {

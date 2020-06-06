@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Text, Image, ActivityIndicator} from 'react-native';
-import {Header, Body, Content, Container, Tabs, Tab, Icon, Form, Item, Label, Input, Button, Thumbnail} from 'native-base';
+import {ActivityIndicator, Text} from 'react-native';
+import {Button, Container, Form, Icon, Input, Item, Label, Thumbnail} from 'native-base';
 import SpaceTopComponent from "../componentsSpace/SpaceTopComponent";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import ContainerCenterComponent from "../ContainerCenterComponent";
@@ -13,6 +13,7 @@ import TextComponent from "../TextComponent";
 import CenterComponent from "../CenterComponent";
 import SpaceBottomComponent from "../componentsSpace/SpaceBottomComponent";
 import SessionController from "../../controllers/SessionController";
+
 const urlLocal = "http://192.168.1.7:8080/api/user/autenticationUser";
 export default class LoginComponent extends React.Component{
 

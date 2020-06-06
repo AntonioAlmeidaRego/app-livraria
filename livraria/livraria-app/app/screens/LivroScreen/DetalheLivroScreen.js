@@ -1,34 +1,22 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
-import {Header, Body, Content, Container, Tabs, Tab, Card, CardItem, Thumbnail, Left,
-    Right, Button, Icon, ListItem, List, Item, Input, Label} from 'native-base';
+import {Content, Icon} from 'native-base';
 
 import HeaderStackComponent from '../../components/HeaderStackComponent';
 import SoapController from '../../controllers/SoapController';
 import CardAmountComponent from '../../components/componentsDetalheLivro/CardAmountComponent';
-import TitleBannerComponent from "../../components/TitleBannerComponent";
-import StylesScreen from "../../styles/StylesScreen";
-import LoadingCepModal from "../../componentsModals/LoadingCepModal";
 import ConversorUtil from "../../utils/ConversorUtil";
-import CardAutorDescritionComponent from "../../components/componentsDetalheLivro/CardAutorDescritionComponent";
 import ApiController from "../../controllers/ApiController";
 import CardHeaderComponent from "../../components/componentsDetalheLivro/CardHeaderComponent";
-import CardLivroDescrition from "../../components/CardLivroDescrition";
-import CardSinopsieComponent from "../../components/componentsDetalheLivro/CardSinopsieComponent";
 import CardMoreLivroComponent from "../../components/componentsDetalheLivro/CardMoreLivroComponent";
 import SpaceTopComponent from "../../components/componentsSpace/SpaceTopComponent";
-import SpaceBottomComponent from "../../components/componentsSpace/SpaceBottomComponent";
-import TabComponent from "../../components/TabComponent";
 import CardButtomComponent from "../../components/componentsDetalheLivro/CardButtomComponent";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import TextComponent from "../../components/TextComponent";
 import CarouselComponent from "../../components/CarouselComponent";
 import BorderComponent from "../../components/BorderComponent";
 import LeftComponent from "../../components/LeftComponent";
 import LoadingComponent from "../../components/LoadingComponent";
-import LoginComponent from "../../components/UserScreenComponent/LoginComponent";
 import LivrariaUtilImpl from "../../utils/LivrariaUtilImpl";
 
 
@@ -87,7 +75,7 @@ export default class DetalheLivroScreen extends React.Component{
         }, 4000);
 
         const livroController = new ApiController();
-        const livros = await livroController.get(urlLocal+'/api/livro/findAll');
+        const livros = await livroController.get('https://livraria-pdf.herokuapp.com/api/livro/findAll');
         this.setState({
             livrosRelateds: livros,
         });
@@ -135,7 +123,7 @@ export default class DetalheLivroScreen extends React.Component{
     onListAutorLinkedLivro = async (idLivro: number)=>{
         this.onVisible();
         const autorController = new ApiController();
-        const autors = await autorController.get(urlLocal+'/api/autor/findAllLinkedLivro/'+idLivro);
+        const autors = await autorController.get('https://livraria-pdf.herokuapp.com/api/autor/findAllLinkedLivro/'+idLivro);
         this.setState({
             autors: autors,
         });
@@ -144,7 +132,7 @@ export default class DetalheLivroScreen extends React.Component{
 
     onListLivrosRelatedByValue = async (value: number, idLivro: number)=>{
         const apiController = new ApiController();
-        const livros = await apiController.get(urlLocal+'/api/livro/findAllRelatedByValue/'+value+'/'+idLivro);
+        const livros = await apiController.get('https://livraria-pdf.herokuapp.com/api/livro/findAllRelatedByValue/'+value+'/'+idLivro);
         this.setState({
             livrosRelateds: livros,
         });
@@ -195,7 +183,7 @@ export default class DetalheLivroScreen extends React.Component{
 
     onParcelamento = async (item)=>{
         const apiController = new ApiController;
-        return await apiController.get(urlLocal+"/api/parcelamento/findOneLinkedLivro/"+item.id);
+        return await apiController.get("https://livraria-pdf.herokuapp.com/api/parcelamento/findOneLinkedLivro/"+item.id);
     };
 
     render() {
@@ -209,16 +197,16 @@ export default class DetalheLivroScreen extends React.Component{
 
         return (
             <HeaderStackComponent
-                background={"#694fad"}
+                background={"#DF5757"}    
                 favorite={true}
                 title={"Detalhe do Livro"}
                 onBack={() => this.props.navigation.goBack()}
                 children={
                     <LoadingComponent isViewSpinner={this.state.isViewSpinner} children={
                         <Content>
-                            <SpaceTopComponent />
+                            <SpaceTopComponent /> 
                             <CardHeaderComponent
-                                uri={urlLocalImage+this.state.livro.id}
+                                uri={urlImage+this.state.livro.id}
                                 title={this.state.livro.titulo}
                                 year={this.state.livro.ano}
                             />

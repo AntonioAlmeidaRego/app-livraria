@@ -1,7 +1,5 @@
 import React from 'react';
-import {View, Text, Image, TouchableOpacity, ScrollView, FlatList} from 'react-native';
-import {Header, Body, Content, Container, Tabs, Tab, Title, Left, Item, CardItem, Thumbnail, Card, Button, Right, Icon, ListItem} from 'native-base';
-import StylesScreen from "../styles/StylesScreen";
+import {ScrollView} from 'react-native';
 import LayoutComponent from "./LayoutComponent";
 import CardLivroDescrition from "./CardLivroDescrition";
 

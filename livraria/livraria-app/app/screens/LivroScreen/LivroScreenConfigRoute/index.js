@@ -1,5 +1,4 @@
-
-import {createSwitchNavigator, createAppContainer, createStackNavigator} from 'react-navigation';
+import {createSwitchNavigator} from 'react-navigation';
 import LivroScreen from '../LivroScreen';
 
 

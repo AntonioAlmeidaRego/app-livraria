@@ -1,7 +1,6 @@
 import React from 'react';
-import {View, Text, Image, ActivityIndicator} from 'react-native';
-import {Header, Body, Content, Container, Tabs, Tab, Icon, Form, Item, Label, Input, Button, Thumbnail} from 'native-base';
-import LayoutComponent from "../../components/LayoutComponent";
+import {View} from 'react-native';
+import {Button} from 'native-base';
 import UserDataComponent from "../../components/componentsUser/UserDataComponent";
 import SessionController from "../../controllers/SessionController";
 import HeaderComponent from "../../components/HeaderComponent";

@@ -1,6 +1,4 @@
-import React, { Component } from "react";
-import { createDrawerNavigator, createStackNavigator, createSwitchNavigator } from "react-navigation";
-import {Dimensions} from 'react-native';
+import {createSwitchNavigator} from "react-navigation";
 import LogoutScreen from "../LogoutScreen";
 
 

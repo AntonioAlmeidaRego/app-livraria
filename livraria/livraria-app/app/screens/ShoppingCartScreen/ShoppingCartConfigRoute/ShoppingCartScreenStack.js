@@ -1,4 +1,4 @@
-import {createSwitchNavigator, createAppContainer, createStackNavigator} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation';
 import ShoppingCartScreen from "../ShoppingCartScreen";
 
 

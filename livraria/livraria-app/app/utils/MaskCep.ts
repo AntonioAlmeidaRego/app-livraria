@@ -1,5 +1,6 @@
 import MaskUtil from "./MaskUtil";
 import ValidationUtil from "./ValidationUtil";
+
 let array = [];
 export default class MaskCep extends MaskUtil{
     private value: string;

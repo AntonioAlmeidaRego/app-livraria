@@ -1,4 +1,4 @@
-import {createSwitchNavigator, createAppContainer, createStackNavigator, createDrawerNavigator} from 'react-navigation';
+import {createSwitchNavigator} from 'react-navigation';
 import HomeScreen from '../HomeScreen';
 
 const HomeScreenRouter = createSwitchNavigator({

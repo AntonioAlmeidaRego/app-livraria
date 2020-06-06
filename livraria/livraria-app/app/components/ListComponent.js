@@ -1,19 +1,6 @@
 import React from 'react';
-import {View, Text, FlatList} from 'react-native';
-import {
-    Header,
-    Body,
-    Content,
-    Container,
-    Tabs,
-    Tab,
-    Spinner,
-    ListItem,
-    Right,
-    Button,
-    Left,
-    Thumbnail,
-} from 'native-base';
+import {FlatList, Text} from 'react-native';
+import {Body, Button, Left, ListItem, Right, Spinner, Thumbnail,} from 'native-base';
 
 export default class ListComponent extends React.Component{
 
